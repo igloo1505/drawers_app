@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import AuthReducer from "./reducers/authReducer";
+import UIReducer from "./reducers/uiReducer";
 import initialState from "./initial/initialState";
 
 
@@ -7,6 +8,7 @@ import initialState from "./initial/initialState";
 const store = configureStore({
 	reducer: {
 		auth: AuthReducer,
+        ui: UIReducer
 	},
 	devTools: process.env.NODE_ENV !== "production" || true,
 	preloadedState: initialState,

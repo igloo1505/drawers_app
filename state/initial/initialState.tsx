@@ -1,8 +1,10 @@
 import authState from "./authState";
+import initialUiState from "./uiState";
 
 
 const initialState = {
-    auth: authState
+    auth: authState,
+    UI: initialUiState
 }
 
 

@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+enum ROLE {
+    USER
+    SELLER
+    ADMIN
+    BANNED
+}
+
+model Purchase {
+    id          Int     @id @default(autoincrement())
+    purchaser   User    @relation(fields: [purchaserId], references: [id])
+    purchaserId Int
+    item        Item[]
+    itemId      Int[]
+    price       Float
+    itemShipped Boolean @default(false)
+}
+
+model Image {
+    id        Int      @id @default(autoincrement())
+    url       String
+    Profile   Profile? @relation(fields: [profileId], references: [id])
+    profileId Int?
+    Item      Item?    @relation(fields: [itemId], references: [id])
+    itemId    Int?
+}
+
+model Tag {
+    content   String   @id
+    Profile   Profile? @relation(fields: [profileId], references: [id])
+    profileId Int?
+    Item      Item?    @relation(fields: [itemId], references: [id])
+    itemId    Int?
+}
+
+model Profile {
+    id            Int      @id @default(autoincrement())
+    user          User     @relation(fields: [userId], references: [id])
+    userId        Int
+    userName      String   @unique
+    firstName     String
+    lastName      String
+    profileImages Image[]
+    imageIds      Int[]
+    introduction  String?
+    location      String?
+    interests     String[]
+    tags          Tag[]
+}
+
+model User {
+    id        Int        @id @default(autoincrement())
+    email     String     @unique
+    role      ROLE       @default(USER)
+    createdAt DateTime   @default(now())
+    purchases Purchase[]
+    Item      Item[]
+    Comment   Comment[]
+    Profile   Profile[]
+}
+
+model Comment {
+    id        Int       @id @default(autoincrement())
+    author    User      @relation(fields: [authorId], references: [id])
+    authorId  Int
+    content   String
+    createdAt DateTime  @default(now())
+    likes     Int       @default(0)
+    replyIds  Int
+    replies   Comment   @relation("replies", fields: [replyIds], references: [id])
+    replys    Comment[] @relation("replies")
+    Item      Item?     @relation(fields: [itemId], references: [id])
+    itemId    Int?
+}
+
+model Item {
+    id          Int       @id @default(autoincrement())
+    price       Float
+    seller      User      @relation(fields: [sellerId], references: [id])
+    sellerId    Int
+    description String?
+    Purchase    Purchase  @relation(fields: [purchaseId], references: [id])
+    images      Image[]
+    tags        Tag[]
+    comments    Comment[]
+    purchaseId  Int
+    createAt    DateTime  @default(now())
+}

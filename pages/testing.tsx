@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import React from 'react'
-import ToggleButton from '../components/app/ToggleButton'
+import ToggleButton from '../components/ui/ToggleButton'
 import { connect } from 'react-redux';
 import { RootState } from '../state/store';
 import { setAuthenticated, toggleDarkMode } from '../state/actions/syncActions';

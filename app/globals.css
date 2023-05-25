@@ -6,3 +6,18 @@
 .testborder {
     border: 1px solid red;
 }
+
+body {
+    font-family: var(--font-family);
+}
+
+
+.symmetric-grid-card .p-card-body {
+    height: 100%;
+}
+
+
+.symmetric-grid-card .p-card-body .p-card-content {
+    height: 100%;
+}
+

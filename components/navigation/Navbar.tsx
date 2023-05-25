@@ -5,7 +5,7 @@ import NavbarButtonSection from './NavbarButtonSection';
 
 const Navbar = () => {
     return (
-        <div className={'flex flex-row justify-between items-center min-h-[4rem] px-3 testborder'}>
+        <div className={'flex flex-row justify-between items-center min-h-[4rem] px-3'}>
             <NavbarLogoAsText />
             <NavbarButtonSection />
         </div>

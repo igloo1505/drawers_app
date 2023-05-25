@@ -19,6 +19,10 @@ const unAthenticatedButtons: NavbarButtonType[] = [
         text: "Login",
         href: "/login"
     },
+    {
+        text: "Sign Up",
+        href: "/signup"
+    },
 ]
 
 

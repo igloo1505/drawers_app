@@ -6,22 +6,22 @@ import initialState from "./initial/initialState";
 
 
 const store = configureStore({
-	reducer: {
-		auth: AuthReducer,
+    reducer: {
+        auth: AuthReducer,
         ui: UIReducer
-	},
-	devTools: process.env.NODE_ENV !== "production" || true,
-	preloadedState: initialState,
+    },
+    devTools: process.env.NODE_ENV !== "production" || true,
+    preloadedState: initialState,
 });
 
 declare global {
-	interface Window {
-		store: typeof store;
-	}
+    interface Window {
+        store: typeof store;
+    }
 }
 
 if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
-	window.store = store;
+    window.store = store;
 }
 
 export default store;

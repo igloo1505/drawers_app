@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 
 /* const titleText = ["anty", "latform"] */
-const titleText = ["xxx", "xxxxxxx"]
+const titleText = ["ome", "itle"]
 
 
 const LogoP = ({ initialChar, charList, idx }: { initialChar: string, charList: string, idx: number }) => {
@@ -26,8 +26,8 @@ const NavbarLogoAsText = () => {
     return (
         <Link href="/">
             <div className={'flex flex-col gap-0 justify-start items-start translate-y-1'}>
-                <LogoP initialChar="P" charList={titleText[0]} idx={0} />
-                <LogoP initialChar="P" charList={titleText[1]} idx={1} />
+                <LogoP initialChar="S" charList={titleText[0]} idx={0} />
+                <LogoP initialChar="T" charList={titleText[1]} idx={1} />
             </div>
         </Link>
     )

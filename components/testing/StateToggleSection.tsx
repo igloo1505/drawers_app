@@ -48,7 +48,6 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
 
     useEffect(() => {
         const cur = getCurrentTheme()
-        console.log("Cur", cur)
         if (!cur) {
             return setAllowDarkToggle(false)
         }

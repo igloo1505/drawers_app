@@ -57,7 +57,6 @@ const DividerWithText = (props: DividerWithTextProps) => {
     const gridCols = getGridStyles(align)
     const thickness = props.thickness || "4px"
     const color = props.color || "var(--primary-color)"
-    console.log(gridCols)
     return (
         <div className={'w-full grid gap-2'}
             style={{

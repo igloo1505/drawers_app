@@ -8,11 +8,11 @@ interface NavbarButtonType {
 
 const unAthenticatedButtons: NavbarButtonType[] = [
     {
-        text: "Sell Used xxxxxxx",
+        text: "Sell Used",
         href: "/sellUsedPanties"
     },
     {
-        text: "Buy Used xxxxxxx",
+        text: "Buy Used",
         href: "/buyUsedPanties"
     },
     {

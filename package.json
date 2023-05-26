@@ -15,11 +15,15 @@
         "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
         "production:build": "npx prisma generate && npx prisma migrate deploy && next build"
     },
+    "prisma": {
+        "seed": "ts-node ./seeding/seeder.ts"
+    },
     "dependencies": {
         "@next/font": "^13.4.1",
         "@prisma/client": "^4.14.1",
         "@reduxjs/toolkit": "^1.9.5",
         "@tailwindcss/container-queries": "^0.1.1",
+        "@types/bcrypt": "^5.0.0",
         "@types/react-redux": "^7.1.25",
         "axios": "^1.4.0",
         "bcrypt": "^5.1.0",

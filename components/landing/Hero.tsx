@@ -11,11 +11,11 @@ interface HeroSectionProps {
 
 const HeroSection = (props: HeroSectionProps) => {
     return (
-        <GenericCard extraClasses={'w-screen'} extraStyles={{
-            backgroundColor: "var(--surface-600)",
+        <GenericCard extraClasses={'w-full'} extraStyles={{
+            backgroundColor: "var(--highlight-bg)",
             borderRadius: 0
         }}>
-            <div className={'w-full h-fit grid px-4 py-3 gap-8 text-[#fff] hero-grid'}>
+            <div className={'w-full h-fit flex flex-col justify-center items-center lg:grid px-4 py-3 gap-8 text-[--highlight-text-color] hero-grid'}>
                 <HeroCardLeft />
                 <HeroCardRight />
             </div>

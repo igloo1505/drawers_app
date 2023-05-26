@@ -9,6 +9,7 @@ import './landing.scss'
 import ReduxProvider from '../../components/strucutre/redux-provider'
 import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
+import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 
 
 const RootLayout = ({
@@ -21,6 +22,7 @@ const RootLayout = ({
             <ThemeSourcing />
             <body>
                 <ReduxProvider>
+                    <ThemeClientSetter />
                     <Navbar />
                     <HeroSection />
                     <div className='px-4 pt-2 pb-4'>

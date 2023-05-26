@@ -1,3 +1,4 @@
+const disallowCharacters = Array.from(": ")
 export class ThemeType {
     hasDarkTheme: boolean = false
     id: string
@@ -8,7 +9,13 @@ export class ThemeType {
     basePath: string = "assets/development/styles/themes/"
     original: "light" | "dark" | false = false
     constructor(public label: string, lightTheme: string, darkTheme?: string, original?: "light" | "dark" | false) {
-        this.id = label.replace(" ", "")
+        let _id = ""
+        Array.from(label).forEach((l) => {
+            if (disallowCharacters.indexOf(l) === -1) {
+                _id += l
+            }
+        })
+        this.id = _id
         this.lightTheme = `${this.basePath}${lightTheme}`
         if (darkTheme) {
             this.darkTheme = `${this.basePath}${darkTheme}`
@@ -16,6 +23,12 @@ export class ThemeType {
         }
         if (original) {
             this.original = original
+        }
+    }
+    deactivateSelf() {
+        this.deactivate(this.lightId())
+        if (this.hasDarkTheme) {
+            this.deactivate(this.darkId())
         }
     }
     lightId() {

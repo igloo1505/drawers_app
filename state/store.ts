@@ -9,7 +9,7 @@ import initialState from "./initial/initialState";
 const store = configureStore({
     reducer: {
         auth: AuthReducer,
-        ui: UIReducer,
+        UI: UIReducer,
         development: TestingReducer
     },
     devTools: process.env.NODE_ENV !== "production" || true,

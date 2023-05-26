@@ -2,6 +2,7 @@ import React from 'react'
 import appData from '../../state/initial/appData';
 import LeftBottomUnderlinedText from '../ui/LeftBottomUnderlinedText';
 import Button from '../io/Button';
+import Link from 'next/link';
 
 
 
@@ -19,13 +20,21 @@ const HeroCardLeft = (props: HeroCardLeftProps) => {
             {appData.landing.heroCardBody && <div className={'w-full mt-2'}>
                 {appData.landing.heroCardBody}
             </div>}
-            <div className={'w-full flex flex-row justify-end items-center'}>
-                <Button
-                    label="Sign Up"
-                    severity="secondary"
-                    raised
-                    outlined
-                />
+            <div className={'w-full flex flex-row justify-end gap-3 items-center mt-6 lg:mt-4'}>
+                <Link href="/login">
+                    <Button
+                        label="Create an Account"
+                        size="large"
+                        className="bg-[--primary-color] color-[--primary-color-text]"
+                    />
+                </Link>
+                <Link href="/signup">
+                    <Button
+                        label="Login"
+                        size="large"
+                        className="bg-[--primary-color] color-[--primary-color-text]"
+                    />
+                </Link>
             </div>
         </div>
     )

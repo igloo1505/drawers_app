@@ -7,6 +7,9 @@ const DevReducer = createReducer(initialState, (builder) => {
     builder.addCase(
         "SET_ACTIVE_THEME",
         (state: typeof initialState, action: Types.SET_ACTIVE_THEME) => {
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem("currentTheme", action.payload.id)
+            }
             return {
                 ...state,
                 active_theme: action.payload.id,

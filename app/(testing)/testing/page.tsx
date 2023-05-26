@@ -16,7 +16,7 @@ import StateToggleSection from '../../../components/testing/StateToggleSection';
 
 const connector = connect((state: RootState, props: any) => ({
     auth: state.auth,
-    ui: state.ui,
+    ui: state.UI,
     active_theme: state.development.active_theme,
     props: props
 }))

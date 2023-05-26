@@ -35,14 +35,12 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
         let curTheme = active_theme
         if (isInitial && theme.original) {
             if (theme.original === "light") {
-                /* debugger */
                 store.dispatch({
                     type: "SET_ACTIVE_THEME",
                     payload: { id: ids.light, variant: "light" }
                 })
             }
             if (theme.original === "dark") {
-                /* debugger */
                 store.dispatch({
                     type: "SET_ACTIVE_THEME",
                     payload: { id: ids.dark, variant: "dark" }
@@ -50,13 +48,10 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
             }
         }
         if (!isInitial) {
-            /* debugger */
             if (curTheme === ids.light) {
-                debugger
                 theme.light()
             }
             if (curTheme === ids.dark) {
-                debugger
                 theme.dark()
             }
         }
@@ -66,7 +61,6 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
     }, [active_theme])
 
     const setLight = () => {
-        debugger
         theme.deactivate(active_theme)
         store.dispatch({
             type: "SET_ACTIVE_THEME",
@@ -74,14 +68,13 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
         })
     }
     const setDark = () => {
-        debugger
         theme.deactivate(active_theme)
         store.dispatch({
             type: "SET_ACTIVE_THEME",
             payload: { id: ids.dark, variant: "dark" }
         })
     }
-    console.log("Has Dark Theme:", theme.label, theme.hasDarkTheme)
+
     return (
         <Card className={'flex flex-col justify-start items-start w-full testing-theme-card'} title={theme.label}>
             <div className={'w-full flex flex-row justify-end items-end gap-4'}>

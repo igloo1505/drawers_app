@@ -39,7 +39,7 @@ export class ThemeType {
     }
     deactivate(id: string) {
         if (typeof window === "undefined") return;
-        let em = document.getElementById(id)
+        let em = document.getElementById(id) as HTMLLinkElement
         if (!em) {
             return
         }
@@ -48,7 +48,7 @@ export class ThemeType {
     private activate(type: "dark" | "light") {
         if (typeof window === "undefined") return;
         const id = type === "dark" ? this.darkId() : this.lightId()
-        const em = document.getElementById(id)
+        const em = document.getElementById(id) as HTMLLinkElement
         if (!em) return
         em.media = ''
     }
@@ -56,7 +56,6 @@ export class ThemeType {
         this.activate("dark")
         this.darkActive = true
     }
-
     light() {
         this.activate("light")
         this.lightActive = true

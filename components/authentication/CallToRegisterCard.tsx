@@ -9,11 +9,16 @@ const CallToLogin = () => {
     return (
         <GenericCard extraClasses="h-full w-full symmetric-grid-card">
             <div className={'w-full h-full flex flex-col justify-center items-between'}>
-                <div className={'h- w-fit text-3xl pl-2'} style={{
+                <div className={'w-fit text-3xl  flex flex-row justify-center items-start'}>
+                    <div className={'pl-2 pb-1'}  style={{
                     borderLeft: "3px solid var(--primary-color)",
                     borderBottom: "3px solid var(--primary-color)",
                 }}>
                     {appData.authentication.callToLoginCardHeader}
+                    </div>
+                    <div className={'w-6 relative'}>
+                    <span className={'absolute top-[-0.65rem] text-6xl font-semibold text-[--primary-color]'}>?</span>
+                    </div>
                 </div>
                 <div className={'h-fit px-3 my-2 text-lg py-4 flex-grow'}>
                     {appData.authentication.callToLoginCardBody}

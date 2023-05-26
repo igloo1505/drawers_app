@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 
 /* const titleText = ["anty", "latform"] */
@@ -23,10 +24,12 @@ const LogoP = ({ initialChar, charList, idx }: { initialChar: string, charList: 
 
 const NavbarLogoAsText = () => {
     return (
-        <div className={'flex flex-col gap-0 justify-start items-start translate-y-1'}>
-            <LogoP initialChar="P" charList={titleText[0]} idx={0} />
-            <LogoP initialChar="P" charList={titleText[1]} idx={1} />
-        </div>
+        <Link href="/">
+            <div className={'flex flex-col gap-0 justify-start items-start translate-y-1'}>
+                <LogoP initialChar="P" charList={titleText[0]} idx={0} />
+                <LogoP initialChar="P" charList={titleText[1]} idx={1} />
+            </div>
+        </Link>
     )
 }
 

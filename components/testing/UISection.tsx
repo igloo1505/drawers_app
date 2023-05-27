@@ -7,7 +7,7 @@ interface DemoUISectionProps {
 }
 
 export const colors = []
-export const severities: SeverityType[] = [
+export const severities = [
     "secondary",
     "success",
     "info",

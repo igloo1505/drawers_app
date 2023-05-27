@@ -8,6 +8,7 @@ import 'primeicons/primeicons.css';
 import ReduxProvider from '../../components/strucutre/redux-provider'
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
 import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
+import Toast from '../../components/ui/Toast';
 
 
 const Layout = ({
@@ -21,6 +22,7 @@ const Layout = ({
             <body>
                 <ReduxProvider>
                     <ThemeClientSetter />
+                    <Toast />
                     <Navbar />
                     <div className='px-4 pt-2 pb-4'>
                         {children}

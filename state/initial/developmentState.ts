@@ -1,10 +1,19 @@
+import { ChangeModalType } from "../types/reduxTypes"
 
 interface DevelopmentStateType {
     active_theme: string
+    change_content_modal: ChangeModalType
 }
 
 const developmentState: DevelopmentStateType = {
-    active_theme: ""
+    active_theme: "",
+    change_content_modal: {
+        label: "",
+        value: "",
+        isOpen: false,
+        name: "",
+        parentName: null
+    }
 }
 
 export default developmentState

@@ -10,6 +10,7 @@ import ReduxProvider from '../../components/strucutre/redux-provider'
 import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
 import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
+import Toast from '../../components/ui/Toast';
 
 
 const RootLayout = ({
@@ -23,6 +24,7 @@ const RootLayout = ({
             <body>
                 <ReduxProvider>
                     <ThemeClientSetter />
+                    <Toast />
                     <Navbar />
                     <HeroSection />
                     <div className='px-4 pt-2 pb-4'>

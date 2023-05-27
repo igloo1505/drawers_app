@@ -24,6 +24,24 @@ const UIReducer = createReducer(initialState, (builder) => {
             };
         }
     );
+    builder.addCase(
+        "SET_UI_APP_DATA",
+        (state: typeof initialState, action: Types.SET_UI_APP_DATA) => {
+            return {
+                ...state,
+                appData: action.payload
+            };
+        }
+    );
+    builder.addCase(
+        "SHOW_TOAST",
+        (state: typeof initialState, action: Types.SHOW_TOAST) => {
+            return {
+                ...state,
+                toast: action.payload
+            };
+        }
+    );
 });
 
 export default UIReducer;

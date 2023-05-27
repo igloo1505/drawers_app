@@ -17,6 +17,15 @@ const DevReducer = createReducer(initialState, (builder) => {
             };
         }
     );
+    builder.addCase(
+        "SET_CHANGE_MODAL_ACTIVE",
+        (state: typeof initialState, action: Types.SET_CHANGE_MODAL_ACTIVE) => {
+            return {
+                ...state,
+                change_content_modal: action.payload
+            };
+        }
+    );
 });
 
 export default DevReducer;

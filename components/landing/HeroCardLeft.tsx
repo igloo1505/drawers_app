@@ -1,18 +1,26 @@
+"use client"
 import React from 'react'
-import appData from '../../state/initial/appData';
+/* import appData from '../../state/initial/appData'; */
 import LeftBottomUnderlinedText from '../ui/LeftBottomUnderlinedText';
 import Button from '../io/Button';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { RootState } from '../../state/store';
+import { AppDataType } from '../../state/initial/appData';
 
+const connector = connect((state: RootState, props: any) => ({
+    appData: state.UI.appData,
+    props: props
+}))
 
 
 interface HeroCardLeftProps {
-
+    appData: AppDataType
 }
 
-const HeroCardLeft = (props: HeroCardLeftProps) => {
+const HeroCardLeft = connector(({ appData }: HeroCardLeftProps) => {
     return (
-        <div className={'w-fit h-full flex flex-col justify-between items-start py-4'}>
+        <div className={'w-fit h-full flex flex-col justify-start items-start py-4'}>
             <LeftBottomUnderlinedText text={appData.landing.heroMainTitle} textClasses="w-fit text-2xl font-bold" underlineColor={"#fff"} />
             {appData.landing.heroSubTitle && <div className={'w-full pl-3 mt-2 text-xl'}>
                 {appData.landing.heroSubTitle}
@@ -38,8 +46,7 @@ const HeroCardLeft = (props: HeroCardLeftProps) => {
             </div>
         </div>
     )
-}
-
+})
 
 
 export default HeroCardLeft;

@@ -9,6 +9,8 @@ import './testing.scss'
 import ReduxProvider from '../../components/strucutre/redux-provider'
 import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
+import TitleTextManipulation from '../../components/testing/contentManipulation/TitleTextManipulation';
+import Toast from '../../components/ui/Toast';
 /* import { availableThemes } from '../../state/initial/themeTesting' */
 
 
@@ -24,6 +26,8 @@ const Layout = ({
             <ThemeSourcing />
             <body>
                 <ReduxProvider>
+                    <Toast />
+                    <TitleTextManipulation />
                     <Navbar />
                     <div className='px-4 pt-2 pb-4'>
                         {children}

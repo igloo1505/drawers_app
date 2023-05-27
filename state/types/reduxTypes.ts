@@ -1,9 +1,14 @@
+import { ChangeEventHandler } from "react";
+import { AppDataType } from "../initial/appData";
+import { ToastConfigType } from "../../types/UITypes";
+
 export type SET_AUTHENTICATED = { type: "SET_AUTHENTICATED"; payload: boolean };
 
 
 
 // SECTION: Ui Stuff
 export type TOGGLE_DARK_MODE = { type: "TOGGLE_DARK_MODE" };
+export type SHOW_TOAST = { type: "SHOW_TOAST", payload: ToastConfigType };
 
 
 
@@ -20,4 +25,26 @@ export type SET_ACTIVE_THEME = {
         id: string,
         variant: "light" | "dark"
     }
+}
+
+
+export type SET_UI_APP_DATA = {
+    type: "SET_UI_APP_DATA",
+    payload: AppDataType
+}
+
+
+export interface ChangeModalType {
+    label: string
+    value: string
+    isOpen: boolean
+    name: string
+    parentName: keyof AppDataType | null
+}
+
+
+export type SET_CHANGE_MODAL_ACTIVE = {
+    type: "SET_CHANGE_MODAL_ACTIVE",
+    payload: ChangeModalType
+
 }

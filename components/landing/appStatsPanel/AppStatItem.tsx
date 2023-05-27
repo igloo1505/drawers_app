@@ -1,17 +1,31 @@
 import React from 'react'
-import { AppStatItem } from '../../../types/UITypes';
-
+import { AppStatItemType } from '../../../types/UITypes';
+import { FaUsers, FaDollarSign, FaImages, FaCommentDots } from 'react-icons/fa'
+import { IconBaseProps } from 'react-icons/lib';
 
 
 interface AppStatItemProps {
-    item: AppStatItem
+    item: AppStatItemType
+    idx: number
 }
 
-const AppStatItem = ({ item }: AppStatItemProps) => {
+const Icons = [
+    FaUsers,
+    FaDollarSign,
+    FaImages,
+    FaCommentDots
+]
+
+const IconMap = ({ idx, className }: { idx: number, className: string }) => {
+    const Icon = Icons[idx]
+    return <Icon className={className} />
+}
+
+const AppStatItem = ({ item, idx }: AppStatItemProps) => {
     return (
         <div className={'w-full xs:w-fit px-3 py-4 grid app-stat-item-grid gap-3 text-[highlight-text-color] bg-[--highlight-bg] rounded raise-md-hover select-none cursor-default xs:min-w-[265px]'}>
             <div className={'h-full w-full flex justify-center items-center xs:min-w-[3rem] select-none'}>
-                <item.icon className={'h-full w-auto'} />
+                <IconMap idx={idx} className={'h-full w-auto'} />
             </div>
             <div className={'flex flex-col justify-between items-start'}>
                 <div className={'text-3xl lg:text-4xl select-none'}>

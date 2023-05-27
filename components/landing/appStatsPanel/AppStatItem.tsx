@@ -25,9 +25,9 @@ const AppStatItem = ({ item, idx }: AppStatItemProps) => {
     return (
         <div className={'w-full xs:w-fit px-3 py-4 grid app-stat-item-grid gap-3 text-[highlight-text-color] bg-[--highlight-bg] rounded raise-md-hover select-none cursor-default xs:min-w-[265px]'}>
             <div className={'h-full w-full flex justify-center items-center xs:min-w-[3rem] select-none'}>
-                <IconMap idx={idx} className={'h-full w-auto'} />
+                <IconMap idx={idx} className={'h-full w-auto text-[--highlight-text-color]'} />
             </div>
-            <div className={'flex flex-col justify-between items-start'}>
+            <div className={'flex flex-col justify-between items-start text-[--highlight-text-color]'}>
                 <div className={'text-3xl lg:text-4xl select-none'}>
                     {item.formatValue ? item.formatValue(item.value) : item.value}
                 </div>

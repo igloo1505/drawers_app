@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-/* import appData from '../../state/initial/appData'; */
 import LeftBottomUnderlinedText from '../ui/LeftBottomUnderlinedText';
 import Button from '../io/Button';
 import Link from 'next/link';
@@ -21,7 +20,7 @@ interface HeroCardLeftProps {
 const HeroCardLeft = connector(({ appData }: HeroCardLeftProps) => {
     return (
         <div className={'w-fit h-full flex flex-col justify-start items-start py-4'}>
-            <LeftBottomUnderlinedText text={appData.landing.heroMainTitle} textClasses="w-fit text-2xl font-bold" underlineColor={"#fff"} />
+            <LeftBottomUnderlinedText text={appData.landing.heroMainTitle} textClasses="w-fit text-2xl font-bold" underlineColor={"var(--highlight-text-color)"} />
             {appData.landing.heroSubTitle && <div className={'w-full pl-3 mt-2 text-xl'}>
                 {appData.landing.heroSubTitle}
             </div>}

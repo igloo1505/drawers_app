@@ -15,7 +15,7 @@ export interface AppDataType {
         heroCardBody: string
     },
     appStats: {
-        items: Partial<AppStatItemType>[]
+        items: AppStatItemType[]
     }
 }
 

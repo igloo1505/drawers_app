@@ -24,7 +24,7 @@ const initialUiState: initialUiStateType = {
     //         items: appData.appStats.items.map((s) => )
     //     }
     // }
-    appData: initialAppData,
+    appData: initialAppData as AppDataType,
     toast: {
         severity: "info",
         timeout: 0,

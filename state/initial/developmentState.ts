@@ -12,7 +12,10 @@ const developmentState: DevelopmentStateType = {
         value: "",
         isOpen: false,
         name: "",
-        parentName: null
+        parentName: null,
+        itemIndex: null,
+        isAppStat: null,
+        subKey: null
     }
 }
 

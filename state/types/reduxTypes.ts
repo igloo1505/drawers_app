@@ -40,6 +40,9 @@ export interface ChangeModalType {
     isOpen: boolean
     name: string
     parentName: keyof AppDataType | null
+    itemIndex: number | null | undefined
+    isAppStat: string | null | undefined
+    subKey: string | null | undefined
 }
 
 

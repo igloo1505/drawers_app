@@ -19,18 +19,45 @@ interface TitleTextManipulationProps {
     appData: AppDataType
 }
 
-const TitleTextManipulation = connector(({ changeModal: { label, value, name, parentName, isOpen }, appData }: TitleTextManipulationProps) => {
+const getNewAppStat = (idx: number, appData: AppDataType, val: string, subKey: string) => {
+    console.log(idx, val, subKey)
+    return {
+        ...appData,
+        appStats: {
+            ...appData.appStats,
+            items: appData.appStats.items.map((stat, i) => i == idx ? {
+                ...stat,
+                [subKey]: val
+            } : stat)
+        }
+    }
+
+}
+
+const TitleTextManipulation = connector(({ changeModal: { label, value, itemIndex, isAppStat, name, parentName, isOpen, subKey }, appData }: TitleTextManipulationProps) => {
     const [localValue, setLocalValue] = useState<string>(value)
 
     const submitChange = (val: string, name: string, parent: keyof AppDataType | null) => {
-        console.log("Val:", val, name, parent)
+        if (isAppStat) {
+            let nd = getNewAppStat(itemIndex || 0, appData, localValue, subKey || "")
+            store.dispatch({
+                type: "SET_UI_APP_DATA",
+                payload: nd
+            })
+            if (window.localStorage) {
+                window.localStorage.setItem("UIAppData", JSON.stringify(nd))
+            }
+            return hideContentManipulationModal()
+        }
         let newData;
         if (parent) {
-            newData = {
-                ...appData,
-                [parent]: {
-                    ...appData[parent],
-                    [name]: val
+            if (!itemIndex) {
+                newData = {
+                    ...appData,
+                    [parent]: {
+                        ...appData[parent],
+                        [name]: val
+                    }
                 }
             }
         }

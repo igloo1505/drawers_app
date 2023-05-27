@@ -34,7 +34,6 @@ const appData = {
     appStats: {
         items: [
             {
-                // icon: FaUsers,
                 label: "Active Users",
                 value: 9999999,
                 formatValue: numberToDisplayString

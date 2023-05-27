@@ -18,9 +18,11 @@ interface SetContentSectionProps {
 }
 
 const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
+
     const resetContent = () => {
         resetAppData()
     }
+
     const copyContent = () => {
         navigator.clipboard.writeText(JSON.stringify(appData));
         store.dispatch({

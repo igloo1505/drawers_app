@@ -3,6 +3,8 @@ import React from 'react'
 import { AppDataType } from '../../../state/initial/appData'
 import { Card } from 'primereact/card'
 import store from '../../../state/store'
+import ChangeCardItem from './ChangeCardItem'
+import { AppStatItemType } from '../../../types/UITypes'
 
 
 
@@ -40,12 +42,6 @@ const ChangeItem = ({ label, currentValue, name, parentName }: ChangeItemProps) 
     )
 }
 
-interface ManipulationItemType {
-    name: string
-    parentName: keyof AppDataType | null
-    currentValue: string | number
-    label: string
-}
 
 
 const HeroContentManipulation = ({ appData }: HeroContentManipulationProps) => {
@@ -69,11 +65,20 @@ const HeroContentManipulation = ({ appData }: HeroContentManipulationProps) => {
             parentName: "landing"
         },
     ]
+
     return (
         <div className={'w-full h-auto flex flex-col justify-start items-start gap-4'}>
             {manipulationItems.map((item, i) => (
                 <ChangeItem label={item.label} currentValue={item.currentValue} name={item.name} parentName={item.parentName as keyof AppDataType} key={`manip-item-${i}`} />
             ))}
+            <div className={'w-full flex flex-col justify-center items-center'}>
+                <div className={'text-2xl text-semibold my-4'}>Those little statistics cards</div>
+                <div className={'flex flex-row justify-center items-center gap-4 flex-wrap'}>
+                    {appData.appStats.items.map((item, i) => {
+                        return (<ChangeCardItem idx={i} item={item as AppStatItemType} key={`change-card-item-${i}`} />)
+                    })}
+                </div>
+            </div>
         </div>
     )
 }

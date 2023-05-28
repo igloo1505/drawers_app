@@ -7,8 +7,7 @@ export interface AppStatItemType {
     icon: IconType
     value: number | string
     label: string
-    formatLabel?: (val: string) => string
-    formatValue?: (val: string | number) => string
+    formatValue?: "number" | "dollar" | null | undefined
 }
 
 

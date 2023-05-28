@@ -2,7 +2,10 @@ import { ToastConfigType } from "../../types/UITypes"
 import appData, { AppDataType } from "./appData"
 
 type initialUiStateType = {
-    darkMode: boolean,
+    darkMode: boolean
+    lightId: string | undefined | null
+    darkId: string | undefined | null
+    hasDarkMode: boolean
     appData: AppDataType
     toast: ToastConfigType
 }
@@ -17,13 +20,9 @@ if (typeof window !== "undefined") {
 
 const initialUiState: initialUiStateType = {
     darkMode: true,
-    // appData: {
-    //     ...appData,
-    //     appStats: {
-    //         ...appData.appStats,
-    //         items: appData.appStats.items.map((s) => )
-    //     }
-    // }
+    hasDarkMode: false,
+    lightId: "",
+    darkId: "",
     appData: initialAppData as AppDataType,
     toast: {
         severity: "info",

@@ -13,7 +13,9 @@ const DevReducer = createReducer(initialState, (builder) => {
             return {
                 ...state,
                 active_theme: action.payload.id,
-                theme_variant: action.payload.variant
+                theme_variant: action.payload.variant,
+                darkId: action.payload.darkId,
+                lightId: action.payload.lightId
             };
         }
     );

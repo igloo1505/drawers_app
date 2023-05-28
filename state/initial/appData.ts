@@ -36,22 +36,22 @@ const appData = {
             {
                 label: "Active Users",
                 value: 9999999,
-                formatValue: numberToDisplayString
+                formatValue: "number"
             },
             {
                 label: "Dollars Made",
                 value: 123456789,
-                formatValue: numberToDisplayString
+                formatValue: "number"
             },
             {
                 label: "Media Items",
                 value: 123456789,
-                formatValue: numberToDisplayString
+                formatValue: "number"
             },
             {
                 label: "Messages Shared",
                 value: 123456789,
-                formatValue: numberToDisplayString
+                formatValue: "number"
             },
         ]
     }

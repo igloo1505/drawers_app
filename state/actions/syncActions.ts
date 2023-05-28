@@ -15,3 +15,16 @@ export const toggleDarkMode = () => {
         type: "TOGGLE_DARK_MODE",
     })
 }
+
+export const toggleDarkModeProduction = () => {
+    const state = store.getState().UI
+    store.dispatch({
+        type: "SET_ACTIVE_THEME",
+        payload: {
+            id: state.darkMode ? state.lightId : state.darkId,
+            variant: state.darkMode ? "light" : "dark",
+            lightId: state.lightId,
+            darkId: state.darkId
+        }
+    })
+}

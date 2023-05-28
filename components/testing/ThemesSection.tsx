@@ -37,13 +37,13 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
             if (theme.original === "light") {
                 store.dispatch({
                     type: "SET_ACTIVE_THEME",
-                    payload: { id: ids.light, variant: "light" }
+                    payload: { id: ids.light, lightId: ids.light, darkId: ids.dark, variant: "light" }
                 })
             }
             if (theme.original === "dark") {
                 store.dispatch({
                     type: "SET_ACTIVE_THEME",
-                    payload: { id: ids.dark, variant: "dark" }
+                    payload: { id: ids.dark, darkId: ids.dark, lightId: ids.light, variant: "dark" }
                 })
             }
         }
@@ -64,14 +64,14 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
         theme.deactivate(active_theme)
         store.dispatch({
             type: "SET_ACTIVE_THEME",
-            payload: { id: ids.light, variant: "light" }
+            payload: { id: ids.light, lightId: ids.light, darkId: ids.dark, variant: "light" }
         })
     }
     const setDark = () => {
         theme.deactivate(active_theme)
         store.dispatch({
             type: "SET_ACTIVE_THEME",
-            payload: { id: ids.dark, variant: "dark" }
+            payload: { id: ids.dark, lightId: ids.light, darkId: ids.dark, variant: "dark" }
         })
     }
 

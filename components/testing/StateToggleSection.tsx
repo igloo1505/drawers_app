@@ -62,7 +62,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
             cur.dark()
             store.dispatch({
                 type: "SET_ACTIVE_THEME",
-                payload: { id: cur.darkId(), variant: "dark" }
+                payload: { id: cur.darkId(), darkId: cur.darkId(), lightId: cur.lightId(), variant: "dark" }
             })
         }
         if (activeTheme === cur.darkId()) {
@@ -70,7 +70,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
             cur.light()
             store.dispatch({
                 type: "SET_ACTIVE_THEME",
-                payload: { id: cur.lightId(), variant: "light" }
+                payload: { id: cur.lightId(), darkId: cur.darkId(), lightId: cur.lightId(), variant: "light" }
             })
         }
     }

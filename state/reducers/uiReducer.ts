@@ -18,9 +18,13 @@ const UIReducer = createReducer(initialState, (builder) => {
     builder.addCase(
         "SET_ACTIVE_THEME",
         (state: typeof initialState, action: Types.SET_ACTIVE_THEME) => {
+            console.log("hasDarkMode:", Boolean(action.payload.darkId && action.payload.lightId), action.payload.darkId, action.payload.lightId)
             return {
                 ...state,
-                darkMode: action.payload.variant === "dark"
+                darkMode: action.payload.variant === "dark",
+                lightId: action.payload.lightId,
+                darkId: action.payload.darkId,
+                hasDarkMode: Boolean(action.payload.darkId && action.payload.lightId),
             };
         }
     );

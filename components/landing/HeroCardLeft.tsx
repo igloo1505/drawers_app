@@ -32,14 +32,14 @@ const HeroCardLeft = connector(({ appData }: HeroCardLeftProps) => {
                     <Button
                         label="Create an Account"
                         size="large"
-                        className="bg-[--primary-color] color-[--primary-color-text]"
+                    /* className="bg-[--primary-color] color-[--primary-color-text]" */
                     />
                 </Link>
                 <Link href="/signup">
                     <Button
                         label="Login"
                         size="large"
-                        className="bg-[--primary-color] color-[--primary-color-text]"
+                    /* className="bg-[--primary-color] color-[--primary-color-text]" */
                     />
                 </Link>
             </div>

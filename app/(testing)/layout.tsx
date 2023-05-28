@@ -11,6 +11,7 @@ import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
 import TitleTextManipulation from '../../components/testing/contentManipulation/TitleTextManipulation';
 import Toast from '../../components/ui/Toast';
+import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 /* import { availableThemes } from '../../state/initial/themeTesting' */
 
 
@@ -27,6 +28,7 @@ const Layout = ({
             <body>
                 <ReduxProvider>
                     <Toast />
+                    <ThemeClientSetter />
                     <TitleTextManipulation />
                     <Navbar />
                     <div className='px-4 pt-2 pb-4'>

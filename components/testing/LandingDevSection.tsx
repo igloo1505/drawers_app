@@ -10,7 +10,7 @@ interface LandingDevSectionProps {
 
 const LandingDevSection = (props: LandingDevSectionProps) => {
     return (
-        <div className={'text-2xl'}>
+        <div className={'text-2xl my-6'}>
             <div className={'w-full text-center mb-4'}>
                 For the development process only:
             </div>

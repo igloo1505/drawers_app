@@ -1,4 +1,5 @@
 const disallowCharacters = Array.from(": ")
+
 export class ThemeType {
     hasDarkTheme: boolean = false
     id: string
@@ -8,6 +9,8 @@ export class ThemeType {
     darkActive: boolean = false
     basePath: string = "assets/development/styles/themes/"
     original: "light" | "dark" | false = false
+    _lightId: string | null = null
+    _darkId: string | null = null
     constructor(public label: string, lightTheme: string, darkTheme?: string, original?: "light" | "dark" | false) {
         let _id = ""
         Array.from(label).forEach((l) => {
@@ -20,22 +23,25 @@ export class ThemeType {
         if (darkTheme) {
             this.darkTheme = `${this.basePath}${darkTheme}`
             this.hasDarkTheme = true
+            this._darkId = this.darkId()
         }
         if (original) {
             this.original = original
         }
+        this._lightId = this.lightId()
     }
     deactivateSelf() {
-        this.deactivate(this.lightId())
-        if (this.hasDarkTheme) {
-            this.deactivate(this.darkId())
+        if (this._lightId)
+            this.deactivate(this._lightId)
+        if (this._darkId) {
+            this.deactivate(this._darkId)
         }
     }
     lightId() {
-        return `${this.id}_light`
+        return this.lightTheme ? `${this.id}_light` : null
     }
     darkId() {
-        return `${this.id}_dark`
+        return this.darkTheme ? `${this.id}_dark` : null
     }
     deactivate(id: string) {
         if (typeof window === "undefined") return;
@@ -47,7 +53,9 @@ export class ThemeType {
     }
     private activate(type: "dark" | "light") {
         if (typeof window === "undefined") return;
-        const id = type === "dark" ? this.darkId() : this.lightId()
+        const id = type === "dark" ? this._darkId : this._lightId
+        console.log("Id", id)
+        if (!id) return;
         const em = document.getElementById(id) as HTMLLinkElement
         if (!em) return
         em.media = ''

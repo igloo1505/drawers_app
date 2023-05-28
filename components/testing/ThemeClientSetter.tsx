@@ -33,14 +33,14 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
                 if (theme.original === "light") {
                     store.dispatch({
                         type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.light, variant: "light" }
+                        payload: { id: ids.light, darkId: ids.dark, lightId: ids.light, variant: "light" }
                     })
                     return setIsInitial(false)
                 }
                 if (theme.original === "dark") {
                     store.dispatch({
                         type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.dark, variant: "dark" }
+                        payload: { id: ids.dark, darkId: ids.dark, lightId: ids.light, variant: "dark" }
                     })
                     return setIsInitial(false)
                 }
@@ -53,7 +53,7 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
                 if (activeTheme === "") {
                     store.dispatch({
                         type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.light, variant: "light" }
+                        payload: { id: ids.light, darkId: ids.dark, lightId: ids.light, variant: "light" }
                     })
                 }
             }
@@ -65,7 +65,7 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
                 if (activeTheme === "") {
                     store.dispatch({
                         type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.dark, variant: "dark" }
+                        payload: { id: ids.dark, lightId: ids.light, darkId: ids.dark, variant: "dark" }
                     })
                 }
             }

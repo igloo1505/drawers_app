@@ -75,7 +75,7 @@ const HeroContentManipulation = ({ appData }: HeroContentManipulationProps) => {
                 <div className={'text-2xl text-semibold my-4'}>Those little statistics cards</div>
                 <div className={'flex flex-row justify-center items-center gap-4 flex-wrap'}>
                     {appData.appStats.items.map((item, i) => {
-                        return (<ChangeCardItem idx={i} item={item as AppStatItemType} key={`change-card-item-${i}`} />)
+                        return (<ChangeCardItem idx={i} item={item} key={`change-card-item-${i}`} />)
                     })}
                 </div>
             </div>

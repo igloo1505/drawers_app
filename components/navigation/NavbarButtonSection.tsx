@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
+import Button from '../io/Button'
+import DarkModeButton from './DarkModeButton'
 
 interface NavbarButtonType {
     text: string,
@@ -37,6 +39,7 @@ const NavbarButton = ({ button }: { button: NavbarButtonType }) => {
 const NavbarButtonSection = () => {
     return (
         <div className={'flex flex-row justify-end items-center gap-4'}>
+            <DarkModeButton />
             {unAthenticatedButtons.map((b, i) => {
                 return <NavbarButton button={b} key={`navbar-button-${i}`} />
             })}

@@ -23,7 +23,9 @@ export type NETWORK_ERROR = { type: "NETWORK_ERROR" }
 export type SET_ACTIVE_THEME = {
     type: "SET_ACTIVE_THEME", payload: {
         id: string,
-        variant: "light" | "dark"
+        variant: "light" | "dark",
+        darkId: string | null | undefined,
+        lightId: string | null | undefined
     }
 }
 

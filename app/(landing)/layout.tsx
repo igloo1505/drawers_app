@@ -27,7 +27,7 @@ const RootLayout = ({
                     <Toast />
                     <Navbar />
                     <HeroSection />
-                    <div className='px-4 pt-2 pb-4'>
+                    <div className='pt-2 pb-4'>
                         {children}
                     </div>
                 </ReduxProvider>

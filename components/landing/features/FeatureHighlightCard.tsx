@@ -12,10 +12,10 @@ interface FeatureHighlightCardProps {
 
 const FeatureHighlightCard = ({ item, Icon }: FeatureHighlightCardProps) => {
     return (
-        <Card className={'flex relative flex-col justify-center items-center shadow-md hover:shadow-sm transition-shadow duration-300 mt-12 lg:mt-0'}>
-            <Icon className={'text-[--primary-color-text] bg-[--primary-color] p-3 w-[5rem] h-auto absolute left-[50%] top-0'} style={{
+        <Card className={'flex relative flex-col justify-center items-center shadow-md hover:shadow-sm transition-shadow duration-300 card-hover-cheesy-effect'}>
+            <Icon className={'text-[--primary-color-text] bg-[--primary-color] p-3 w-[5rem] h-auto absolute left-[50%] top-0 transition-transform duration-500'} style={{
                 borderRadius: "50%",
-                transform: "translate(-50%, -50%)"
+                transform: "translate(-50%, -2.5rem)"
             }} />
             <div className={'text-2xl w-full text-center text-bold mt-6'}>{item.title}</div>
             <div className={'px-2 max-w-3/4 py-2 w-full text-center font-thin'}>{item.body}</div>

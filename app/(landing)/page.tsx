@@ -20,7 +20,7 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
         <div>
             <AppStatsLandingPanel appStats={appData.appStats} />
             <FeaturesSection appData={appData} />
-            <FeatureHighlightSection highlightedFeatures={appData.highlightedFeatures} />
+            <FeatureHighlightSection highlightedFeatures={appData.highlightedFeatures} featuredSectionDetails={appData.landing.highlightedFeatureSection} />
             <LandingDevSection />
 
         </div>

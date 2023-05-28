@@ -1,7 +1,4 @@
-import { IconType } from "react-icons/lib"
-import { AppStatItemType } from "../../types/UITypes"
-import { numberToDisplayString } from "../../utils/formatting"
-import { FaDollarSign, FaUsers, FaCommentDots, FaImages } from 'react-icons/fa'
+import { AppStatItemType, FeatureLabelType, HighlightedFeatureType } from "../../types/UITypes"
 
 export interface AppDataType {
     authentication: {
@@ -16,11 +13,24 @@ export interface AppDataType {
     },
     appStats: {
         items: AppStatItemType[]
+    },
+    featureLabels: FeatureLabelType[],
+    highlightedFeatures: HighlightedFeatureType[]
+}
+
+export const groupFeatureLabels = (featureLabels: FeatureLabelType[]) => {
+    if (!featureLabels) {
+        return {}
+    }
+    return {
+        "seller": featureLabels.filter((label) => label.category === "seller"),
+        "buyer": featureLabels.filter((label) => label.category === "buyer"),
+        "content": featureLabels.filter((label) => label.category === "content"),
     }
 }
 
 
-const appData = {
+const appData: AppDataType = {
     authentication: {
         loginPageHeading: "Member Login",
         callToLoginCardHeader: "Not a Member yet",
@@ -54,7 +64,104 @@ const appData = {
                 formatValue: "number"
             },
         ]
-    }
+    },
+    featureLabels: [
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "buyer"
+        },
+
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "seller"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+        {
+            label: "Nulla est lorem at ac,.",
+            category: "content"
+        },
+    ],
+    highlightedFeatures: [
+        {
+            title: "Nulla est lorem at ac,.",
+            body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+            iconClass: "FaPlayCircle"
+        },
+        {
+            title: "Nulla est lorem at ac,.",
+            body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+            iconClass: "FaUnlock"
+        },
+        {
+            title: "Nulla est lorem at ac,.",
+            body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+            iconClass: "FaCoins"
+        },
+        {
+            title: "Nulla est lorem at ac,.",
+            body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+            iconClass: "FaCoins"
+        },
+    ]
 }
 
 

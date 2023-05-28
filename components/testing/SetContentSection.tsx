@@ -6,6 +6,7 @@ import store, { RootState } from '../../state/store';
 import { AppDataType } from '../../state/initial/appData';
 import Button from '../io/Button';
 import { resetAppData } from '../../state/actions/developmentActions';
+import SetFeaturedContentSection from './contentManipulation/SetFeaturedSection';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -39,6 +40,7 @@ const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
     return (
         <div>
             <HeroContentManipulation appData={appData} />
+            <SetFeaturedContentSection appData={appData} />
             <div className={'w-full flex flex-row justify-end items-end gap-4 mt-4'}>
                 <Button severity="danger" onClick={resetContent} label="Reset to placeholder content" />
                 <Button severity="info" onClick={copyContent} label="Copy Content in the format I need" />

@@ -5,12 +5,13 @@ import store, { RootState } from '../../../state/store';
 import { ChangeModalType } from '../../../state/types/reduxTypes';
 import Button from '../../io/Button';
 import { hideContentManipulationModal, showContentManipulationModal } from '../../../state/actions/developmentActions';
-import { AppDataType } from '../../../state/initial/appData';
+import { AppDataType, groupFeatureLabels } from '../../../state/initial/appData';
+import { FeatureLabelType, FeaturedLabelCategory } from '../../../types/UITypes';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
     changeModal: state.development.change_content_modal,
-    props: props
+    props: props,
 }))
 
 
@@ -34,7 +35,19 @@ const getNewAppStat = (idx: number, appData: AppDataType, val: string, subKey: s
 
 }
 
-const TitleTextManipulation = connector(({ changeModal: { label, value, itemIndex, isAppStat, name, parentName, isOpen, subKey }, appData }: TitleTextManipulationProps) => {
+
+const TitleTextManipulation = connector(({ changeModal: { label, value, itemIndex, isAppStat, name, parentName, isOpen, subKey, isAddFeatureLabel, isChangeFeatureLabel }, appData }: TitleTextManipulationProps) => {
+    const setNewData = (newdata: AppDataType) => {
+        if (typeof window === "undefined") return;
+        if (window.localStorage) {
+            window.localStorage.setItem("UIAppData", JSON.stringify(newdata))
+        }
+        store.dispatch({
+            type: "SET_UI_APP_DATA",
+            payload: newdata
+        })
+        hideContentManipulationModal()
+    }
     const [localValue, setLocalValue] = useState<string>(value)
 
     const submitChange = (val: string, name: string, parent: keyof AppDataType | null) => {
@@ -48,6 +61,39 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
                 window.localStorage.setItem("UIAppData", JSON.stringify(nd))
             }
             return hideContentManipulationModal()
+        }
+        if (isAddFeatureLabel) {
+            let newFeatureds = [...appData.featureLabels, {
+                category: isAddFeatureLabel,
+                label: localValue
+            }]
+            return setNewData({
+                ...appData,
+                featureLabels: newFeatureds
+            })
+        }
+        if (isChangeFeatureLabel) {
+            let grouped = groupFeatureLabels(appData.featureLabels)
+            let newFeatureds: FeatureLabelType[] = []
+            Object.keys(grouped).map((group) => {
+                let localGroup = grouped[group as FeaturedLabelCategory]
+                if (localGroup) {
+                    if (group === isChangeFeatureLabel) {
+                        newFeatureds = [...newFeatureds, ...localGroup.map((s, i) => i === itemIndex ? {
+                            category: isChangeFeatureLabel,
+                            label: localValue
+                        } : s)]
+                    }
+                    if (group !== isChangeFeatureLabel) {
+                        newFeatureds = [...newFeatureds, ...localGroup]
+                    }
+                }
+            })
+            console.log("new featureds", newFeatureds)
+            return setNewData({
+                ...appData,
+                featureLabels: newFeatureds
+            })
         }
         let newData;
         if (parent) {

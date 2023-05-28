@@ -10,6 +10,11 @@
 }
 
 
+.feature-item-hover-parent:hover .pi-check {
+    color: var(--primary-color)
+}
+
+
 @media screen and (min-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr auto;

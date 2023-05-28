@@ -1,6 +1,6 @@
 import { ChangeEventHandler } from "react";
 import { AppDataType } from "../initial/appData";
-import { ToastConfigType } from "../../types/UITypes";
+import { FeaturedLabelCategory, ToastConfigType } from "../../types/UITypes";
 
 export type SET_AUTHENTICATED = { type: "SET_AUTHENTICATED"; payload: boolean };
 
@@ -44,6 +44,8 @@ export interface ChangeModalType {
     parentName: keyof AppDataType | null
     itemIndex: number | null | undefined
     isAppStat: string | null | undefined
+    isChangeFeatureLabel: FeaturedLabelCategory | null | undefined
+    isAddFeatureLabel: FeaturedLabelCategory | null | undefined
     subKey: string | null | undefined
 }
 
@@ -53,3 +55,6 @@ export type SET_CHANGE_MODAL_ACTIVE = {
     payload: ChangeModalType
 
 }
+
+
+

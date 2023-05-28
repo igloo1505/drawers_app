@@ -7,6 +7,8 @@ import AppStatsLandingPanel from '../../components/landing/appStatsPanel/AppStat
 import { connect } from 'react-redux';
 import { RootState } from '../../state/store';
 import { AppDataType } from '../../state/initial/appData';
+import FeaturesSection from '../../components/landing/features/FeaturedSection';
+import FeatureHighlightSection from '../../components/landing/features/FeatureHighlightSection';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -17,7 +19,10 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
     return (
         <div>
             <AppStatsLandingPanel appStats={appData.appStats} />
+            <FeaturesSection appData={appData} />
+            <FeatureHighlightSection highlightedFeatures={appData.highlightedFeatures} />
             <LandingDevSection />
+
         </div>
     )
 })

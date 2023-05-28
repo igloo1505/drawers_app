@@ -10,6 +10,7 @@ interface AppStatsLandingPanelProps {
     }
 }
 
+
 const AppStatsLandingPanel = ({ appStats }: AppStatsLandingPanelProps) => {
     return (
         <div className={'pb-4 pt-0 flex flex-row justify-center flex-wrap xl:grid xl:grid-cols-4 xl:gap-0 xl:place-items-center'}>

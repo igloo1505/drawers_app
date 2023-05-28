@@ -31,6 +31,9 @@ const UIReducer = createReducer(initialState, (builder) => {
     builder.addCase(
         "SET_UI_APP_DATA",
         (state: typeof initialState, action: Types.SET_UI_APP_DATA) => {
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem("UIAppData", JSON.stringify(action.payload))
+            };
             return {
                 ...state,
                 appData: action.payload

@@ -16,3 +16,7 @@ export const numberToDisplayString = (val: string | number) => {
 export const formatDollars = (val: string | number) => {
     return `$${numberToDisplayString(val)}`
 }
+
+export const capitalizeWord = (s: string): string => {
+    return `${s.charAt(0).toUpperCase()}${s.slice(1, s.length)}`
+}

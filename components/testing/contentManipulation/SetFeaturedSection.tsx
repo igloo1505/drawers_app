@@ -33,7 +33,6 @@ const FeaturedGroup = ({ label, group, handleChange, category, removeItem }: { l
                     return <FeaturedItemManipulation removeItem={removeItem} category={category} item={fl} idx={i} key={`featured-item-${i}`} handleChange={handleChange} />
                 })
             }</div>
-
             <div className={'my-4 w-full flex justify-center items-center'}>
                 <Button icon="pi pi-plus" onClick={addItem} />
             </div>

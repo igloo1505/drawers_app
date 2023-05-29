@@ -64,19 +64,15 @@ const SetFeaturedContentSection = ({ appData }: SetFeaturedContentSectionProps) 
         })
     }
     const removeItem = (category: FeaturedLabelCategory, idx: number) => {
-        console.log("In here", category, idx)
         let newFeatureds: FeatureLabelType[] = []
         Object.keys(grouped).forEach((group) => {
             let thisGroup = grouped[group as FeaturedLabelCategory]
-            console.log(group, group === category, thisGroup)
             if (thisGroup) {
                 if (group !== category) {
                     newFeatureds = [...newFeatureds, ...thisGroup]
                 }
                 if (group === category) {
-                    console.log("In here...")
                     let filtered = thisGroup.filter((item, i) => i !== idx)
-                    console.log(grouped[category].length, filtered.length)
                     newFeatureds = [...newFeatureds, ...filtered]
                 }
             }

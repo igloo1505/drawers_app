@@ -9,11 +9,15 @@ const ThemeSourcing = (props: ThemeSourcingProps) => {
     return (
         <head>
             {availableThemes.map((t) => {
+                let ids = {
+                    dark: t.darkId(),
+                    light: t.lightId()
+                }
                 return (
                     <>
-                        <link rel="stylesheet" href={`${t.lightTheme}`} media={t.original === "light" ? "" : "none"} id={t.lightId()} key={t.lightId()} />
-                        {t.hasDarkTheme && (
-                            <link rel="stylesheet" href={`${t.darkTheme}`} media={t.original === "dark" ? "" : "none"} id={t.darkId()} key={t.darkId()} />
+                        {ids.light && <link rel="stylesheet" href={`${t.lightTheme}`} media={t.original === "light" ? "" : "none"} id={ids.light} key={ids.light} />}
+                        {ids.dark && (
+                            <link rel="stylesheet" href={`${t.darkTheme}`} media={t.original === "dark" ? "" : "none"} id={ids.dark} key={ids.dark} />
                         )
                         }
                     </>

@@ -23,7 +23,7 @@ const BackdropImage = () => {
 
 const SafeAndAnonymousSection = ({ details }: SafeAndAnonymousSectionProps) => {
     return (
-        <div className={'flex flex-col mt-7 py-28 justify-center items-center px-8 relative overflow-hidden'}>
+        <div className={'text-white flex flex-col mt-7 py-28 justify-center items-center px-8 relative overflow-hidden'}>
             <BackdropImage />
             <div className={'flex flex-col justify-center items-center mb-8'}>
                 <div className={'text-4xl'}>{details.title}</div>

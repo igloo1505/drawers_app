@@ -141,7 +141,9 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
     }
 
     const handleSubmit = () => {
-        submitChange(localValue, name, parentName)
+        if (parentName) {
+            submitChange(localValue, name, parentName)
+        }
     }
 
     const handleLocalChange: ChangeEventHandler = (e) => {

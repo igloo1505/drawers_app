@@ -7,6 +7,7 @@ import { AppDataType } from '../../state/initial/appData';
 import Button from '../io/Button';
 import { resetAppData } from '../../state/actions/developmentActions';
 import SetFeaturedContentSection from './contentManipulation/SetFeaturedSection';
+import Link from 'next/link';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -22,6 +23,16 @@ const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
 
     const resetContent = () => {
         resetAppData()
+        store.dispatch({
+            type: "SHOW_TOAST",
+            payload: {
+                severity: "info",
+                title: "Reset",
+                content: "Data was reset to placeholder content.",
+                timeout: 5000,
+                isOpen: true
+            }
+        })
     }
 
     const copyContent = () => {
@@ -41,9 +52,37 @@ const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
         <div>
             <HeroContentManipulation appData={appData} />
             <SetFeaturedContentSection appData={appData} />
-            <div className={'w-full flex flex-row justify-end items-end gap-4 mt-4'}>
-                <Button severity="danger" onClick={resetContent} label="Reset to placeholder content" />
-                <Button severity="info" onClick={copyContent} label="Copy Content in the format I need" />
+            <div className={'bg-[--surface-200] mx-[-1rem] py-6 flex flex-col justify-center items-center'}>
+                <div className={'text-xl'}>The icon packages I current have installed</div>
+                <div className={'flex flex-row gap-4 mt-2'}>
+                    <a href="https://react-icons.github.io/react-icons/icons?name=fa">
+                        <Button severity="info" label="Uno" />
+                    </a>
+                    <a href="https://primereact.org/icons/">
+                        <Button severity="info" label="Dos" />
+                    </a>
+                </div>
+                <div className={'text-xl mt-8'}>The visual editor for the UI library I&apos;m using</div>
+                <div className={'text'}>This just sets a bunch of the variables in real time for some of the themes available with the library.</div>
+                <div className={'flex flex-row gap-4 mt-2'}>
+                    <a href="https://designer.primereact.org/#/">
+                        <Button severity="info" label="Visual Editor" />
+                    </a>
+                </div>
+            </div>
+            <div className={'w-full flex flex-row justify-between items-end gap-4 mt-4'}>
+                <div className={'flex flex-row gap-4'}>
+                    <Link href="/">
+                        <Button label="Home" />
+                    </Link>
+                    <Link href="/testing">
+                        <Button label="Themes & UI" />
+                    </Link>
+                </div>
+                <div className={'flex flex-row gap-4'}>
+                    <Button severity="danger" onClick={resetContent} label="Reset to placeholder content" />
+                    <Button severity="info" onClick={copyContent} label="Copy Content in the format I need" />
+                </div>
             </div>
         </div>
     )

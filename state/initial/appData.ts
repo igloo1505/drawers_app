@@ -17,6 +17,13 @@ export interface AppDataType {
         callToAction: {
             title: string,
             body: string
+        },
+        allFeatures: {
+            items: HighlightedFeatureType[]
+        },
+        safeAndAnonymous: {
+            title: string,
+            body: string
         }
     },
     appStats: {
@@ -55,6 +62,74 @@ const appData: AppDataType = {
         callToAction: {
             title: "Sed donec risus pharetra suspendisse eleifend et cursus.",
             body: "Lectus sit cras quisque vel laoreet, sed ante lectus lectus quisque nulla vitae ac nam convallis dui vel a metus arcu est enim lectus ante. Iaculis nisl leo blandit tempor natoque turpis orci, lorem quisque ac consequat sed ridiculus cursus ultrices auctor ut dictumst non dui dignissim posuere nulla risus."
+        },
+        allFeatures: {
+            items: [
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaPlayCircle"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaUnlock"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaPlayCircle"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaUnlock"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaPlayCircle"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaUnlock"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+                {
+                    title: "Nulla est lorem at ac,.",
+                    body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
+                    iconClass: "FaCoins"
+                },
+            ]
+        },
+        safeAndAnonymous: {
+            title: "In dignissim fermentum.",
+            body: "Convallis sem sit est convallis quam dictumst placerat nam mi egestas fermentum nibh sem libero bibendum auctor nullam turpis elementum tempor placerat dignissim finibus libero imperdiet, aenean tortor tristique. Praesent velit et porttitor non nibh tristique, elementum vitae tempor tincidunt augue arcu arcu, luctus nulla ac faucibus semper ut amet."
         }
     },
     appStats: {

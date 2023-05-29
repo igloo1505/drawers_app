@@ -41,12 +41,12 @@ export interface ChangeModalType {
     value: string
     isOpen: boolean
     name: string
-    parentName: keyof AppDataType | null
-    itemIndex: number | null | undefined
-    isAppStat: string | null | undefined
-    isChangeFeatureLabel: FeaturedLabelCategory | null | undefined
-    isAddFeatureLabel: FeaturedLabelCategory | null | undefined
-    subKey: string | null | undefined
+    parentName?: keyof AppDataType | null
+    itemIndex?: number | null | undefined
+    isAppStat?: string | null | undefined
+    isChangeFeatureLabel?: FeaturedLabelCategory | null | undefined
+    isAddFeatureLabel?: FeaturedLabelCategory | null | undefined
+    subKey?: string | null | undefined
 }
 
 

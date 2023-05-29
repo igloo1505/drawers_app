@@ -10,12 +10,8 @@ const developmentState: DevelopmentStateType = {
     change_content_modal: {
         label: "",
         value: "",
-        isOpen: false,
         name: "",
-        parentName: null,
-        itemIndex: null,
-        isAppStat: null,
-        subKey: null
+        isOpen: false
     }
 }
 

@@ -13,6 +13,10 @@ export interface AppDataType {
         highlightedFeatureSection: {
             title: string,
             subtitle: string
+        },
+        callToAction: {
+            title: string,
+            body: string
         }
     },
     appStats: {
@@ -47,6 +51,10 @@ const appData: AppDataType = {
         highlightedFeatureSection: {
             title: "Ut pretium augue libero.",
             subtitle: "Dapibus dapibus amet magna consequat praesent magna nullam convallis nisl sed a arcu et faucibus dignissim non, sem eget tincidunt."
+        },
+        callToAction: {
+            title: "Sed donec risus pharetra suspendisse eleifend et cursus.",
+            body: "Lectus sit cras quisque vel laoreet, sed ante lectus lectus quisque nulla vitae ac nam convallis dui vel a metus arcu est enim lectus ante. Iaculis nisl leo blandit tempor natoque turpis orci, lorem quisque ac consequat sed ridiculus cursus ultrices auctor ut dictumst non dui dignissim posuere nulla risus."
         }
     },
     appStats: {

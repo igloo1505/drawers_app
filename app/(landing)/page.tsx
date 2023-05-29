@@ -9,6 +9,7 @@ import { RootState } from '../../state/store';
 import { AppDataType } from '../../state/initial/appData';
 import FeaturesSection from '../../components/landing/features/FeaturedSection';
 import FeatureHighlightSection from '../../components/landing/features/FeatureHighlightSection';
+import LowerCallToAction from '../../components/landing/LowerCallToAction';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -21,6 +22,7 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
             <AppStatsLandingPanel appStats={appData.appStats} />
             <FeaturesSection appData={appData} />
             <FeatureHighlightSection highlightedFeatures={appData.highlightedFeatures} featuredSectionDetails={appData.landing.highlightedFeatureSection} />
+            <LowerCallToAction callToAction={appData.landing.callToAction} />
             <LandingDevSection />
 
         </div>

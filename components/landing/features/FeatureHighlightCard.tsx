@@ -14,7 +14,7 @@ const FeatureHighlightCard = ({ item, Icon }: FeatureHighlightCardProps) => {
     return (
         <Card className={'relative shadow-md hover:shadow-sm transition-shadow duration-300 card-hover-cheesy-effect'}>
             <div className={'flex h-full w-full flex-col justify-center items-center'}>
-                <Icon className={'text-[--primary-color-text] bg-[--primary-color] p-3 w-[5rem] h-auto absolute left-[50%] top-0 transition-transform duration-500'} style={{
+                <Icon className={'text-[--primary-color-text] bg-[--primary-color] p-3 m-1 w-[5rem] h-auto absolute left-[50%] top-0 transition-transform duration-500'} style={{
                     borderRadius: "50%",
                     transform: "translate(-50%, -2.5rem)"
                 }} />

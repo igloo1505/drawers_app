@@ -58,7 +58,10 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
         let cur = getCurrentTheme()
         if (!cur) return;
         if (activeTheme === cur.lightId()) {
-            cur.deactivate(cur.lightId())
+            let lid = cur.lightId()
+            if (lid) {
+                cur.deactivate(lid)
+            }
             cur.dark()
             store.dispatch({
                 type: "SET_ACTIVE_THEME",
@@ -66,7 +69,10 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
             })
         }
         if (activeTheme === cur.darkId()) {
-            cur.deactivate(cur.darkId())
+            let did = cur.darkId()
+            if (did) {
+                cur.deactivate(did)
+            }
             cur.light()
             store.dispatch({
                 type: "SET_ACTIVE_THEME",

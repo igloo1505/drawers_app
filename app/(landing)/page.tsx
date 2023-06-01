@@ -31,7 +31,7 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
             <SafeAndAnonymousSection details={appData.landing.safeAndAnonymous} />
             <ReviewSection reviews={appData.landing.reviews} reviewUI={appData.landing.reviewUI} />
             <LandingDevSection />
-            <Footer />
+            <Footer socials={appData.socials} />
         </div>
     )
 })

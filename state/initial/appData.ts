@@ -1,7 +1,20 @@
+import { IconType } from "react-icons/lib"
 import { AppStatItemType, FeatureLabelType, HighlightedFeatureType, ReviewType } from "../../types/UITypes"
 
 const tempUserFakeImage = "/assets/development/userImage.png"
 
+export enum SocialEnum {
+    twitter = "twitter",
+    facebook = "facebook",
+    instagram = "instagram",
+    youtube = "youtube"
+}
+
+
+export interface SocialType {
+    url: string
+    iconKey: SocialEnum
+}
 
 export interface AppDataType {
     authentication: {
@@ -39,6 +52,7 @@ export interface AppDataType {
     },
     featureLabels: FeatureLabelType[],
     highlightedFeatures: HighlightedFeatureType[]
+    socials: SocialType[]
 }
 
 export const groupFeatureLabels = (featureLabels: FeatureLabelType[]) => {
@@ -293,6 +307,20 @@ const appData: AppDataType = {
             title: "Nulla est lorem at ac,.",
             body: "Nulla in eu curabitur hac enim bibendum praesent sed ante dictum tempor eget neque, elit molestie condimentum laoreet, a nec in lacus duis. Feugiat aenean at in id ipsum suspendisse.",
             iconClass: "FaCoins"
+        },
+    ],
+    socials: [
+        {
+            url: "https://facebook.com",
+            iconKey: "facebook"
+        },
+        {
+            url: "https://instagram.com",
+            iconKey: "instagram"
+        },
+        {
+            url: "https://youtube.com",
+            iconKey: "youtube"
         },
     ]
 }

@@ -32,3 +32,12 @@ export interface HighlightedFeatureType {
     body: string
     iconClass?: string | null | undefined
 }
+
+
+export interface ReviewType {
+    user: string
+    body: string
+    rating: number
+    date: Date | number
+    image: string
+}

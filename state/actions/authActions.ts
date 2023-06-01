@@ -16,3 +16,14 @@ export const loginUser = async (data: LoginUserData) => {
     }
 
 }
+
+
+// TODO: Need to handle this method entirely still.Right now returning dummy data to handle the UI stuff first.
+
+const dummyUser = {
+    userId: "someFakeUserId",
+    dob: "4-19-1988"
+}
+export const getUserDetails = async (id: string) => {
+
+}

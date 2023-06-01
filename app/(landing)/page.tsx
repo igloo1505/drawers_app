@@ -12,6 +12,8 @@ import FeatureHighlightSection from '../../components/landing/features/FeatureHi
 import LowerCallToAction from '../../components/landing/LowerCallToAction';
 import AllFeaturesSection from '../../components/landing/features/AllFeaturesSection';
 import SafeAndAnonymousSection from '../../components/landing/SafeAndAnonymous';
+import ReviewSection from '../../components/landing/reviews/ReviewSection';
+import Footer from '../../components/navigation/Footer';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -27,8 +29,9 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
             <LowerCallToAction callToAction={appData.landing.callToAction} />
             <AllFeaturesSection allFeatures={appData.landing.allFeatures} />
             <SafeAndAnonymousSection details={appData.landing.safeAndAnonymous} />
+            <ReviewSection reviews={appData.landing.reviews} reviewUI={appData.landing.reviewUI} />
             <LandingDevSection />
-
+            <Footer />
         </div>
     )
 })

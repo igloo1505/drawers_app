@@ -1,4 +1,7 @@
-import { AppStatItemType, FeatureLabelType, HighlightedFeatureType } from "../../types/UITypes"
+import { AppStatItemType, FeatureLabelType, HighlightedFeatureType, ReviewType } from "../../types/UITypes"
+
+const tempUserFakeImage = "/assets/development/userImage.png"
+
 
 export interface AppDataType {
     authentication: {
@@ -24,7 +27,12 @@ export interface AppDataType {
         safeAndAnonymous: {
             title: string,
             body: string
+        },
+        reviewUI: {
+            title: string,
+            body: string
         }
+        reviews: ReviewType[]
     },
     appStats: {
         items: AppStatItemType[]
@@ -130,7 +138,41 @@ const appData: AppDataType = {
         safeAndAnonymous: {
             title: "In dignissim fermentum.",
             body: "Convallis sem sit est convallis quam dictumst placerat nam mi egestas fermentum nibh sem libero bibendum auctor nullam turpis elementum tempor placerat dignissim finibus libero imperdiet, aenean tortor tristique. Praesent velit et porttitor non nibh tristique, elementum vitae tempor tincidunt augue arcu arcu, luctus nulla ac faucibus semper ut amet."
-        }
+        },
+        reviewUI: {
+            title: "Condimentum porta vitae.",
+            body: "Tempor nibh condimentum duis sit, arcu quisque posuere pellentesque dapibus aliquam diam nunc in dui,."
+        },
+        reviews: [
+            {
+                user: "some user id",
+                body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
+                rating: 8,
+                image: tempUserFakeImage,
+                date: Date.now()
+            },
+            {
+                user: "some user id",
+                body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
+                rating: 9,
+                image: tempUserFakeImage,
+                date: Date.now()
+            },
+            {
+                user: "some user id",
+                body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
+                rating: 10,
+                image: tempUserFakeImage,
+                date: Date.now()
+            },
+            {
+                user: "some user id",
+                body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
+                rating: 10,
+                image: tempUserFakeImage,
+                date: Date.now()
+            },
+        ]
     },
     appStats: {
         items: [

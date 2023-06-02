@@ -29,6 +29,7 @@
         "bcrypt": "^5.1.0",
         "clsx": "^1.2.1",
         "colors": "^1.4.0",
+        "dayjs": "^1.11.7",
         "firebase": "^9.21.0",
         "firebase-admin": "^11.8.0",
         "formk": "^0.0.20",

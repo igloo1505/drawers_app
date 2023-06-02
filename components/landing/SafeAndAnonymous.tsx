@@ -11,12 +11,15 @@ interface SafeAndAnonymousSectionProps {
 const BackdropImage = () => {
     return (
         <div className={'w-full h-full absolute top-0 left-0 z-[-1]'}>
+            <div className={'absolute w-full h-full bg-[--gray-900] opacity-80 z-[10]'}  />
             <Image
                 src={backdrop}
                 alt="Safe And Anonymous"
-                className={'absolute w-screen h-auto z-[-2] left-0 top-0 translate-y-[-10%] sm:translate-y-[-30%]'}
+                className={'z-[-2] left-0 top-0 translate-y-[0] sm:translate-y-[-30%] object-cover w-full min-h-full min-w-full'}
+                style={{
+                    maxWidth: "unset"
+                }}
             />
-            <div className={'w-full h-full bg-[--gray-900] opacity-80'} />
         </div>
     )
 }

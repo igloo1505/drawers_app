@@ -36,7 +36,7 @@ const AppStatItem = ({ item, idx }: AppStatItemProps) => {
         return valParseMap[item.formatValue](item.value)
     }
     return (
-        <div className={'w-full xs:w-1/2 xl:w-full px-3 py-4 grid app-stat-item-grid gap-3 text-[highlight-text-color] bg-[--surface-card] rounded select-none cursor-default xs:min-w-[265px] shadow-lg hover:shadow-md transition-shadow duration-300'}>
+        <div className={'w-full xs:w-1/2 xl:w-full px-3 py-4 grid app-stat-item-grid gap-3 text-[highlight-text-color] bg-[--surface-card] select-none cursor-default xs:min-w-[265px] shadow-lg hover:shadow-md transition-shadow duration-300'}>
             <div className={'h-full w-full flex justify-center items-center xs:min-w-[3rem] select-none'}>
                 <IconMap idx={idx} className={'h-full w-auto text-[--text-color]'} />
             </div>

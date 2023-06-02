@@ -18,7 +18,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
                 <ReviewCardImage image={review.image} />
                 <div>{review.body}</div>
                 <div className={'w-full h-fit flex flex-row justify-start items-center mt-2'}>
-                    <Button raised>
+                    <Button className={'shadow-lg hover:shadow-sm transition-shadow duration-300'}>
                         <Link href={`/users/${review.user}`} className={'w-fit h-fit'}>
                             {review.user}
                         </Link>

@@ -159,28 +159,28 @@ const appData: AppDataType = {
         },
         reviews: [
             {
-                user: "some user id",
+                user: "someUserId",
                 body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
                 rating: 8,
                 image: tempUserFakeImage,
                 date: Date.now()
             },
             {
-                user: "some user id",
+                user: "someUserId",
                 body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
                 rating: 9,
                 image: tempUserFakeImage,
                 date: Date.now()
             },
             {
-                user: "some user id",
+                user: "someUserId",
                 body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
                 rating: 10,
                 image: tempUserFakeImage,
                 date: Date.now()
             },
             {
-                user: "some user id",
+                user: "someUserId",
                 body: "Convallis consequat quis quam vulputate feugiat massa dui amet consectetur suscipit tempus lorem eget eu,. Purus enim purus nullam proin nulla et tempor nunc euismod turpis varius purus, ridiculus id.",
                 rating: 10,
                 image: tempUserFakeImage,

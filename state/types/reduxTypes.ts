@@ -1,4 +1,3 @@
-import { ChangeEventHandler } from "react";
 import { AppDataType } from "../initial/appData";
 import { FeaturedLabelCategory, ToastConfigType } from "../../types/UITypes";
 
@@ -9,7 +8,7 @@ export type SET_AUTHENTICATED = { type: "SET_AUTHENTICATED"; payload: boolean };
 // SECTION: Ui Stuff
 export type TOGGLE_DARK_MODE = { type: "TOGGLE_DARK_MODE" };
 export type SHOW_TOAST = { type: "SHOW_TOAST", payload: ToastConfigType };
-
+export type TOGGLE_DRAWER = { type: "TOGGLE_DRAWER", payload?: boolean };
 
 
 // SECTION: Error Stuff

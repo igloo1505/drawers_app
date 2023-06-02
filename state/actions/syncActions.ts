@@ -28,3 +28,11 @@ export const toggleDarkModeProduction = () => {
         }
     })
 }
+
+
+export const toggleDrawer = (val?: boolean) => {
+    store.dispatch({
+        type: "TOGGLE_DRAWER",
+        ...(val && { payload: val })
+    })
+}

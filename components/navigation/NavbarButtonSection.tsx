@@ -1,14 +1,19 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../io/Button'
 import DarkModeButton from './DarkModeButton'
+import { FaHamburger } from 'react-icons/fa'
+import { toggleDrawer } from '../../state/actions/syncActions'
 
-interface NavbarButtonType {
+const navbarBreakpoint = 640
+
+export interface NavbarButtonType {
     text: string,
     href: string
 }
 
-const unAthenticatedButtons: NavbarButtonType[] = [
+export const unAuthenticatedButtons: NavbarButtonType[] = [
     {
         text: "Sell Used",
         href: "/sellUsedPanties"
@@ -37,12 +42,28 @@ const NavbarButton = ({ button }: { button: NavbarButtonType }) => {
 }
 
 const NavbarButtonSection = () => {
+    const [viewportWidth, setViewportWidth] = useState(-1)
+    const setViewport = () => {
+        if (typeof window === "undefined") return;
+        let w = window.innerWidth
+        if (w) {
+            setViewportWidth(w)
+        }
+    }
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        window.addEventListener("resize", () => {
+            setViewport()
+        })
+        setViewport()
+    }, [])
     return (
         <div className={'flex flex-row justify-end items-center gap-4'}>
             <DarkModeButton />
-            {unAthenticatedButtons.map((b, i) => {
+            {viewportWidth >= navbarBreakpoint && unAuthenticatedButtons.map((b, i) => {
                 return <NavbarButton button={b} key={`navbar-button-${i}`} />
             })}
+            {viewportWidth < navbarBreakpoint && viewportWidth >= 0 && <FaHamburger className={'cursor-pointer'} onClick={() => toggleDrawer()} />}
         </div>
     )
 }

@@ -49,6 +49,15 @@ const UIReducer = createReducer(initialState, (builder) => {
             };
         }
     );
+    builder.addCase(
+        "TOGGLE_DRAWER",
+        (state: typeof initialState, action: Types.TOGGLE_DRAWER) => {
+            return {
+                ...state,
+                drawerOpen: typeof action.payload !== "undefined" ? action.payload : !state.drawerOpen
+            };
+        }
+    );
 });
 
 export default UIReducer;

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { defaultAxiosConfig } from '../types/NetworkTypes'
-import { NETWORK_ERROR } from '../types/reduxTypes'
+// import { NETWORK_ERROR } from '../types/reduxTypes'
 import store from '../store'
 
 

@@ -8,6 +8,7 @@ type initialUiStateType = {
     hasDarkMode: boolean
     appData: AppDataType
     toast: ToastConfigType
+    drawerOpen: boolean
 }
 
 let initialAppData = appData
@@ -30,7 +31,8 @@ const initialUiState: initialUiStateType = {
         isOpen: false,
         content: "",
         title: ""
-    }
+    },
+    drawerOpen: false
 }
 
 

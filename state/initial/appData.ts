@@ -312,15 +312,15 @@ const appData: AppDataType = {
     socials: [
         {
             url: "https://facebook.com",
-            iconKey: "facebook"
+            iconKey: SocialEnum.facebook
         },
         {
             url: "https://instagram.com",
-            iconKey: "instagram"
+            iconKey: SocialEnum.instagram
         },
         {
             url: "https://youtube.com",
-            iconKey: "youtube"
+            iconKey: SocialEnum.youtube
         },
     ]
 }

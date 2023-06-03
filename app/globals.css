@@ -35,3 +35,11 @@ body {
 .socialButton {
     padding: 0.4rem !important;
 }
+
+.password-full input {
+    width: 100%
+}
+
+.drawer-container {
+    width: fit-content !important;
+}

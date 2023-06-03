@@ -9,6 +9,8 @@ export type SET_AUTHENTICATED = { type: "SET_AUTHENTICATED"; payload: boolean };
 export type TOGGLE_DARK_MODE = { type: "TOGGLE_DARK_MODE" };
 export type SHOW_TOAST = { type: "SHOW_TOAST", payload: ToastConfigType };
 export type TOGGLE_DRAWER = { type: "TOGGLE_DRAWER", payload?: boolean };
+export type TOGGLE_MODAL = { type: "TOGGLE_MODAL", payload: "termsOfService" | "privacy" }
+export type CLOSE_ALL_MODALS = { type: "CLOSE_ALL_MODALS" }
 
 
 // SECTION: Error Stuff

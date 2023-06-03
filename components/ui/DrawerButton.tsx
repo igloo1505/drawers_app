@@ -10,7 +10,7 @@ interface DrawerButtonProps {
 
 const DrawerButton = ({ item }: DrawerButtonProps) => {
     return (
-        <Link href={item.href} className={'text-lg'}>{item.text}</Link>
+        <Link href={item.href} className={''}>{item.text}</Link>
     )
 }
 

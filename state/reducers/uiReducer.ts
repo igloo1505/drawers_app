@@ -2,6 +2,8 @@ import * as Types from "../types/reduxTypes";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { createReducer } from "@reduxjs/toolkit";
 import initState from "../initial/initialState";
+import { AppDataType } from "../initial/appData";
+import { RootState } from "../store";
 // import ToastConfig, { toastConfig } from "../types/ToastConfig";
 const initialState = initState.UI;
 
@@ -55,6 +57,33 @@ const UIReducer = createReducer(initialState, (builder) => {
             return {
                 ...state,
                 drawerOpen: typeof action.payload !== "undefined" ? action.payload : !state.drawerOpen
+            };
+        }
+    );
+    builder.addCase(
+        "TOGGLE_MODAL",
+        (state: typeof initialState, action: Types.TOGGLE_MODAL) => {
+            return {
+                ...state,
+                modals: {
+                    ...state.modals,
+                    [action.payload]: !state.modals[action.payload]
+                }
+            };
+        }
+    );
+    builder.addCase(
+        "CLOSE_ALL_MODALS",
+        (state: typeof initialState, action: Types.CLOSE_ALL_MODALS) => {
+            // @ts-ignore
+            let newModals: RootState['UI']['modals'] = {}
+            Object.keys(state.modals).forEach((k) => {
+                // @ts-ignore
+                newModals[k] = false
+            })
+            return {
+                ...state,
+                modals: newModals
             };
         }
     );

@@ -11,6 +11,7 @@ import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
 import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 import Toast from '../../components/ui/Toast';
+import Footer from '../../components/navigation/Footer';
 
 
 const RootLayout = ({
@@ -30,6 +31,7 @@ const RootLayout = ({
                     <div className='pt-2'>
                         {children}
                     </div>
+                    <Footer />
                 </ReduxProvider>
             </body>
         </html>

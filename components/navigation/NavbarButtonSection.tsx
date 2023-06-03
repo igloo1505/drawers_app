@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Button from '../io/Button'
 import DarkModeButton from './DarkModeButton'
-import { FaHamburger } from 'react-icons/fa'
+import { FiMenu } from 'react-icons/fi'
 import { toggleDrawer } from '../../state/actions/syncActions'
 
 const navbarBreakpoint = 640
@@ -63,7 +63,7 @@ const NavbarButtonSection = () => {
             {viewportWidth >= navbarBreakpoint && unAuthenticatedButtons.map((b, i) => {
                 return <NavbarButton button={b} key={`navbar-button-${i}`} />
             })}
-            {viewportWidth < navbarBreakpoint && viewportWidth >= 0 && <FaHamburger className={'cursor-pointer'} onClick={() => toggleDrawer()} />}
+            {viewportWidth < navbarBreakpoint && viewportWidth >= 0 && <FiMenu className={'cursor-pointer'} onClick={() => toggleDrawer()} />}
         </div>
     )
 }

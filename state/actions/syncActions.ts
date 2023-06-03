@@ -36,3 +36,4 @@ export const toggleDrawer = (val?: boolean) => {
         ...(val && { payload: val })
     })
 }
+

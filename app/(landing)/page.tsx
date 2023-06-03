@@ -3,7 +3,6 @@ import React from 'react'
 import type { NextPage } from 'next'
 import LandingDevSection from '../../components/testing/LandingDevSection';
 import AppStatsLandingPanel from '../../components/landing/appStatsPanel/AppStatsLandingPanel';
-/* import appData from '../../state/initial/appData'; */
 import { connect } from 'react-redux';
 import { RootState } from '../../state/store';
 import { AppDataType } from '../../state/initial/appData';
@@ -31,7 +30,6 @@ const HomePage: NextPage = connector(({ appData }: { appData: AppDataType }) => 
             <SafeAndAnonymousSection details={appData.landing.safeAndAnonymous} />
             <ReviewSection reviews={appData.landing.reviews} reviewUI={appData.landing.reviewUI} />
             <LandingDevSection />
-            <Footer socials={appData.socials} />
         </div>
     )
 })

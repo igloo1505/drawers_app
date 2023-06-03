@@ -9,6 +9,10 @@ type initialUiStateType = {
     appData: AppDataType
     toast: ToastConfigType
     drawerOpen: boolean
+    modals: {
+        termsOfService: boolean
+        privacy: boolean
+    }
 }
 
 let initialAppData = appData
@@ -32,7 +36,11 @@ const initialUiState: initialUiStateType = {
         content: "",
         title: ""
     },
-    drawerOpen: false
+    drawerOpen: false,
+    modals: {
+        termsOfService: false,
+        privacy: false
+    }
 }
 
 

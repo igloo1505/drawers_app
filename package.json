@@ -53,6 +53,7 @@
         "react-icons": "^4.8.0",
         "react-quill": "^2.0.0",
         "react-redux": "^8.0.5",
+        "redux-persist": "^6.0.0",
         "sass": "^1.62.1",
         "uuidv4": "^6.2.13",
         "yup": "^1.1.1"

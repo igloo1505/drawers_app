@@ -19,6 +19,7 @@ interface AuthenticatedHomeProps {
 const AuthenticatedHome = connector(({ user }: AuthenticatedHomeProps) => {
     return (
         <div>
+            <div>Authenticated: {user.role}</div>
             {user?.role === "SELLER" && <SellerHomePage />}
             {user?.role === "USER" && <BuyerHomepage />}
         </div>

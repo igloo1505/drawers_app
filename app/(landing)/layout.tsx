@@ -7,7 +7,6 @@ import 'primeicons/primeicons.css';
 /* import 'primereact/resources/themes/soho-light/theme.css'; */
 import './landing.scss'
 import ReduxProvider from '../../components/strucutre/redux-provider'
-import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
 import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 import Toast from '../../components/ui/Toast';
@@ -27,7 +26,6 @@ const RootLayout = ({
                     <ThemeClientSetter />
                     <Toast />
                     <Navbar />
-                    <HeroSection />
                     <div className='pt-2'>
                         {children}
                     </div>

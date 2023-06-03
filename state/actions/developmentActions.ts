@@ -11,16 +11,16 @@ export const disableAllThemes = () => {
 }
 
 
-// export const getAppData = () => {
-//     let state = store.getState()
-//     if (typeof window === "undefined") {
-//         return appData
-//     }
-//     if (state.UI.appData) {
-//         return state.UI.appData
-//     }
-//     return appData
-// }
+export const getAppData = () => {
+    if (typeof window === "undefined") {
+        return appData
+    }
+    let state = store.getState()
+    if (state.UI.appData) {
+        return state.UI.appData
+    }
+    return appData
+}
 
 export const setOriginalAppData = () => {
     if (typeof window === "undefined") return;

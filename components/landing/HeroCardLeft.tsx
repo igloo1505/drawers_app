@@ -28,14 +28,14 @@ const HeroCardLeft = connector(({ appData }: HeroCardLeftProps) => {
                 {appData.landing.heroCardBody}
             </div>}
             <div className={'w-full flex flex-row justify-end gap-3 items-center mt-6 lg:mt-4'}>
-                <Link href="/login">
+                <Link href="/signup">
                     <Button
                         label="Create an Account"
                         size="large"
                     /* className="bg-[--primary-color] color-[--primary-color-text]" */
                     />
                 </Link>
-                <Link href="/signup">
+                <Link href="/login">
                     <Button
                         label="Login"
                         size="large"

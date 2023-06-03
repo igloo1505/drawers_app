@@ -11,8 +11,8 @@ const connector = connect((state: RootState, props: any) => ({
 const TabButtons = connector(({ isSeller, setIsSeller, darkMode }: { isSeller: boolean, setIsSeller: (v: boolean) => void, darkMode: boolean }) => {
     const inactiveColor = !darkMode ? "var(--primary-200)" : "var(--primary-900)"
     return (
-        <div className={'w-full grid grid-cols-2 place-items-center text-xl'}>
-            <a role="button" className={'px-2 py-3 w-full text-center'}
+        <div className={'w-full grid grid-cols-2 place-items-center text-lg'}>
+            <a role="button" className={'px-2 py-3 w-full text-center transition-all duration-300'}
                 style={{
                     borderBottom: `3px solid ${isSeller ? "var(--primary-500)" : inactiveColor}`
                 }}
@@ -20,7 +20,7 @@ const TabButtons = connector(({ isSeller, setIsSeller, darkMode }: { isSeller: b
             >
                 Seller
             </a>
-            <a role="button" className={'px-2 py-3 w-full text-center'}
+            <a role="button" className={'px-2 py-3 w-full text-center transition-all duration-300'}
                 style={{
                     borderBottom: `3px solid ${!isSeller ? "var(--primary-500)" : inactiveColor}`
                 }}

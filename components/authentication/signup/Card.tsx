@@ -7,6 +7,8 @@ import Button from '../../io/Button';
 import TabButtons from './TabButtons';
 import { InputNumberValueChangeEvent } from 'primereact/inputnumber';
 import { CheckboxChangeEvent } from 'primereact/checkbox';
+import { createNewUser } from '../../../state/actions/authActions';
+import { useRouter } from 'next/navigation';
 
 const wrapperIds = {
     buyer: "buyer-wrapper-id",
@@ -25,6 +27,7 @@ export interface formDataType {
     age: string | number
     agreeToTerms: boolean,
     confirmAge: boolean
+    role: "SELLER" | "USER" | "ADMIN"
 }
 
 export interface formState {
@@ -34,22 +37,7 @@ export interface formState {
 
 
 const SignUpCard = (props: SignUpCardProps) => {
-    const cardContainer = useRef<HTMLDivElement>(null!)
-    const setMinHeight = () => {
-        const padding = 32
-        if (typeof window === "undefined") return;
-        let buyerEm = document.getElementById(wrapperIds.buyer)?.getBoundingClientRect()
-        let sellerEm = document.getElementById(wrapperIds.seller)?.getBoundingClientRect()
-        if (!buyerEm || !sellerEm) return;
-        const newHeight = buyerEm.height > sellerEm.height ? `${buyerEm.height + padding}px` : `${sellerEm.height + padding}px`
-        console.log("newHeight", newHeight, buyerEm)
-        cardContainer.current.style.minHeight = newHeight
-    }
-    useEffect(() => {
-        if (typeof window === "undefined") return;
-        setMinHeight()
-        window.addEventListener("resize", setMinHeight)
-    }, [])
+    const router = useRouter()
     const [isSeller, setIsSeller] = useState(false)
     const [formData, setFormData] = useState<formState>({
         seller: {
@@ -59,7 +47,8 @@ const SignUpCard = (props: SignUpCardProps) => {
             email: "",
             age: 18,
             agreeToTerms: false,
-            confirmAge: false
+            confirmAge: false,
+            role: "SELLER"
         },
         buyer: {
             username: "",
@@ -68,7 +57,8 @@ const SignUpCard = (props: SignUpCardProps) => {
             email: "",
             age: 18,
             agreeToTerms: false,
-            confirmAge: false
+            confirmAge: false,
+            role: "USER"
         }
     })
 
@@ -124,17 +114,26 @@ const SignUpCard = (props: SignUpCardProps) => {
         }
         setFormData(newData)
     }
+
+    const handleSignup = async () => {
+        const data = isSeller ? formData.seller : formData.buyer
+        const success = await createNewUser(data)
+        console.log("Success", success)
+        if (success) {
+            router.push("/signup/model")
+        }
+    }
     return (
         <div className={'shadow-lg overflow-hidden rounded-xl'}>
             <TabButtons isSeller={isSeller} setIsSeller={setIsSeller} />
             <div className={'relative py-4 px-4'} style={{
                 minWidth: "min(80vw, 640px)"
-            }} ref={cardContainer}>
+            }}>
                 <BuyerSignupCard active={!isSeller} handleString={handleStringChange} handleBoolean={handleBooleanChange} formData={formData} handleAge={handleAge} wrapperId={wrapperIds.buyer} />
                 <SellerSignupCard active={isSeller} handleString={handleStringChange} handleBoolean={handleBooleanChange} formData={formData} handleAge={handleAge} wrapperId={wrapperIds.seller} />
             </div>
             <div className={'w-full flex flex-row justify-end items-center py-6 px-6'}>
-                <Button label="Sign Up" />
+                <Button label="Sign Up" onClick={handleSignup} />
             </div>
         </div >
     )

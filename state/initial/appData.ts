@@ -21,6 +21,10 @@ export interface AppDataType {
         loginPageHeading: string,
         callToLoginCardHeader: string,
         callToLoginCardBody: string,
+        signup: {
+            title: string,
+            subtitle: string
+        }
     },
     landing: {
         heroMainTitle: string,
@@ -72,6 +76,10 @@ const appData: AppDataType = {
         loginPageHeading: "Member Login",
         callToLoginCardHeader: "Not a Member yet",
         callToLoginCardBody: "Registering is fast, simple, and secure.",
+        signup: {
+            title: "Sign Up",
+            subtitle: "Create your free account in seconds"
+        }
     },
     landing: {
         heroMainTitle: "Dignissim nisl vulputate condimentum erat.",

@@ -1,8 +1,11 @@
 import { AppDataType } from "../initial/appData";
 import { FeaturedLabelCategory, ToastConfigType } from "../../types/UITypes";
+import { RetrievedUserData } from "./AuthTypes";
 
 export type SET_AUTHENTICATED = { type: "SET_AUTHENTICATED"; payload: boolean };
-
+export type LOGIN_SUCCESS = { type: "LOGIN_SUCCESS", payload: RetrievedUserData }
+export type INVALID_CREDENTIALS = { type: "INVALID_CREDENTIALS" }
+export type LOGOUT = { type: "LOGOUT" }
 
 
 // SECTION: Ui Stuff

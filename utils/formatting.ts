@@ -1,3 +1,4 @@
+
 export const numberToDisplayString = (val: string | number) => {
     let v = String(Math.round(Number(val)))
     let s = ""
@@ -20,3 +21,4 @@ export const formatDollars = (val: string | number) => {
 export const capitalizeWord = (s: string): string => {
     return `${s.charAt(0).toUpperCase()}${s.slice(1, s.length)}`
 }
+

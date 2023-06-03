@@ -5,9 +5,11 @@ import GenericCard from '../ui/Card';
 import Checkbox from '../io/Checkbox';
 import { CheckboxChangeEvent } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
-import { loginUser } from '../../state/actions/authActions';
+/* import { loginUser } from '../../state/actions/authActions'; */
 import { connect } from 'react-redux';
 import { RootState } from '../../state/store';
+import { loginUser } from '../../state/actions/authActions';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -21,9 +23,10 @@ interface loginCardData {
 
 const connector = connect((state: RootState, props: any) => ({
     props: props
-}), { loginUser })
+}))
 
-const LoginCard = connector(({ loginUser }: { loginUser: (data: LoginUserData) => void }) => {
+const LoginCard = () => {
+    const router = useRouter()
     const [data, setData] = useState<loginCardData>({
         email: "",
         password: "",
@@ -44,8 +47,11 @@ const LoginCard = connector(({ loginUser }: { loginUser: (data: LoginUserData) =
         })
     }
 
-    const handleSubmit = () => {
-        loginUser(data)
+    const handleSubmit = async () => {
+        const success = await loginUser(data)
+        if (success) {
+            router.push("/")
+        }
     }
     return (
         <GenericCard extraClasses="w-full">
@@ -59,7 +65,7 @@ const LoginCard = connector(({ loginUser }: { loginUser: (data: LoginUserData) =
             </div>
         </GenericCard>
     )
-})
+}
 
 
 

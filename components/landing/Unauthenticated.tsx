@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import type { NextPage } from 'next'
 import LandingDevSection from '../../components/testing/LandingDevSection';
 import AppStatsLandingPanel from '../../components/landing/appStatsPanel/AppStatsLandingPanel';
 import { connect } from 'react-redux';
@@ -13,7 +12,6 @@ import AllFeaturesSection from '../../components/landing/features/AllFeaturesSec
 import SafeAndAnonymousSection from '../../components/landing/SafeAndAnonymous';
 import ReviewSection from '../../components/landing/reviews/ReviewSection';
 import HeroSection from '../../components/landing/Hero';
-import Footer from '../../components/navigation/Footer';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,

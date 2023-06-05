@@ -1,4 +1,3 @@
-
 "use client"
 import type { NextPage } from 'next'
 import React from 'react'
@@ -44,5 +43,7 @@ const Testing: NextPage = connector(({ auth: { authenticated }, ui: { darkMode }
         </div>
     )
 })
+
+Testing.displayName = "Testing"
 
 export default Testing

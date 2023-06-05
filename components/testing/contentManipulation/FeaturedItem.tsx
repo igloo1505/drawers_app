@@ -5,6 +5,7 @@ import { Card } from 'primereact/card';
 import { Dropdown } from 'primereact/dropdown'
 import { FaWindowClose } from 'react-icons/fa'
 import store from '../../../state/store';
+import { setChangeModalActive } from '../../../state/slices/testing';
 const categories = [
     "Seller",
     "Buyer",
@@ -28,22 +29,15 @@ const FeaturedItemManipulation = ({ item, handleChange, idx, category, removeIte
     }
 
     const setValue = () => {
-        store.dispatch({
-            type: "SET_CHANGE_MODAL_ACTIVE",
-            payload: {
-                label: "Change Value",
-                value: item.label,
-                isOpen: true,
-                itemIndex: idx,
-                name: "featureLabels",
-                subKey: "value",
-                isChangeFeatureLabel: category
-            }
-        })
-        /* handleChange({ */
-        /*     ...item, */
-        /*     label: value */
-        /* }, idx, category) */
+        store.dispatch(setChangeModalActive({
+            label: "Change Value",
+            value: item.label,
+            isOpen: true,
+            itemIndex: idx,
+            name: "featureLabels",
+            subKey: "value",
+            isChangeFeatureLabel: category
+        }))
     }
     return (
         <Card header={<div

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import store, { RootState } from '../../state/store';
 import { availableThemes } from '../../state/initial/themeTesting';
 import { disableAllThemes } from '../../state/actions/developmentActions';
+import { ActiveThemeType } from '../../state/types/reduxTypes';
+import { setActiveTheme as setTheme1 } from '../../state/slices/testing';
+import { setActiveTheme as setTheme2 } from '../../state/slices/ui';
 
 const connector = connect((state: RootState, props: any) => ({
     activeTheme: state.development.active_theme,
@@ -12,6 +15,11 @@ const connector = connect((state: RootState, props: any) => ({
 
 interface ThemeClientSetterProps {
     activeTheme: string
+}
+
+const setActiveTheme = (data: ActiveThemeType) => {
+    store.dispatch(setTheme1(data))
+    store.dispatch(setTheme2(data))
 }
 
 const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) => {
@@ -31,16 +39,12 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
             }
             if (isInitial && theme.original && curTheme === "") {
                 if (theme.original === "light") {
-                    store.dispatch({
-                        type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.light, darkId: ids.dark, lightId: ids.light, variant: "light" }
-                    })
+                    setActiveTheme({ id: ids.light!, darkId: ids.dark, lightId: ids.light, variant: "light" })
                     return setIsInitial(false)
                 }
                 if (theme.original === "dark") {
-                    store.dispatch({
-                        type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.dark, darkId: ids.dark, lightId: ids.light, variant: "dark" }
+                    setActiveTheme({
+                        id: ids.dark!, darkId: ids.dark, lightId: ids.light, variant: "dark"
                     })
                     return setIsInitial(false)
                 }
@@ -51,10 +55,7 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
                     theme.light()
                 }
                 if (activeTheme === "") {
-                    store.dispatch({
-                        type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.light, darkId: ids.dark, lightId: ids.light, variant: "light" }
-                    })
+                    setActiveTheme({ id: ids.light!, darkId: ids.dark, lightId: ids.light, variant: "light" })
                 }
             }
             if (curTheme === ids.dark) {
@@ -63,10 +64,7 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
                     theme.dark()
                 }
                 if (activeTheme === "") {
-                    store.dispatch({
-                        type: "SET_ACTIVE_THEME",
-                        payload: { id: ids.dark, lightId: ids.light, darkId: ids.dark, variant: "dark" }
-                    })
+                    setActiveTheme({ id: ids.dark!, lightId: ids.light, darkId: ids.dark, variant: "dark" })
                 }
             }
         })
@@ -75,13 +73,10 @@ const ThemeClientSetter = connector(({ activeTheme }: ThemeClientSetterProps) =>
         }
     }, [activeTheme])
 
-    return (
-        <div>
-
-        </div>
-    )
+    return null
 })
 
+ThemeClientSetter.displayName = "ThemeClientSetter"
 
 
 export default ThemeClientSetter;

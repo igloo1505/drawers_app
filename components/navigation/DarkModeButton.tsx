@@ -27,6 +27,7 @@ const DarkModeButton = connector(({ darkMode, hasDarkMode }: DarkModeButtonProps
     )
 })
 
+DarkModeButton.displayName = "DarkModeButton"
 
 
 export default DarkModeButton;

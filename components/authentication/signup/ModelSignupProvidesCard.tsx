@@ -57,7 +57,6 @@ const ModelSignupOffersCard = ({ data, setData, handleSubmit }: ModelSignupOffer
                         ...data,
                         other: e.target.value
                     })}
-
                         className={'w-full'}
                     />
                 </div>

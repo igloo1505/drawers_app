@@ -4,24 +4,18 @@ import { createEdgeRouter } from "next-connect";
 import { LoginUserData } from "../../../../state/types/AuthTypes";
 import { prisma } from "../../../../db/db";
 import { comparePasswords } from "../../../../utils/serverUtils";
+import { setToken } from "../../../../utils/auth";
 
 interface RequestContext {
     // params: {
     //     id: string
-    // }
 }
+// }
 
 const router = createEdgeRouter<NextRequest, RequestContext>();
 
 
 router
-    // middleware
-    // .use(async (req, event, next) => {
-    //   const start = Date.now();
-    //   await next(); // call next in chain
-    //   const end = Date.now();
-    //   console.log(`Request took ${end - start}ms`);
-    // })
 
     .post(async (req, ctx) => {
         try {
@@ -42,7 +36,9 @@ router
             let returnUser = { ...user }
             // @ts-ignore
             delete returnUser.password
-            return NextResponse.json({ user: returnUser, success: true });
+            let res = NextResponse.json({ user: returnUser, success: true })
+            res = setToken(req, res, returnUser.username)
+            return res
         } catch {
             return NextResponse.json({ success: false });
         }

@@ -29,7 +29,6 @@ const IconMap = ({ idx, className }: { idx: number, className: string }) => {
 
 const AppStatItem = ({ item, idx }: AppStatItemProps) => {
     const parseValue = () => {
-        console.log("item", item)
         if (!item.formatValue) {
             return item.value
         }

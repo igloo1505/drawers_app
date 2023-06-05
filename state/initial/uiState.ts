@@ -43,5 +43,6 @@ const initialUiState: initialUiStateType = {
     }
 }
 
+export type ModalKeyType = keyof initialUiStateType['modals']
 
 export default initialUiState

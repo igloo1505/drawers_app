@@ -1,12 +1,14 @@
-"use client"
+"use client";
 import React, { useState, useEffect, ChangeEventHandler } from 'react'
 import { connect } from 'react-redux';
-import store, { RootState } from '../../../state/store';
-import { ChangeModalType } from '../../../state/types/reduxTypes';
+import type { RootState } from '../../../state/store';
+import type { ChangeModalType } from '../../../state/types/reduxTypes';
 import Button from '../../io/Button';
 import { hideContentManipulationModal, showContentManipulationModal } from '../../../state/actions/developmentActions';
 import { AppDataType, groupFeatureLabels } from '../../../state/initial/appData';
 import { FeatureLabelType, FeaturedLabelCategory } from '../../../types/UITypes';
+import { setUIAppData } from '../../../state/slices/ui';
+import store from '../../../state/store';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -21,7 +23,7 @@ interface TitleTextManipulationProps {
 }
 
 const getNewAppStat = (idx: number, appData: AppDataType, val: string, subKey: string) => {
-    console.log(idx, val, subKey)
+    console.log('here', idx, val, subKey)
     return {
         ...appData,
         appStats: {
@@ -42,10 +44,7 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
         if (window.localStorage) {
             window.localStorage.setItem("UIAppData", JSON.stringify(newdata))
         }
-        store.dispatch({
-            type: "SET_UI_APP_DATA",
-            payload: newdata
-        })
+        store.dispatch(setUIAppData(newdata))
         hideContentManipulationModal()
     }
     const [localValue, setLocalValue] = useState<string>(value)
@@ -53,10 +52,7 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
     const submitChange = (val: string, name: string, parent: keyof AppDataType | null) => {
         if (isAppStat) {
             let nd = getNewAppStat(itemIndex || 0, appData, localValue, subKey || "")
-            store.dispatch({
-                type: "SET_UI_APP_DATA",
-                payload: nd
-            })
+            setUIAppData(nd)
             if (window.localStorage) {
                 window.localStorage.setItem("UIAppData", JSON.stringify(nd))
             }
@@ -116,10 +112,7 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
         if (window.localStorage) {
             window.localStorage.setItem("UIAppData", JSON.stringify(newData))
         }
-        store.dispatch({
-            type: "SET_UI_APP_DATA",
-            payload: newData
-        })
+        setUIAppData(newData as AppDataType)
         hideContentManipulationModal()
     }
 
@@ -148,7 +141,6 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
 
     const handleLocalChange: ChangeEventHandler = (e) => {
         let target = e.target as HTMLTextAreaElement
-        console.log(target.value)
         setLocalValue(target.value)
     }
 
@@ -170,6 +162,8 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
         </div>
     )
 })
+
+TitleTextManipulation.displayName = "TitleTextManipulation"
 
 
 export default TitleTextManipulation;

@@ -41,6 +41,8 @@ const CallToLogin = connector(({ appData }: { appData: AppDataType }) => {
     )
 })
 
+CallToLogin.displayName = "CallToLogin"
+
 
 
 export default CallToLogin;

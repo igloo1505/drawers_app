@@ -26,5 +26,7 @@ const Modals = connector(({ modals }: ModalsProps) => {
 })
 
 
+Modals.displayName = "Modals"
+
 
 export default Modals;

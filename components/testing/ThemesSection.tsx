@@ -5,12 +5,20 @@ import { Card } from 'primereact/card';
 import Button from '../io/Button';
 import store, { RootState } from '../../state/store';
 import { connect } from 'react-redux';
+import { setActiveTheme } from '../../state/slices/ui';
+import { setActiveTheme as setActiveThemeDev } from '../../state/slices/testing';
+import { ActiveThemeType } from '../../state/types/reduxTypes';
 
 const connector = connect((state: RootState, props: any) => ({
     active_theme: state.development.active_theme,
     props: props
 }))
 
+
+const setActiveThemeInternal = (data: ActiveThemeType) => {
+    store.dispatch(setActiveTheme(data))
+    store.dispatch(setActiveThemeDev(data))
+}
 
 
 interface ThemeSectionProps {
@@ -35,16 +43,10 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
         let curTheme = active_theme
         if (isInitial && theme.original) {
             if (theme.original === "light") {
-                store.dispatch({
-                    type: "SET_ACTIVE_THEME",
-                    payload: { id: ids.light, lightId: ids.light, darkId: ids.dark, variant: "light" }
-                })
+                setActiveThemeInternal({ id: ids.light!, lightId: ids.light, darkId: ids.dark, variant: "light" })
             }
             if (theme.original === "dark") {
-                store.dispatch({
-                    type: "SET_ACTIVE_THEME",
-                    payload: { id: ids.dark, darkId: ids.dark, lightId: ids.light, variant: "dark" }
-                })
+                setActiveThemeInternal({ id: ids.dark!, darkId: ids.dark, lightId: ids.light, variant: "dark" })
             }
         }
         if (!isInitial) {
@@ -62,17 +64,11 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
 
     const setLight = () => {
         theme.deactivate(active_theme)
-        store.dispatch({
-            type: "SET_ACTIVE_THEME",
-            payload: { id: ids.light, lightId: ids.light, darkId: ids.dark, variant: "light" }
-        })
+        setActiveThemeInternal({ id: ids.light!, lightId: ids.light, darkId: ids.dark, variant: "light" })
     }
     const setDark = () => {
         theme.deactivate(active_theme)
-        store.dispatch({
-            type: "SET_ACTIVE_THEME",
-            payload: { id: ids.dark, lightId: ids.light, darkId: ids.dark, variant: "dark" }
-        })
+        setActiveThemeInternal({ id: ids.dark!, lightId: ids.light, darkId: ids.dark, variant: "dark" })
     }
 
     return (
@@ -84,6 +80,8 @@ const ThemeItem = connector(({ theme, active_theme }: { theme: ThemeType, active
         </Card>
     )
 })
+
+ThemeItem.displayName = "ThemeItem"
 
 const ThemeSection = (props: ThemeSectionProps) => {
     return (
@@ -100,6 +98,8 @@ const ThemeSection = (props: ThemeSectionProps) => {
     )
 }
 
+
+ThemeSection.dispalyName = "ThemeSection"
 
 
 export default ThemeSection;

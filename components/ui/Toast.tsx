@@ -1,9 +1,11 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux';
-import store, { RootState } from '../../state/store';
-import { ToastConfigType } from '../../types/UITypes';
+import type { RootState } from '../../state/store';
+import type { ToastConfigType } from '../../types/UITypes';
 import { Toast as PrimeToast } from 'primereact/toast';
+import { showToast } from '../../state/slices/ui';
+import store from '../../state/store';
 
 const connector = connect((state: RootState, props: any) => ({
     toast: state.UI.toast,
@@ -28,16 +30,13 @@ const Toast = connector(({ toast: {
 
     const clear = () => {
         ref.current.clear()
-        store.dispatch({
-            type: "SHOW_TOAST",
-            payload: {
-                content: "",
-                title: "",
-                isOpen: false,
-                timeout: 0,
-                severity: "info"
-            }
-        })
+        store.dispatch(showToast({
+            content: "",
+            title: "",
+            isOpen: false,
+            timeout: 0,
+            severity: "info"
+        }))
     }
 
     const show = () => {
@@ -48,7 +47,6 @@ const Toast = connector(({ toast: {
     };
 
     useEffect(() => {
-        console.log(severity, content, timeout, title, isOpen)
         if (isOpen) {
             return show()
         }
@@ -60,6 +58,7 @@ const Toast = connector(({ toast: {
     )
 })
 
+Toast.displayName = "Toast"
 
 
 export default Toast;

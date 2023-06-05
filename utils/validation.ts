@@ -32,8 +32,8 @@ export const comparePasswordInputs = (val1: string, val2: string) => {
 }
 
 export const validateEmail = (val: string) => {
-    if(val.indexOf("@") === -1 || val.indexOf(".") === -1) {
+    if (val.indexOf("@") === -1 || val.indexOf(".") === -1) {
         return false
     }
-    return true 
+    return true
 }

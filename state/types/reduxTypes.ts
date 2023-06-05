@@ -23,6 +23,13 @@ export type NETWORK_ERROR = { type: "NETWORK_ERROR" }
 
 
 // SECTION: Testing and Development Only
+//
+export type ActiveThemeType = {
+    id: string
+    variant: "light" | "dark",
+    darkId: string | null | undefined,
+    lightId: string | null | undefined
+}
 
 export type SET_ACTIVE_THEME = {
     type: "SET_ACTIVE_THEME", payload: {
@@ -47,7 +54,7 @@ export interface ChangeModalType {
     name: string
     parentName?: keyof AppDataType | null
     itemIndex?: number | null | undefined
-    isAppStat?: string | null | undefined
+    isAppStat?: string | null | undefined | boolean
     isChangeFeatureLabel?: FeaturedLabelCategory | null | undefined
     isAddFeatureLabel?: FeaturedLabelCategory | null | undefined
     subKey?: string | null | undefined

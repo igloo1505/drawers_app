@@ -1,11 +1,12 @@
+"use client"
 import React, { useState, useEffect, MouseEventHandler } from 'react'
 import { ToggleButtonChangeEvent } from 'primereact/togglebutton';
 import styles from '../../styles/testing.module.css'
 import ToggleButton from '../../components/ui/ToggleButton'
 import { setAuthenticated, toggleDarkMode } from '../../state/actions/syncActions';
 import { availableThemes } from '../../state/initial/themeTesting';
-import store from '../../state/store';
 import Button from '../io/Button';
+import { setActiveTheme } from '../../state/slices/ui';
 
 
 interface StateToggleSectionProps {
@@ -63,10 +64,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
                 cur.deactivate(lid)
             }
             cur.dark()
-            store.dispatch({
-                type: "SET_ACTIVE_THEME",
-                payload: { id: cur.darkId(), darkId: cur.darkId(), lightId: cur.lightId(), variant: "dark" }
-            })
+            setActiveTheme({ id: cur.darkId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "dark" })
         }
         if (activeTheme === cur.darkId()) {
             let did = cur.darkId()
@@ -74,10 +72,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
                 cur.deactivate(did)
             }
             cur.light()
-            store.dispatch({
-                type: "SET_ACTIVE_THEME",
-                payload: { id: cur.lightId(), darkId: cur.darkId(), lightId: cur.lightId(), variant: "light" }
-            })
+            setActiveTheme({ id: cur.lightId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "light" })
         }
     }
     return (

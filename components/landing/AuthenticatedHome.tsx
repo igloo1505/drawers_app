@@ -26,6 +26,8 @@ const AuthenticatedHome = connector(({ user }: AuthenticatedHomeProps) => {
     )
 })
 
+AuthenticatedHome.displayName = "AuthenticatedHome"
+
 
 
 export default AuthenticatedHome;

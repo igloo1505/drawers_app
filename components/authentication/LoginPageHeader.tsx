@@ -23,6 +23,7 @@ const LoginPageHeader = connector(({ appData }: { appData: AppDataType }) => {
     )
 })
 
+LoginPageHeader.displayName = "LoginPageHeader"
 
 
 export default LoginPageHeader;

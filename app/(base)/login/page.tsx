@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React from 'react'
+/* import React from 'react' */
 import LoginCard from '../../../components/authentication/LoginCard';
 import LoginPageHeader from '../../../components/authentication/LoginPageHeader';
 import CallToLogin from '../../../components/authentication/CallToRegisterCard';

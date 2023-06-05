@@ -2,8 +2,11 @@ import React from 'react'
 import { AppDataType, groupFeatureLabels } from '../../../state/initial/appData';
 import { FeatureLabelType, FeaturedLabelCategory } from '../../../types/UITypes';
 import FeaturedItemManipulation from './FeaturedItem';
-import store from '../../../state/store';
+/* import store from '../../../state/store'; */
 import Button from '../../io/Button';
+import { setChangeModalActive } from '../../../state/slices/testing';
+import { setUIAppData } from '../../../state/slices/ui';
+import store from '../../../state/store';
 
 
 
@@ -14,16 +17,13 @@ interface SetFeaturedContentSectionProps {
 
 const FeaturedGroup = ({ label, group, handleChange, category, removeItem }: { label: string, group: FeatureLabelType[], handleChange: (data: FeatureLabelType, idx: number, category: FeaturedLabelCategory) => void, category: FeaturedLabelCategory, removeItem: (cat: FeaturedLabelCategory, idx: number) => void }) => {
     const addItem = () => {
-        store.dispatch({
-            type: "SET_CHANGE_MODAL_ACTIVE",
-            payload: {
-                label: "Add a feature",
-                value: "",
-                name: "addFeature",
-                isAddFeatureLabel: category,
-                isOpen: true
-            }
-        })
+        store.dispatch(setChangeModalActive({
+            label: "Add a feature",
+            value: "",
+            name: "addFeature",
+            isAddFeatureLabel: category,
+            isOpen: true
+        }))
     }
     return (
         <div className={'my-6'}>
@@ -55,13 +55,10 @@ const SetFeaturedContentSection = ({ appData }: SetFeaturedContentSectionProps) 
                 }
             }
         })
-        store.dispatch({
-            type: "SET_UI_APP_DATA",
-            payload: {
-                ...appData,
-                featureLabels: newFeatureds
-            }
-        })
+        store.dispatch(setUIAppData({
+            ...appData,
+            featureLabels: newFeatureds
+        }))
     }
     const removeItem = (category: FeaturedLabelCategory, idx: number) => {
         let newFeatureds: FeatureLabelType[] = []
@@ -77,13 +74,10 @@ const SetFeaturedContentSection = ({ appData }: SetFeaturedContentSectionProps) 
                 }
             }
         })
-        store.dispatch({
-            type: "SET_UI_APP_DATA",
-            payload: {
-                ...appData,
-                featureLabels: newFeatureds
-            }
-        })
+        store.dispatch(setUIAppData({
+            ...appData,
+            featureLabels: newFeatureds
+        }))
     }
     return (
         <div className={'my-4'}>

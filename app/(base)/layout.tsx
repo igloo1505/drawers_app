@@ -1,3 +1,4 @@
+"use client"
 import 'react'
 import Navbar from '../../components/navigation/Navbar'
 import '../globals.css'

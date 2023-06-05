@@ -38,6 +38,6 @@ const Drawer = connector(({ drawerOpen }: DrawerProps) => {
     )
 })
 
-
+Drawer.displayName = "Drawer"
 
 export default Drawer;

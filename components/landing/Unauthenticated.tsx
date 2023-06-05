@@ -34,5 +34,6 @@ const UnauthenticatedHome = connector(({ appData }: { appData: AppDataType }) =>
     )
 })
 
+UnauthenticatedHome.displayName = "UnauthenticatedHome"
 
 export default UnauthenticatedHome;

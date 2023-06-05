@@ -1,5 +1,8 @@
+"use client"
 import { useClickOutside } from 'primereact/hooks'
 import React, { useRef } from 'react'
+/* import store from '../../../state/store' */
+import { closeAllModals } from '../../../state/slices/ui'
 import store from '../../../state/store'
 
 
@@ -16,9 +19,7 @@ const ModalWrapper = ({ children, open, title, confirmCallback, confirmLabel }: 
     console.log("Open", open)
     const ref = useRef<HTMLDivElement>(null!)
     useClickOutside(ref, () => {
-        store.dispatch({
-            type: "CLOSE_ALL_MODALS"
-        })
+        store.dispatch(closeAllModals())
     })
     return (
         <div className={'fixed transition-all duration-500'} style={{

@@ -4,6 +4,7 @@ import { createEdgeRouter } from "next-connect";
 import { NewUserData } from "../../../../state/types/AuthTypes";
 import { prisma } from "../../../../db/db";
 import { encryptPassword } from "../../../../utils/serverUtils";
+import { setToken } from "../../../../utils/auth";
 
 interface RequestContext {
     // user: NewUserData
@@ -35,7 +36,9 @@ router
                     role: user.role,
                 }
             })
-            return NextResponse.json({ newUser: newUser, success: true });
+            let res = NextResponse.json({ newUser: newUser, success: true });
+            res = setToken(req, res, newUser.username)
+            return res
         } catch {
             // TODO: Handle errors appropriately in a bit...
             return NextResponse.json({ success: false });

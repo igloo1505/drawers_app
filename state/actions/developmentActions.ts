@@ -1,5 +1,7 @@
 import appData, { AppDataType } from "../initial/appData"
 import { availableThemes } from "../initial/themeTesting"
+import { setChangeModalActive } from "../slices/testing"
+import { setUIAppData } from "../slices/ui"
 import store from "../store"
 
 
@@ -26,10 +28,9 @@ export const setOriginalAppData = () => {
     if (typeof window === "undefined") return;
     let data = window.localStorage.getItem("UIAppData")
     if (data) {
-        store.dispatch({
-            type: "SET_UI_APP_DATA",
-            payload: data
-        })
+        store.dispatch(
+            setUIAppData(JSON.parse(data))
+        )
     }
 }
 
@@ -39,15 +40,16 @@ export const handleAppDataChange = (value: AppDataType) => {
     if (window) {
         window.localStorage.setItem("UIAppData", JSON.stringify(value))
     }
-    store.dispatch({
-        type: "SET_UI_APP_DATA",
-        payload: value
-    })
+    store.dispatch(
+        setUIAppData(value)
+    )
 }
 
 
 export const resetAppData = () => {
-    handleAppDataChange(appData as AppDataType)
+    store.dispatch(
+        handleAppDataChange(appData as AppDataType)
+    )
 }
 
 
@@ -63,15 +65,10 @@ export const hideContentManipulationModal = () => {
     if (!em) return;
     em.style.transform = "translate(-50%, -100vh)"
     em.style.opacity = "0"
-    store.dispatch({
-        type: "SET_CHANGE_MODAL_ACTIVE",
-        payload: {
-            label: "",
-            value: "",
-            submitChange: null,
-            isOpen: false,
-            name: ""
-        }
-
-    })
+    store.dispatch(setChangeModalActive({
+        label: "",
+        value: "",
+        isOpen: false,
+        name: ""
+    }))
 }

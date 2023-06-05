@@ -47,5 +47,6 @@ const HeroCardLeft = connector(({ appData }: HeroCardLeftProps) => {
     )
 })
 
+HeroCardLeft.displayName = "HeroCardLeft"
 
 export default HeroCardLeft;

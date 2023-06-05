@@ -33,4 +33,6 @@ const TabButtons = connector(({ isSeller, setIsSeller, darkMode }: { isSeller: b
     )
 })
 
+TabButtons.displayName = "TabButtons"
+
 export default TabButtons

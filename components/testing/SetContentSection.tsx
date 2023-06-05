@@ -8,6 +8,7 @@ import Button from '../io/Button';
 import { resetAppData } from '../../state/actions/developmentActions';
 import SetFeaturedContentSection from './contentManipulation/SetFeaturedSection';
 import Link from 'next/link';
+import { showToast } from '../../state/slices/ui';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -23,31 +24,26 @@ const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
 
     const resetContent = () => {
         resetAppData()
-        store.dispatch({
-            type: "SHOW_TOAST",
-            payload: {
-                severity: "info",
-                title: "Reset",
-                content: "Data was reset to placeholder content.",
-                timeout: 5000,
-                isOpen: true
-            }
-        })
+        store.dispatch(showToast({
+            severity: "info",
+            title: "Reset",
+            content: "Data was reset to placeholder content.",
+            timeout: 5000,
+            isOpen: true
+        }))
     }
 
     const copyContent = () => {
         navigator.clipboard.writeText(JSON.stringify(appData));
-        store.dispatch({
-            type: "SHOW_TOAST",
-            payload: {
-                severity: "success",
-                title: "Copied!",
-                content: "Copied in the format I need. You'll have to text it to me when everything is the way you like it.",
-                timeout: 5000,
-                isOpen: true
-            }
-        })
+        store.dispatch(showToast({
+            severity: "success",
+            title: "Copied!",
+            content: "Copied in the format I need. You'll have to text it to me when everything is the way you like it.",
+            timeout: 5000,
+            isOpen: true
+        }))
     }
+
     return (
         <div>
             <HeroContentManipulation appData={appData} />
@@ -88,6 +84,6 @@ const SetContentSection = connector(({ appData }: SetContentSectionProps) => {
     )
 })
 
-
+SetContentSection.displayName = "SetContentSection"
 
 export default SetContentSection;

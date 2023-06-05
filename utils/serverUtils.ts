@@ -10,3 +10,4 @@ export const comparePasswords = async (inputPw: string, hashedPw: string) => {
     const match = await bcryptjs.compare(inputPw, hashedPw)
     return match
 }
+

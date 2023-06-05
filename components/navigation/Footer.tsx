@@ -73,6 +73,7 @@ const Footer = connector(({ socials }: { socials: AppDataType['socials'] }) => {
     )
 })
 
+Footer.displayName = "Footer"
 
 
 export default Footer;

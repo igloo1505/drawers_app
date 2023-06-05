@@ -6,8 +6,8 @@ import Checkbox from '../io/Checkbox';
 import { CheckboxChangeEvent } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
 /* import { loginUser } from '../../state/actions/authActions'; */
-import { connect } from 'react-redux';
-import { RootState } from '../../state/store';
+/* import { connect } from 'react-redux'; */
+/* import { RootState } from '../../state/store'; */
 import { loginUser } from '../../state/actions/authActions';
 import { useRouter } from 'next/navigation';
 
@@ -19,11 +19,6 @@ interface loginCardData {
     rememberMe: boolean
 }
 
-
-
-const connector = connect((state: RootState, props: any) => ({
-    props: props
-}))
 
 const LoginCard = () => {
     const router = useRouter()
@@ -67,6 +62,7 @@ const LoginCard = () => {
     )
 }
 
+LoginCard.displayName = "LoginCard"
 
 
 export default LoginCard;

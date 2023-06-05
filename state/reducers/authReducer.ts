@@ -18,7 +18,6 @@ const AuthReducer = createReducer(initialState, (builder) => {
     builder.addCase(
         "LOGIN_SUCCESS",
         (state: typeof initialState, action: Types.LOGIN_SUCCESS) => {
-            debugger
             return {
                 ...state,
                 user: action.payload,

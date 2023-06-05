@@ -1,16 +1,24 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import AuthReducer from "./reducers/authReducer";
-import UIReducer from "./reducers/uiReducer";
-import TestingReducer from "./reducers/testingReducer";
+import AuthReducer from "./slices/auth";
+import UIReducer from "./slices/ui";
+import TestingReducer from "./slices/testing";
 import initialState from "./initial/initialState";
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from './storage'
+import type { Reducer } from "react";
+import { persistReducer, persistStore } from "redux-persist"
 
-const rootReducer = combineReducers({
+// const rootReducer: Reducer<any, any> = combineReducers({
+//     auth: AuthReducer,
+//     UI: UIReducer,
+//     development: TestingReducer
+// });
+
+const rootReducer = {
     auth: AuthReducer,
     UI: UIReducer,
     development: TestingReducer
-});
+}
+
 
 const makeConfiguredStore = () => configureStore({
     reducer: rootReducer,
@@ -20,16 +28,17 @@ const makeConfiguredStore = () => configureStore({
 
 export const makeStore = () => {
     const isServer = typeof window === "undefined";
+    console.log("Is Server", isServer)
     if (isServer) {
         return makeConfiguredStore();
     } else {
         // we need it only on client side
         const persistConfig = {
-            key: "nextjs",
+            key: "root",
             whitelist: ["auth"], // make sure it does not clash with server keys
             storage,
         };
-        const persistedReducer = persistReducer(persistConfig, rootReducer);
+        const persistedReducer = persistReducer(persistConfig, combineReducers(rootReducer));
         let store: any = configureStore({
             reducer: persistedReducer,
             devTools: process.env.NODE_ENV !== "production",
@@ -39,7 +48,7 @@ export const makeStore = () => {
     }
 };
 
-export const store = makeStore()
+const store = makeStore()
 
 declare global {
     interface Window {
@@ -51,7 +60,8 @@ if (process.env.NODE_ENV !== "production" && typeof window !== "undefined") {
     window.store = store;
 }
 
-export default store;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export default store;

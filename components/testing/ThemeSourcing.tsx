@@ -1,26 +1,32 @@
-import React from 'react'
-import { availableThemes } from '../../state/initial/themeTesting'
+/* import React from 'react' */
+import { ThemeType, availableThemes } from '../../state/initial/themeTesting'
 
 
-interface ThemeSourcingProps {
+const ThemeItem = ({ t }: { t: ThemeType }) => {
+    let ids = {
+        dark: t.darkId(),
+        light: t.lightId()
+    }
+    let activeId: boolean | string | null = false
+    if (typeof window !== "undefined" && window.localStorage.getItem("currentTheme")) {
+        activeId = window.localStorage.getItem("currentTheme")
+    }
+    const lightActive = activeId ? ids.light === activeId : t.original === "light"
+    const darkActive = activeId ? ids.dark === activeId : t.original === "dark"
+    return (
+        <>
+            {ids.light && <link rel="stylesheet" href={`${t.lightTheme}`} media={lightActive ? "" : "none"} id={ids.light} />}
+            {ids.dark && <link rel="stylesheet" href={`${t.darkTheme}`} media={darkActive ? "" : "none"} id={ids.dark} />}
+        </>
+    )
 }
 
-const ThemeSourcing = (props: ThemeSourcingProps) => {
+const ThemeSourcing = () => {
     return (
         <head>
-            {availableThemes.map((t) => {
-                let ids = {
-                    dark: t.darkId(),
-                    light: t.lightId()
-                }
+            {availableThemes.map((t, i) => {
                 return (
-                    <>
-                        {ids.light && <link rel="stylesheet" href={`${t.lightTheme}`} media={t.original === "light" ? "" : "none"} id={ids.light} key={ids.light} />}
-                        {ids.dark && (
-                            <link rel="stylesheet" href={`${t.darkTheme}`} media={t.original === "dark" ? "" : "none"} id={ids.dark} key={ids.dark} />
-                        )
-                        }
-                    </>
+                    <ThemeItem t={t} key={`theme-item-${i}`} />
                 )
             })}
         </head>

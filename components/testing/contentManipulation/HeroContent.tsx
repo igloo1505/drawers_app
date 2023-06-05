@@ -5,6 +5,7 @@ import { Card } from 'primereact/card'
 import store from '../../../state/store'
 import ChangeCardItem from './ChangeCardItem'
 import { AppStatItemType } from '../../../types/UITypes'
+import { setChangeModalActive } from '../../../state/slices/testing'
 
 
 
@@ -21,15 +22,12 @@ interface ChangeItemProps {
 
 const ChangeItem = ({ label, currentValue, name, parentName }: ChangeItemProps) => {
     const launchModal = () => {
-        store.dispatch({
-            type: "SET_CHANGE_MODAL_ACTIVE",
-            payload: {
-                label: label,
-                value: currentValue,
-                name: name,
-                parentName: parentName,
-                isOpen: true
-            }
+        setChangeModalActive({
+            label: label,
+            value: currentValue,
+            name: name,
+            parentName: parentName,
+            isOpen: true
         })
     }
 

@@ -4,14 +4,11 @@ import Navbar from '../../components/navigation/Navbar'
 import '../globals.css'
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css';
-/* import 'primereact/resources/themes/viva-dark/theme.css'; */
-/* import 'primereact/resources/themes/soho-light/theme.css'; */
 import ReduxProvider from '../../components/strucutre/redux-provider'
-import ThemeSourcing from '../../components/testing/ThemeSourcing';
-import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 import Toast from '../../components/ui/Toast';
 import Footer from '../../components/navigation/Footer';
 import Modals from '../../components/ui/modals/Modals';
+import ProductionThemeSourcing from '../../components/testing/ProductionThemeSourcing';
 
 
 const Layout = ({
@@ -21,10 +18,9 @@ const Layout = ({
 }) => {
     return (
         <html lang="en">
-            <ThemeSourcing />
+            <ProductionThemeSourcing />
             <body>
                 <ReduxProvider>
-                    <ThemeClientSetter />
                     <Modals />
                     <Toast />
                     <Navbar />

@@ -1,9 +1,9 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import LandingDevSection from '../../components/testing/LandingDevSection';
 import AppStatsLandingPanel from '../../components/landing/appStatsPanel/AppStatsLandingPanel';
 import { connect } from 'react-redux';
-import { RootState } from '../../state/store';
+import store, { RootState } from '../../state/store';
 import { AppDataType } from '../../state/initial/appData';
 import FeaturesSection from '../../components/landing/features/FeaturedSection';
 import FeatureHighlightSection from '../../components/landing/features/FeatureHighlightSection';
@@ -12,6 +12,7 @@ import AllFeaturesSection from '../../components/landing/features/AllFeaturesSec
 import SafeAndAnonymousSection from '../../components/landing/SafeAndAnonymous';
 import ReviewSection from '../../components/landing/reviews/ReviewSection';
 import HeroSection from '../../components/landing/Hero';
+import { logout } from '../../state/slices/auth';
 
 const connector = connect((state: RootState, props: any) => ({
     appData: state.UI.appData,
@@ -19,6 +20,9 @@ const connector = connect((state: RootState, props: any) => ({
 }))
 
 const UnauthenticatedHome = connector(({ appData }: { appData: AppDataType }) => {
+    useEffect(() => {
+        store.dispatch(logout())
+    }, [])
     return (
         <div>
             <HeroSection />

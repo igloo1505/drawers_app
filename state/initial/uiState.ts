@@ -25,9 +25,9 @@ if (typeof window !== "undefined") {
 
 const initialUiState: initialUiStateType = {
     darkMode: true,
-    hasDarkMode: false,
-    lightId: "",
-    darkId: "",
+    hasDarkMode: true,
+    lightId: "lightThemeId",
+    darkId: "darkThemeId",
     appData: initialAppData as AppDataType,
     toast: {
         severity: "info",

@@ -3,15 +3,15 @@ import { NextResponse } from "next/server";
 import { createEdgeRouter } from "next-connect";
 import { NewUserData } from "../../../../state/types/AuthTypes";
 import { prisma } from "../../../../db/db";
-import { encryptPassword } from "../../../../utils/serverUtils";
-import { setToken } from "../../../../utils/auth";
+import { clearTokens } from "../../../../utils/auth";
 
 interface RequestContext {
-    // user: NewUserData
+    // params: {
+    //     id: string
+    // }
 }
 
 const router = createEdgeRouter<NextRequest, RequestContext>();
-
 
 
 router
@@ -25,22 +25,9 @@ router
 
     .post(async (req, ctx) => {
         try {
-            const json = await req.json()
-            const user: NewUserData = json.user
-            const hashedPassword = await encryptPassword(user.password)
-            const newUser = await prisma.user.create({
-                data: {
-                    username: user.username,
-                    email: user.email,
-                    password: hashedPassword,
-                    role: user.role,
-                }
-            })
-            let res = NextResponse.json({ newUser: newUser, success: true });
-            res = await setToken(req, res, newUser.username)
+            let res = clearTokens()
             return res
         } catch {
-            // TODO: Handle errors appropriately in a bit...
             return NextResponse.json({ success: false });
         }
     })

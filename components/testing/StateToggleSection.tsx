@@ -7,6 +7,7 @@ import { setAuthenticated, toggleDarkMode } from '../../state/actions/syncAction
 import { availableThemes } from '../../state/initial/themeTesting';
 import Button from '../io/Button';
 import { setActiveTheme } from '../../state/slices/ui';
+import store from '../../state/store';
 
 
 interface StateToggleSectionProps {
@@ -64,7 +65,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
                 cur.deactivate(lid)
             }
             cur.dark()
-            setActiveTheme({ id: cur.darkId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "dark" })
+            store.dispatch(setActiveTheme({ id: cur.darkId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "dark" }))
         }
         if (activeTheme === cur.darkId()) {
             let did = cur.darkId()
@@ -72,7 +73,7 @@ const StateToggleSection = ({ authenticated, darkMode, activeTheme }: StateToggl
                 cur.deactivate(did)
             }
             cur.light()
-            setActiveTheme({ id: cur.lightId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "light" })
+            store.dispatch(setActiveTheme({ id: cur.lightId()!, darkId: cur.darkId(), lightId: cur.lightId(), variant: "light" }))
         }
     }
     return (

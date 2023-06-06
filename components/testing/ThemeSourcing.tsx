@@ -1,4 +1,3 @@
-/* import React from 'react' */
 import { ThemeType, availableThemes } from '../../state/initial/themeTesting'
 
 

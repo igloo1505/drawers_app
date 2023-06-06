@@ -52,7 +52,7 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
     const submitChange = (val: string, name: string, parent: keyof AppDataType | null) => {
         if (isAppStat) {
             let nd = getNewAppStat(itemIndex || 0, appData, localValue, subKey || "")
-            setUIAppData(nd)
+            store.dispatch(setUIAppData(nd))
             if (window.localStorage) {
                 window.localStorage.setItem("UIAppData", JSON.stringify(nd))
             }
@@ -112,7 +112,7 @@ const TitleTextManipulation = connector(({ changeModal: { label, value, itemInde
         if (window.localStorage) {
             window.localStorage.setItem("UIAppData", JSON.stringify(newData))
         }
-        setUIAppData(newData as AppDataType)
+        store.dispatch(setUIAppData(newData as AppDataType))
         hideContentManipulationModal()
     }
 

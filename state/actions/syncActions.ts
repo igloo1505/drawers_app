@@ -13,18 +13,19 @@ export const toggleDarkMode = () => {
 
 export const toggleDarkModeProduction = () => {
     const state = store.getState().UI
-    store.dispatch(setActiveTheme({
-        id: state.darkMode ? state.lightId : state.darkId,
-        variant: state.darkMode ? "light" : "dark",
-        lightId: state.lightId,
-        darkId: state.darkId
-    }))
-    store.dispatch(setActiveThemeDevelopment({
-        id: state.darkMode ? state.lightId : state.darkId,
-        variant: state.darkMode ? "light" : "dark",
-        lightId: state.lightId,
-        darkId: state.darkId
-    }))
+    store.dispatch(tdm())
+    // store.dispatch(setActiveTheme({
+    //     id: state.darkMode ? state.lightId : state.darkId,
+    //     variant: state.darkMode ? "light" : "dark",
+    //     lightId: state.lightId,
+    //     darkId: state.darkId
+    // }))
+    // store.dispatch(setActiveThemeDevelopment({
+    //     id: state.darkMode ? state.lightId : state.darkId,
+    //     variant: state.darkMode ? "light" : "dark",
+    //     lightId: state.lightId,
+    //     darkId: state.darkId
+    // }))
 }
 
 

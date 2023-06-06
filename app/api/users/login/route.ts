@@ -37,7 +37,7 @@ router
             // @ts-ignore
             delete returnUser.password
             let res = NextResponse.json({ user: returnUser, success: true })
-            res = setToken(req, res, returnUser.username)
+            res = await setToken(req, res, returnUser.username)
             return res
         } catch {
             return NextResponse.json({ success: false });

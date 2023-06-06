@@ -5,41 +5,43 @@ import Button from '../io/Button'
 import DarkModeButton from './DarkModeButton'
 import { FiMenu } from 'react-icons/fi'
 import { toggleDrawer } from '../../state/actions/syncActions'
+import { roleTypes } from '../../state/types/AuthTypes'
+import NavbarButton, { LogoutButton, NavbarButtonType } from './NavbarButton'
 
 const navbarBreakpoint = 640
 
-export interface NavbarButtonType {
-    text: string,
-    href: string
-}
 
 export const unAuthenticatedButtons: NavbarButtonType[] = [
     {
         text: "Sell Used",
-        href: "/sellUsedPanties"
+        href: "/sellUsedPanties",
+        authed: "both"
     },
     {
         text: "Buy Used",
-        href: "/buyUsedPanties"
+        href: "/buyUsedPanties",
+        authed: "both"
     },
     {
         text: "Login",
-        href: "/login"
+        href: "/login",
+        authed: false
     },
     {
         text: "Sign Up",
-        href: "/signup"
+        href: "/signup",
+        authed: false
+    },
+    {
+        text: "My Profile",
+        href: (id: string) => `/profile/${id}`,
+        authed: true,
+        role: "SELLER"
     },
 ]
 
 
 
-const NavbarButton = ({ button }: { button: NavbarButtonType }) => {
-    return (
-        <Link href={button.href}>{button.text}</Link>
-    )
-
-}
 
 const NavbarButtonSection = () => {
     const [viewportWidth, setViewportWidth] = useState(-1)
@@ -63,7 +65,9 @@ const NavbarButtonSection = () => {
             {viewportWidth >= navbarBreakpoint && unAuthenticatedButtons.map((b, i) => {
                 return <NavbarButton button={b} key={`navbar-button-${i}`} />
             })}
+            <LogoutButton />
             {viewportWidth < navbarBreakpoint && viewportWidth >= 0 && <FiMenu className={'cursor-pointer'} onClick={() => toggleDrawer()} />}
+
         </div>
     )
 }

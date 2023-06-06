@@ -1,9 +1,8 @@
 import axios from 'axios'
 import { defaultAxiosConfig } from '../types/NetworkTypes'
-// import { NETWORK_ERROR } from '../types/reduxTypes'
 import store from '../store'
 import { LoginUserData, NewUserData } from '../types/AuthTypes'
-import { loginSuccess } from '../slices/auth'
+import { loginSuccess, logout } from '../slices/auth'
 
 
 export const createNewUser = async (user: NewUserData) => {
@@ -25,5 +24,13 @@ export const loginUser = async (data: LoginUserData) => {
         )
     }
     return res.data?.success
+}
+
+export const logoutUser = async () => {
+    await axios.post("/api/users/logout", {}, defaultAxiosConfig)
+    store.dispatch(
+        logout()
+    )
+    window.location.pathname = "/"
 }
 

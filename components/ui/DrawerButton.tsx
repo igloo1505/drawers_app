@@ -1,18 +1,27 @@
+"use client"
 import React from 'react'
-import { NavbarButtonType } from '../navigation/NavbarButtonSection';
+import type { NavbarButtonType } from '../navigation/NavbarButton';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { RootState } from '../../state/store';
+import { InitialAuthStateType } from '../../state/initial/authState';
 
+const connector = connect((state: RootState, props: any) => ({
+    user: state.auth.user,
+    props: props
+}))
 
 
 interface DrawerButtonProps {
     item: NavbarButtonType
+    user: InitialAuthStateType['user']
 }
 
-const DrawerButton = ({ item }: DrawerButtonProps) => {
+const DrawerButton = connector(({ item, user }: DrawerButtonProps) => {
     return (
-        <Link href={item.href} className={''}>{item.text}</Link>
+        <Link href={typeof item.href === "string" ? item.href : item.href(user?.username || "")}> {item.text}</Link>
     )
-}
+})
 
 
 

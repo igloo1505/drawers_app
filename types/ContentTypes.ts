@@ -1,4 +1,6 @@
+import { Profile } from "@prisma/client";
 import { RetrievedUserData } from "../state/types/AuthTypes";
+import { ProfileRetrievedType } from "../state/actions/serverActions";
 
 export type PrivacyType = "PUBLIC" | "PRIVATE" | "FRIENDS-ONLY"
 
@@ -49,3 +51,26 @@ interface ItemPostType extends PostType {
 
 
 export type FeedContentType = ImagePostType | VideoPostType | ItemPostType
+
+
+export const getBlankProfile = (id: string): Partial<ProfileRetrievedType> => {
+    return {
+        userName: id,
+        firstName: "",
+        lastName: "",
+        imageIds: [],
+        introduction: "",
+        location: "",
+        interests: "",
+        tags: []
+    }
+}
+
+
+export interface AddImageRequest extends FormData {
+    image: Blob
+    parentId: string
+    parentType: "post" | "user" | "item" | "status"
+}
+
+

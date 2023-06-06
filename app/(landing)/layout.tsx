@@ -8,10 +8,10 @@ import 'primeicons/primeicons.css';
 /* import 'primereact/resources/themes/soho-light/theme.css'; */
 import './landing.scss'
 import ReduxProvider from '../../components/strucutre/redux-provider'
-import ThemeSourcing from '../../components/testing/ThemeSourcing';
-import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
 import Toast from '../../components/ui/Toast';
 import Footer from '../../components/navigation/Footer';
+import store from '../../state/store';
+import ProductionThemeSourcing from '../../components/testing/ProductionThemeSourcing';
 
 
 const RootLayout = ({
@@ -21,10 +21,9 @@ const RootLayout = ({
 }) => {
     return (
         <html lang="en">
-            <ThemeSourcing />
+            <ProductionThemeSourcing />
             <body>
                 <ReduxProvider>
-                    <ThemeClientSetter />
                     <Toast />
                     <Navbar />
                     <div className='pt-2'>

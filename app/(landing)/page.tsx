@@ -1,24 +1,25 @@
-"use client"
-/* import React from 'react' */
 import type { NextPage } from 'next'
-/* import { connect } from 'react-redux'; */
-/* import { RootState } from '../../state/store'; */
-/* import { AppDataType } from '../../state/initial/appData'; */
+import { cookies } from 'next/headers';
 import UnauthenticatedHome from '../../components/landing/Unauthenticated';
-
-/* const connector = connect((state: RootState, props: any) => ({ */
-/*     appData: state.UI.appData, */
-/*     authenticated: state.auth.authenticated, */
-/*     props: props */
-/* })) */
+import { validateFromCookieValues } from '../../utils/auth';
+import AuthenticatedHome from '../../components/landing/authenticatedHome/AuthenticatedHome';
 
 
 
 const HomePage: NextPage = () => {
+    const cookieJar = cookies()
+    const userId = cookieJar.get('userId')?.value
+    const auth = cookieJar.get('auth')?.value
+    console.log("UserId, auth: ", userId, auth)
+    if (!userId || !auth || !validateFromCookieValues(userId, auth)) {
+        return (
+            <div>
+                <UnauthenticatedHome />
+            </div>
+        )
+    }
     return (
-        <div>
-            <UnauthenticatedHome />
-        </div>
+        <AuthenticatedHome />
     )
 }
 

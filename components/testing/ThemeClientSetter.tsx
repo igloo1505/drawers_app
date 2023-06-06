@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import store, { RootState } from '../../state/store';
 import { availableThemes } from '../../state/initial/themeTesting';

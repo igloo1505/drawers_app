@@ -9,7 +9,9 @@ interface FeedPageProps {
 
 const FeedPage: NextPage = (props: FeedPageProps) => {
     return (
-        <div></div>
+        <div>
+            Feed Goes here!
+        </div>
     )
 }
 

@@ -1,5 +1,5 @@
 import UnauthenticatedHome from '../../components/landing/Unauthenticated';
-import { validateFromCookieValues, checkAuthenticated } from '../../utils/auth';
+import { checkAuthenticated } from '../../utils/auth';
 import AuthenticatedHome from '../../components/landing/authenticatedHome/AuthenticatedHome';
 import AuthObserver from '../../state/authObserver';
 

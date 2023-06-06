@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { clearTokens, isAuthenticated } from "./utils/auth";
 
+
 export const config = {
     matcher: [
         '/profile/:path*',

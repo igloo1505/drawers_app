@@ -45,7 +45,7 @@ const LoginCard = () => {
     const handleSubmit = async () => {
         const success = await loginUser(data)
         if (success) {
-            router.push("/")
+            router.push("/feed")
         }
     }
     return (

@@ -30,10 +30,9 @@ const EditProfile = ({ profile }: EditProfileProps) => {
     console.log("Profile", profile)
 
     return (
-        <div className={'w-full h-fit flex flex-col justify-center items-center bg-[--surface-card]'}>
-            <div className={'w-fit h-fit px-6 py-6 shadow-md'} >
-                <TextInput onChange={handleTextChange} name="firstName" label="First Name" value={formData.firstName} />
-            </div>
+        <div className={'w-fit h-fit flex flex-col justify-center items-center bg-[--surface-card]'}>
+            <TextInput onChange={handleTextChange} name="firstName" label="First Name" value={formData.firstName} />
+            <TextInput onChange={handleTextChange} name="lastName" label="Last Name" value={formData.lastName} />
         </div >
     )
 }

@@ -3,7 +3,10 @@ import { NextResponse } from "next/server";
 import { clearTokens, isAuthenticated } from "./utils/auth";
 
 export const config = {
-    matcher: ['/profile/:path*', '/dashboard/:path*'],
+    matcher: [
+        '/profile/:path*',
+        '/feed/:path*',
+    ],
 };
 
 

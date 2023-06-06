@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import * as jose from 'jose'
+import { cookies } from 'next/headers'
 
 
 
@@ -22,21 +23,42 @@ const genToken = async (userId: string) => {
 }
 
 const decryptToken = async (authToken: string) => {
-    const res = await jose.jwtVerify(authToken, secret, {
-        issuer: issuer,
-        audience: audience,
-    })
-    return res
+    try {
+
+        const res = await jose.jwtVerify(authToken, secret, {
+            issuer: issuer,
+            audience: audience,
+        })
+        return res
+    } catch {
+        return false
+    }
 }
 
-const verifyToken = async (authToken: string, userId: string) => {
+const verifyToken = async (authToken: string, userId: string): Promise<boolean> => {
     const token = await decryptToken(authToken)
-    return (token.payload.userId === userId) && token.payload?.exp && (token.payload?.exp >= Date.now() / 1000)
+    if (!token) {
+        return false
+    }
+    return (token.payload.userId === userId) && (typeof token.payload?.exp !== "undefined") && (token.payload?.exp >= Date.now() / 1000)
 }
+
 
 
 export const validateFromCookieValues = async (userId: string, authToken: string) => {
     const isValid = await verifyToken(authToken, userId)
+    return isValid
+}
+
+
+export const checkAuthenticated = async (): Promise<boolean> => {
+    const cookieJar = cookies()
+    const userId = cookieJar.get('userId')?.value
+    const auth = cookieJar.get('auth')?.value
+    if (!auth || !userId) {
+        return false
+    }
+    const isValid = await validateFromCookieValues(userId, auth)
     return isValid
 }
 

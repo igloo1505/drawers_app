@@ -15,13 +15,6 @@ const router = createEdgeRouter<NextRequest, RequestContext>();
 
 
 router
-    // middleware
-    // .use(async (req, event, next) => {
-    //   const start = Date.now();
-    //   await next(); // call next in chain
-    //   const end = Date.now();
-    //   console.log(`Request took ${end - start}ms`);
-    // })
 
     .post(async (req, ctx) => {
         try {

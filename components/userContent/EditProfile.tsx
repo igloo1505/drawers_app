@@ -11,7 +11,12 @@ import { AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { RemoveTagFuncType } from '../../types/contentManipulationTypes';
 import Button from '../io/Button';
 import { submitProfileData } from '../../state/actions/asyncActions';
+import { useRouter } from 'next/navigation';
 
+
+interface UpdateProfileType extends Profile {
+    tags: Tag[]
+}
 
 interface FormDataType {
     userName: string,
@@ -38,6 +43,7 @@ const dummyTag = {
 }
 
 const EditProfile = ({ profile, userId }: EditProfileProps) => {
+    const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
     const [formData, setFormData] = useState<FormDataType>({
@@ -66,9 +72,11 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
         }
     }
 
-    useEffect(() => {
-        setTagsFromQuery(formData.currentTagQuery)
-    }, [formData.currentTagQuery])
+    /* BUG: Handle this to re-use common tags. Currently it's being buggy as shit and causing the input to stutter like the water boy. */
+
+    /* useEffect(() => { */
+    /*     setTagsFromQuery(formData.currentTagQuery) */
+    /* }, [formData.currentTagQuery]) */
 
     const handleTextChange = (e: ChangeEvent) => {
         const target = e.target as HTMLInputElement
@@ -106,15 +114,19 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
     }
 
     const handleSubmit = async () => {
-        const data: Partial<Profile> = {
+        const data: Partial<UpdateProfileType> = {
             userName: userId,
             firstName: formData.firstName,
             lastName: formData.lastName,
             imageIds: [],
             introduction: formData.introduction,
-            interests: formData.interests
+            interests: formData.interests,
+            tags: formData.tags
         }
-        const res = await submitProfileData(data)
+        const { success } = await submitProfileData(data)
+        /* if (success) { */
+        /*     router.push(`/edit/${userId}/images`) */
+        /* } */
     }
 
     return (

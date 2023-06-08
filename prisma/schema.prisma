@@ -58,58 +58,25 @@ model ModelStatus {
 }
 
 model Tag {
-    value          String          @id
+    value          String    @id
     formattedValue String
-    TagsOnProfile  TagsOnProfile[]
-    TagsOnItem     TagsOnItem[]
-    TagsOnPost     TagsOnPost[]
+    items          Item[]
+    posts          Post[]
+    profiles       Profile[]
 }
 
 model Post {
-    id      Int          @id @default(autoincrement())
+    id      Int    @id @default(autoincrement())
     content String
-    user    User         @relation(fields: [userId], references: [username])
+    user    User   @relation(fields: [userId], references: [username])
     userId  String
-    tags    TagsOnPost[]
-}
-
-model TagsOnPost {
-    post       Post     @relation(fields: [postId], references: [id])
-    postId     Int
-    tag        Tag      @relation(fields: [tagId], references: [value])
-    tagId      String
-    assignedAt DateTime @default(now())
-    assignedBy String
-
-    @@id([tagId, postId])
-}
-
-model TagsOnProfile {
-    profile    Profile  @relation(fields: [profileId], references: [id])
-    profileId  Int
-    tag        Tag      @relation(fields: [tagId], references: [value])
-    tagId      String
-    assignedAt DateTime @default(now())
-    assignedBy String
-
-    @@id([tagId, profileId])
-}
-
-model TagsOnItem {
-    item       Item     @relation(fields: [itemId], references: [id])
-    itemId     Int
-    tag        Tag      @relation(fields: [tagId], references: [value])
-    tagId      String
-    assignedAt DateTime @default(now())
-    assignedBy String
-
-    @@id([tagId, itemId])
+    tags    Tag[]
 }
 
 model Profile {
-    id            Int             @id @default(autoincrement())
-    user          User            @relation(fields: [userName], references: [username])
-    userName      String          @unique //
+    id            Int     @id @default(autoincrement())
+    user          User    @relation(fields: [userName], references: [username])
+    userName      String  @unique
     firstName     String
     lastName      String
     profileImages Image[]
@@ -117,7 +84,7 @@ model Profile {
     introduction  String?
     location      String?
     interests     String
-    tags          TagsOnProfile[]
+    tags          Tag[]
 }
 
 model User {
@@ -150,15 +117,15 @@ model Comment {
 }
 
 model Item {
-    id          Int          @id @default(autoincrement())
+    id          Int       @id @default(autoincrement())
     price       Float
-    seller      User         @relation(fields: [sellerId], references: [username])
+    seller      User      @relation(fields: [sellerId], references: [username])
     sellerId    String
     description String?
-    Purchase    Purchase     @relation(fields: [purchaseId], references: [id])
+    Purchase    Purchase  @relation(fields: [purchaseId], references: [id])
     images      Image[]
     comments    Comment[]
     purchaseId  Int
-    createAt    DateTime     @default(now())
-    tags        TagsOnItem[]
+    createAt    DateTime  @default(now())
+    tags        Tag[]
 }

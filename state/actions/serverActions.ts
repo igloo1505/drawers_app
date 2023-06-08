@@ -28,16 +28,11 @@ export const getProfile = async (id: string): Promise<ProfileRetrievedType> => {
     const profile = await prisma.profile.findFirst({
         where: {
             userName: id
+        },
+        include: {
+            tags: true
         }
     }) as ProfileRetrievedType
-    if (profile) {
-        const tags = await prisma.tagsOnProfile.findMany({
-            where: {
-                profileId: profile.id
-            }
-        })
-        profile.tags = tags
-    }
     return profile
 }
 

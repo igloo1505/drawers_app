@@ -1,4 +1,3 @@
-import { Profile } from "@prisma/client";
 import { RetrievedUserData } from "../state/types/AuthTypes";
 import { ProfileRetrievedType } from "../state/actions/serverActions";
 
@@ -11,41 +10,43 @@ interface PriceType {
     currency: CurrencyType
 }
 
-interface ItemType {
+
+export interface ItemType {
     title: string
     price: string
 }
 
 
-interface VideoType {
+export interface VideoType {
     id: string
 }
 
-interface ImageType {
+
+export interface ImageType {
     id: string
     privacy: PrivacyType
     datePosted: Date
 }
 
-interface Tag {
+export interface Tag {
     value: string
 }
 
-interface PostType {
+export interface PostType {
     user: RetrievedUserData
     content: string
     tags?: Tag[]
 }
 
-interface ImagePostType extends PostType {
+export interface ImagePostType extends PostType {
     image: ImageType
 }
 
-interface VideoPostType extends PostType {
+export interface VideoPostType extends PostType {
     video: VideoType
 }
 
-interface ItemPostType extends PostType {
+export interface ItemPostType extends PostType {
     item: ItemType
 }
 
@@ -75,3 +76,6 @@ export interface AddImageRequest extends FormData {
 
 
 export type FeedType = FeedContentType[]
+
+
+

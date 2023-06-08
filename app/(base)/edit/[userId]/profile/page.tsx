@@ -1,7 +1,7 @@
 import React from 'react'
-import { getProfile } from '../../../../state/actions/serverActions';
-import { getBlankProfile } from '../../../../types/ContentTypes';
-import WrappedEditProfileForm from '../../../../components/wrappedComponents/wrappedEditProfile';
+import { getProfile } from 'state/actions/serverActions';
+import { getBlankProfile } from 'types/ContentTypes';
+import WrappedEditProfileForm from 'components/wrappedComponents/wrappedEditProfile';
 
 
 interface ProfilePageProps {

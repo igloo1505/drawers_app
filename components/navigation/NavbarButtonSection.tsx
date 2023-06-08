@@ -34,7 +34,7 @@ export const unAuthenticatedButtons: NavbarButtonType[] = [
     },
     {
         text: "My Profile",
-        href: (id: string) => `/profile/${id}`,
+        href: (id: string) => `/edit/${id}/profile`,
         authed: true,
         role: "SELLER"
     },

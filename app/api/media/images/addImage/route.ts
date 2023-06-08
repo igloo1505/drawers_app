@@ -1,7 +1,7 @@
 import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createEdgeRouter, expressWrapper } from "next-connect";
-import { imageMiddleware } from "utils/imageHandler";
+// import { imageMiddleware } from "utils/imageHandler";
 import { PageConfig } from "next";
 
 interface RequestContext {
@@ -15,7 +15,7 @@ const router = createEdgeRouter<NextRequest, RequestContext>();
 
 router
     // @ts-ignore
-    .use(expressWrapper(imageMiddleware.any()))
+    // .use(expressWrapper(imageMiddleware.any()))
 
     .post(async (req, ctx) => {
         try {
@@ -36,3 +36,7 @@ export async function POST(request: NextRequest, ctx: RequestContext) {
     return router.run(request, ctx);
 }
 
+
+// NOTE: Don't know if I'll need this after firebase is set up. More info here: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
+
+export const runtime = 'nodejs';

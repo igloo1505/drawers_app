@@ -3,10 +3,10 @@ import '../globals.css'
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css';
 import ProductionThemeSourcing from '../../components/testing/ProductionThemeSourcing';
-import WrappedToast from '../../components/wrappedComponents/wrappedToast';
-import WrappedNavbar from '../../components/wrappedComponents/wrappedNavbar';
-import WrappedFooter from '../../components/wrappedComponents/wrappedFooter';
-import WrappedModals from '../../components/wrappedComponents/wrappedModals';
+import WrappedToast from 'components/wrappedComponents/wrappedToast';
+import WrappedNavbar from 'components/wrappedComponents/wrappedNavbar';
+import WrappedFooter from 'components/wrappedComponents/wrappedFooter';
+import WrappedModals from 'components/wrappedComponents/wrappedModals';
 
 
 const Layout = ({

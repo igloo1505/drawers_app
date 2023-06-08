@@ -1,14 +1,10 @@
 "use client"
-import { connect } from 'react-redux';
-import { RootState } from '../../../state/store';
-
-const connector = connect((state: RootState, props: any) => ({
-    darkMode: state.UI.darkMode,
-    props: props
-}))
+import store from '../../../state/store';
 
 
-const TabButtons = connector(({ isSeller, setIsSeller, darkMode }: { isSeller: boolean, setIsSeller: (v: boolean) => void, darkMode: boolean }) => {
+
+const TabButtons = ({ isSeller, setIsSeller }: { isSeller: boolean, setIsSeller: (v: boolean) => void }) => {
+    const darkMode = store.getState()?.UI?.darkMode || false
     const inactiveColor = !darkMode ? "var(--primary-200)" : "var(--primary-900)"
     return (
         <div className={'w-full grid grid-cols-2 place-items-center text-lg'}>
@@ -31,7 +27,7 @@ const TabButtons = connector(({ isSeller, setIsSeller, darkMode }: { isSeller: b
 
         </div>
     )
-})
+}
 
 TabButtons.displayName = "TabButtons"
 

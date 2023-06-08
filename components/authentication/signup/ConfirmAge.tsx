@@ -1,6 +1,6 @@
-import React, { ChangeEventHandler } from 'react'
+"use client"
+import React from 'react'
 import { Checkbox, CheckboxChangeEvent } from 'primereact/checkbox';
-import ModalToggleText from '../../ui/modals/ModalToggleText';
 
 
 

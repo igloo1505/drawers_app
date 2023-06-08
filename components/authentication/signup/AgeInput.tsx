@@ -1,5 +1,5 @@
-import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
-import React, { ChangeEventHandler } from 'react'
+"use client"
+import React from 'react'
 import { InputNumber, InputNumberValueChangeEvent } from 'primereact/inputnumber';
 
 

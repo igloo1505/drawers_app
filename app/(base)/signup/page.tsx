@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
-/* import React from 'react' */
-import SignUpCard from '../../../components/authentication/signup/Card';
-import SignupTitle from '../../../components/authentication/signup/SignupTitle';
+import SignUpCard from 'components/authentication/signup/Card';
+import SignupTitle from 'components/authentication/signup/SignupTitle';
 
 
 const Signup: NextPage = () => {

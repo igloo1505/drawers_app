@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 /* import store, { RootState } from '../../../state/store' */
 import clsx from 'clsx'

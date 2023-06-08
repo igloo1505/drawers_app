@@ -1,15 +1,16 @@
+import { Image } from '@prisma/client'
 import React from 'react'
 import { ImageType } from 'types/ContentTypes'
 
 
 
 interface ImageSliderProps {
-    images: ImageType[]
+    images: Image[]
 }
 
 const ImageSlider = ({ images }: ImageSliderProps) => {
     return (
-        <div>Image Slider</div>
+        <div className={'w-full flex flex-row gap-2 mt-6'}>Image Slider</div>
     )
 }
 

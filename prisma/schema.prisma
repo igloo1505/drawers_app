@@ -74,17 +74,16 @@ model Post {
 }
 
 model Profile {
-    id            Int     @id @default(autoincrement())
-    user          User    @relation(fields: [userName], references: [username])
-    userName      String  @unique
-    firstName     String
-    lastName      String
-    profileImages Image[]
-    imageIds      Int[]
-    introduction  String?
-    location      String?
-    interests     String
-    tags          Tag[]
+    id           Int     @id @default(autoincrement())
+    user         User    @relation(fields: [userName], references: [username])
+    userName     String  @unique
+    firstName    String
+    lastName     String
+    images       Image[]
+    introduction String?
+    location     String?
+    interests    String
+    tags         Tag[]
 }
 
 model User {

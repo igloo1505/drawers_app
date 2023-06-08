@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createEdgeRouter } from "next-connect";
 import { prisma } from "../../../../db/db";
-import { Profile, Tag, TagsOnProfile } from "@prisma/client";
+import { Tag } from "@prisma/client";
 
 interface RequestContext {
     // params: {

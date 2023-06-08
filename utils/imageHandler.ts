@@ -1,9 +1,9 @@
-import multer, { Multer } from "multer";
-import fs from "fs";
-// const FirebaseStorage = require("multer-firebase-storage");
+import { initFirebase } from "db/initFirebase";
+import Multer from "multer";
 import FirebaseStorage from 'multer-firebase-storage'
 import type { NextRequest } from "next/server";
 
+const firebase = initFirebase()
 
 export const acceptMimeTypes = [
     "image/png",
@@ -13,7 +13,7 @@ export const acceptMimeTypes = [
 ];
 
 
-export const multerUpload_middleware = multer({
+export const imageMiddleware = Multer({
     storage: FirebaseStorage({
         bucketName: process.env.FIREBASE_STORAGE_BUCKET,
         credentials: {
@@ -22,7 +22,7 @@ export const multerUpload_middleware = multer({
             privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
         },
         public: true,
-    }),
+    }, firebase),
     fileFilter(req, file, callback) {
         if (acceptMimeTypes.indexOf(file.mimetype) >= 0) {
             return callback(null, true);

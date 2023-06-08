@@ -1,6 +1,6 @@
 "use client"
-import type { Profile, Tag } from '@prisma/client';
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import type { Image, Profile, Tag } from '@prisma/client';
+import React, { ChangeEvent, useState } from 'react'
 import TextInput from '../io/TextInput';
 import clsx from 'clsx';
 import TextAreaInput from '../io/TextAreaInput';
@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 
 interface UpdateProfileType extends Profile {
     tags: Tag[]
+    images: Image[]
 }
 
 interface FormDataType {
@@ -118,15 +119,15 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
             userName: userId,
             firstName: formData.firstName,
             lastName: formData.lastName,
-            imageIds: [],
+            images: [],
             introduction: formData.introduction,
             interests: formData.interests,
             tags: formData.tags
         }
         const { success } = await submitProfileData(data)
-        /* if (success) { */
-        /*     router.push(`/edit/${userId}/images`) */
-        /* } */
+        if (success) {
+            router.push(`/edit/${userId}/images`)
+        }
     }
 
     return (

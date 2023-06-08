@@ -1,4 +1,4 @@
-import { Profile, Tag, TagsOnProfile } from "@prisma/client"
+import { Image, Profile, Tag } from "@prisma/client"
 import { prisma } from "../../db/db"
 import type { FeedContentType, FeedType } from "../../types/ContentTypes"
 
@@ -20,7 +20,8 @@ export const getUser = async (id: string) => {
 
 
 export interface ProfileRetrievedType extends Profile {
-    tags: TagsOnProfile[]
+    tags: Tag[]
+    images: Image[]
 }
 
 

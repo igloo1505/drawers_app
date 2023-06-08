@@ -1,14 +1,10 @@
 "use client"
 import type { NextPage } from 'next'
 import React from 'react'
-import ToggleButton from '../../../components/ui/ToggleButton'
 import { connect } from 'react-redux';
 import { RootState } from '../../../state/store';
-import { setAuthenticated, toggleDarkMode } from '../../../state/actions/syncActions';
 import styles from '../../../styles/testing.module.css'
-import { ToggleButtonChangeEvent } from 'primereact/togglebutton';
 import DemoUISection from '../../../components/testing/UISection';
-import { Divider } from 'primereact/divider';
 import DividerWithText from '../../../components/ui/DividerWithText';
 import ThemeSection from '../../../components/testing/ThemesSection';
 import StateToggleSection from '../../../components/testing/StateToggleSection';

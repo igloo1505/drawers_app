@@ -59,7 +59,7 @@ export const getBlankProfile = (id: string): Partial<ProfileRetrievedType> => {
         userName: id,
         firstName: "",
         lastName: "",
-        imageIds: [],
+        images: [],
         introduction: "",
         location: "",
         interests: "",

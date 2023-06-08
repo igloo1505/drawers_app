@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -57,10 +58,11 @@ model ModelStatus {
 }
 
 model Tag {
-    content       String          @id
-    TagsOnProfile TagsOnProfile[]
-    TagsOnItem    TagsOnItem[]
-    TagsOnPost    TagsOnPost[]
+    value          String          @id
+    formattedValue String
+    TagsOnProfile  TagsOnProfile[]
+    TagsOnItem     TagsOnItem[]
+    TagsOnPost     TagsOnPost[]
 }
 
 model Post {
@@ -74,7 +76,7 @@ model Post {
 model TagsOnPost {
     post       Post     @relation(fields: [postId], references: [id])
     postId     Int
-    tag        Tag      @relation(fields: [tagId], references: [content])
+    tag        Tag      @relation(fields: [tagId], references: [value])
     tagId      String
     assignedAt DateTime @default(now())
     assignedBy String
@@ -85,7 +87,7 @@ model TagsOnPost {
 model TagsOnProfile {
     profile    Profile  @relation(fields: [profileId], references: [id])
     profileId  Int
-    tag        Tag      @relation(fields: [tagId], references: [content])
+    tag        Tag      @relation(fields: [tagId], references: [value])
     tagId      String
     assignedAt DateTime @default(now())
     assignedBy String
@@ -96,7 +98,7 @@ model TagsOnProfile {
 model TagsOnItem {
     item       Item     @relation(fields: [itemId], references: [id])
     itemId     Int
-    tag        Tag      @relation(fields: [tagId], references: [content])
+    tag        Tag      @relation(fields: [tagId], references: [value])
     tagId      String
     assignedAt DateTime @default(now())
     assignedBy String

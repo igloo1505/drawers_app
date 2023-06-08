@@ -1,10 +1,8 @@
 "use client"
-import { Card } from 'primereact/card';
 import React from 'react'
 import FooterColumn, { FooterColumnProps } from './FooterColumn';
 import FooterSocialMedia from './FooterSocialMediaCol';
 import { AppDataType } from '../../state/initial/appData';
-
 import { connect } from 'react-redux';
 import { RootState } from '../../state/store';
 

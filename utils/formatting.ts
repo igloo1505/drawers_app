@@ -1,4 +1,17 @@
 
+
+const excludeCharacters = ",./\\;:'\"[]{}!@#$%^&*()|`~"
+
+export const formatTagText = (tag: string) => {
+    let s = ""
+    Array.from(tag).forEach((c) => {
+        if (excludeCharacters.indexOf(c) === -1) {
+            s += c
+        }
+    })
+    return s
+}
+
 export const numberToDisplayString = (val: string | number) => {
     let v = String(Math.round(Number(val)))
     let s = ""

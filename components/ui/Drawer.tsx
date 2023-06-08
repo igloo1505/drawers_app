@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import { unAuthenticatedButtons } from '../navigation/NavbarButtonSection';
 import DrawerButton from './DrawerButton';
 import { connect } from 'react-redux';
-import { RootState } from '../../state/store';
+import store, { RootState } from '../../state/store';
 import { toggleDrawer } from '../../state/actions/syncActions';
 import { useClickOutside } from 'primereact/hooks'
 import { Sidebar } from 'primereact/sidebar';

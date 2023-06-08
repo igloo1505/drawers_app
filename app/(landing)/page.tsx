@@ -1,7 +1,7 @@
-import UnauthenticatedHome from '../../components/landing/Unauthenticated';
-import { checkAuthenticated } from '../../utils/auth';
+import { checkAuthenticated } from '../../utils/authWithCookiesHook';
 import AuthenticatedHome from '../../components/landing/authenticatedHome/AuthenticatedHome';
-import AuthObserver from '../../state/authObserver';
+import WrappedAuthObserver from '../../components/wrappedComponents/wrappedAuthObserver';
+import WrappedUnauthenticatedHome from '../../components/wrappedComponents/developmentOnly/wrappedUnauthenticatedHome';
 
 
 
@@ -10,14 +10,14 @@ const HomePage = async () => {
     if (!authenticated) {
         return (
             <div>
-                <AuthObserver authenticated={authenticated} />
-                <UnauthenticatedHome />
+                <WrappedAuthObserver authenticated={authenticated} />
+                <WrappedUnauthenticatedHome />
             </div>
         )
     }
     return (
         <>
-            <AuthObserver authenticated={authenticated} />
+            <WrappedAuthObserver authenticated={authenticated} />
             <AuthenticatedHome />
         </>
     )

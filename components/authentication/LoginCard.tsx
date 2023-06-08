@@ -5,9 +5,6 @@ import GenericCard from '../ui/Card';
 import Checkbox from '../io/Checkbox';
 import { CheckboxChangeEvent } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
-/* import { loginUser } from '../../state/actions/authActions'; */
-/* import { connect } from 'react-redux'; */
-/* import { RootState } from '../../state/store'; */
 import { loginUser } from '../../state/actions/authActions';
 import { useRouter } from 'next/navigation';
 

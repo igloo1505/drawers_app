@@ -41,6 +41,7 @@ const slice = createSlice({
             state.toast = action.payload
         },
         toggleDrawer(state, action: PayloadAction<boolean | undefined>) {
+            console.log("Toggling drawer: ", action.payload)
             state.drawerOpen = typeof action.payload !== "undefined" ? action.payload : !state.drawerOpen
         },
         toggleModal(state, action: PayloadAction<ModalKeyType>) {

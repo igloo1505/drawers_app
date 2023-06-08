@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import NavbarLogoAsText from './NavbarLogoAsText';
 import NavbarButtonSection from './NavbarButtonSection';
 import Drawer from '../ui/Drawer';

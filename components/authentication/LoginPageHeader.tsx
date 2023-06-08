@@ -1,16 +1,11 @@
 "use client"
 import React from 'react'
-import { AppDataType } from '../../state/initial/appData';
 import UnderlineGrowOnRender from '../ui/UnderlineGrowOnRender';
-import { connect } from 'react-redux';
-import { RootState } from '../../state/store';
+import store from '../../state/store';
 
-const connector = connect((state: RootState, props: any) => ({
-    appData: state.UI.appData,
-    props: props
-}))
 
-const LoginPageHeader = connector(({ appData }: { appData: AppDataType }) => {
+const LoginPageHeader = () => {
+    const appData = store.getState()?.UI?.appData
     return (
         <div className={'text-5xl my-6 w-full flex justify-center text-center'}>
             <div className={'w-fit'}>
@@ -21,7 +16,7 @@ const LoginPageHeader = connector(({ appData }: { appData: AppDataType }) => {
             </div>
         </div>
     )
-})
+}
 
 LoginPageHeader.displayName = "LoginPageHeader"
 

@@ -74,3 +74,4 @@ export interface AddImageRequest extends FormData {
 }
 
 
+export type FeedType = FeedContentType[]

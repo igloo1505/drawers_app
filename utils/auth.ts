@@ -1,7 +1,6 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import * as jose from 'jose'
-import { cookies } from 'next/headers'
 
 
 
@@ -44,23 +43,11 @@ const verifyToken = async (authToken: string, userId: string): Promise<boolean> 
 }
 
 
-
 export const validateFromCookieValues = async (userId: string, authToken: string) => {
     const isValid = await verifyToken(authToken, userId)
     return isValid
 }
 
-
-export const checkAuthenticated = async (): Promise<boolean> => {
-    const cookieJar = cookies()
-    const userId = cookieJar.get('userId')?.value
-    const auth = cookieJar.get('auth')?.value
-    if (!auth || !userId) {
-        return false
-    }
-    const isValid = await validateFromCookieValues(userId, auth)
-    return isValid
-}
 
 const isValidToken = async (req: NextRequest, userId: string) => {
     let token = req.cookies.get(authTokenPath)?.value
@@ -77,7 +64,6 @@ export const isAuthenticated = async (req: NextRequest) => {
     if (userId) {
         validToken = await isValidToken(req, userId)
     }
-    console.log("Is valid token: ", validToken)
     return validToken
 }
 
@@ -102,6 +88,16 @@ export const clearTokens = (response?: NextResponse | null) => {
         value: '',
         expires: Date.now()
     })
+    return res
+}
+
+export const refreshTokens = async (req: NextRequest, res: NextResponse) => {
+    const userId = req.cookies.get("userId")?.value
+    if (userId) {
+        res.cookies.set("userId", userId)
+        const token = await genToken(userId)
+        res.cookies.set("auth", token)
+    }
     return res
 }
 

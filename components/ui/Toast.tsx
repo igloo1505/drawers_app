@@ -6,6 +6,7 @@ import type { ToastConfigType } from '../../types/UITypes';
 import { Toast as PrimeToast } from 'primereact/toast';
 import { showToast } from '../../state/slices/ui';
 import store from '../../state/store';
+import Provider from '../strucutre/redux-provider'
 
 const connector = connect((state: RootState, props: any) => ({
     toast: state.UI.toast,
@@ -54,7 +55,9 @@ const Toast = connector(({ toast: {
     }, [isOpen])
 
     return (
-        <PrimeToast ref={ref} />
+        <Provider>
+            <PrimeToast ref={ref} />
+        </Provider>
     )
 })
 

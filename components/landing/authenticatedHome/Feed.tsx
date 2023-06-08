@@ -1,9 +1,14 @@
 /* import React from 'react' */
 /* import { FeedContentType } from '../../../types/ContentTypes'; */
 
+import { FeedType } from "../../../types/ContentTypes";
 
 
-const Feed = () => {
+interface FeedProps {
+    content: FeedType
+}
+
+const Feed = ({ content }: FeedProps) => {
     return (
         <div>Feed!</div>
     )

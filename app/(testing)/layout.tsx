@@ -1,20 +1,19 @@
 "use client"
 import 'react'
-import Navbar from '../../components/navigation/Navbar'
 import '../globals.css'
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css';
-/* import 'primereact/resources/themes/viva-dark/theme.css'; */
-/* import 'primereact/resources/themes/soho-light/theme.css'; */
 import './testing.scss'
-import ReduxProvider from '../../components/strucutre/redux-provider'
-import HeroSection from '../../components/landing/Hero';
 import ThemeSourcing from '../../components/testing/ThemeSourcing';
-import TitleTextManipulation from '../../components/testing/contentManipulation/TitleTextManipulation';
+/* import WrappedNavbar from '../../components/wrappedComponents/wrappedNavbar'; */
+/* import WrappedToast from '../../components/wrappedComponents/wrappedToast'; */
+/* import WrappedTitleTextManipulation from '../../components/wrappedComponents/developmentOnly/wrappedTitleTextManipulation'; */
+/* import WrappedClientThemeSetter from '../../components/wrappedComponents/developmentOnly/wrappedClientThemeSetter'; */
+import ReduxProvider from '../../components/strucutre/redux-provider'
 import Toast from '../../components/ui/Toast';
 import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
-/* import { availableThemes } from '../../state/initial/themeTesting' */
-
+import TitleTextManipulation from '../../components/testing/contentManipulation/TitleTextManipulation';
+import Navbar from '../../components/navigation/Navbar';
 
 
 

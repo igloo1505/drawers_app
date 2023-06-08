@@ -1,19 +1,13 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import GenericCard from '../ui/Card';
-/* import appData from '../../state/initial/appData'; */
 import Button from '../io/Button';
 import Link from 'next/link';
-import { connect } from 'react-redux';
-import { RootState } from '../../state/store';
-import { AppDataType } from '../../state/initial/appData';
+import store from '../../state/store';
 
-const connector = connect((state: RootState, props: any) => ({
-    appData: state.UI.appData,
-    props: props
-}))
 
-const CallToLogin = connector(({ appData }: { appData: AppDataType }) => {
+const CallToLogin = () => {
+    const appData = store.getState()?.UI?.appData
     return (
         <GenericCard extraClasses="h-full w-full symmetric-grid-card">
             <div className={'w-full h-full flex flex-col justify-center items-between'}>
@@ -39,7 +33,7 @@ const CallToLogin = connector(({ appData }: { appData: AppDataType }) => {
             </div>
         </GenericCard>
     )
-})
+}
 
 CallToLogin.displayName = "CallToLogin"
 

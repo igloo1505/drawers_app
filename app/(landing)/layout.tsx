@@ -1,13 +1,12 @@
 import 'react'
-import Navbar from '../../components/navigation/Navbar'
 import '../globals.css'
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css';
 import './landing.scss'
-import ReduxProvider from '../../components/strucutre/redux-provider'
-import Toast from '../../components/ui/Toast';
-import Footer from '../../components/navigation/Footer';
 import ProductionThemeSourcing from '../../components/testing/ProductionThemeSourcing';
+import WrappedNavbar from '../../components/wrappedComponents/wrappedNavbar';
+import WrappedFooter from '../../components/wrappedComponents/wrappedFooter';
+import WrappedToast from '../../components/wrappedComponents/wrappedToast';
 
 
 
@@ -20,14 +19,12 @@ const RootLayout = ({
         <html lang="en">
             <ProductionThemeSourcing />
             <body>
-                <ReduxProvider>
-                    <Toast />
-                    <Navbar />
-                    <div className='pt-2'>
-                        {children}
-                    </div>
-                    <Footer />
-                </ReduxProvider>
+                <WrappedToast />
+                <WrappedNavbar />
+                <div className='pt-2'>
+                    {children}
+                </div>
+                <WrappedFooter />
             </body>
         </html>
     )

@@ -1,5 +1,5 @@
 "use client"
-import React, { ChangeEventHandler, useEffect, useRef, useState } from 'react'
+import React, { ChangeEventHandler, useState } from 'react'
 import BuyerSignupCard from './Buyer';
 import SellerSignupCard from './Seller';
 import { Card } from 'primereact/card';

@@ -17,8 +17,8 @@ export const getAppData = () => {
     if (typeof window === "undefined") {
         return appData
     }
-    let state = store.getState()
-    if (state.UI.appData) {
+    let state = store?.getState()
+    if (state?.UI?.appData) {
         return state.UI.appData
     }
     return appData

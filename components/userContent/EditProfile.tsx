@@ -28,12 +28,12 @@ interface FormDataType {
     location: string,
     interests: string,
     tags: Tag[],
-    preexistingTags: Tag[],
     currentTagQuery: string
+    preexistingTags: Tag[],
 }
 
 interface EditProfileProps {
-    profile?: Profile
+    profile?: Partial<Profile>
     userId: string
 }
 
@@ -44,20 +44,23 @@ const dummyTag = {
 }
 
 const EditProfile = ({ profile, userId }: EditProfileProps) => {
+    console.log("profile: ", profile)
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
+    /* @ts-ignore */
     const [formData, setFormData] = useState<FormDataType>({
         userName: userId,
         firstName: "",
         lastName: "",
         imageIds: [],
-        introduction: "",
-        location: "",
         interests: "",
         tags: [dummyTag],
         preexistingTags: [],
-        currentTagQuery: ""
+        ...profile,
+        ...(!profile?.introduction && { introduction: "" }),
+        ...(!profile?.location && { location: "" }),
+        currentTagQuery: "",
     })
 
 
@@ -89,6 +92,7 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
     const focusTrue = () => setIsFocused(true)
     const focusFalse = () => setIsFocused(false)
     const currentTagExists = (value: string) => {
+        if (!formData.tags) return false
         return formData.tags.map((t) => t.value.toLowerCase()).indexOf(value.toLowerCase()) >= 0
     }
     const handleTagAppend = () => {
@@ -96,11 +100,13 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
             value: formData.currentTagQuery,
             formattedValue: formatTagText(formData.currentTagQuery)
         }
-        setFormData({
-            ...formData,
-            tags: currentTagExists(formData.currentTagQuery) ? formData.tags : [...formData.tags, tag],
-            currentTagQuery: ""
-        })
+        if (formData?.tags) {
+            setFormData({
+                ...formData,
+                tags: currentTagExists(formData.currentTagQuery) ? formData?.tags : [...formData?.tags, tag],
+                currentTagQuery: ""
+            })
+        }
     }
 
     const handleAutoComplete = (e: AutoCompleteCompleteEvent) => {
@@ -110,7 +116,7 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
     const handleRemove: RemoveTagFuncType = (idx) => {
         setFormData({
             ...formData,
-            tags: formData.tags.filter((x, i) => i !== idx)
+            tags: formData?.tags?.filter((x, i) => i !== idx)
         })
     }
 

@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { createEdgeRouter } from "next-connect";
 import { prisma } from "../../../../db/db";
-import { Tag } from "@prisma/client";
+import { Tag, Prisma } from "@prisma/client";
 
 interface RequestContext {
     // params: {
@@ -28,6 +28,26 @@ router
                     formattedValue: t.formattedValue
                 }
             }))
+            const existingTags = await prisma.user.findFirst({
+                where: {
+                    username: data.userName
+                },
+                include: {
+                    profile: {
+                        include: {
+                            tags: true
+                        }
+                    }
+                }
+            })
+            const justValues: string[] = profileData.tags.map((t: Tag) => t.value)
+            let removeTags: { value: string }[] = []
+            if (existingTags?.profile?.tags) {
+                removeTags = existingTags.profile.tags.filter((t: Tag) => justValues.indexOf(t.value) === -1).map((j) => ({ value: j.value }))
+            }
+            // const query: Prisma.ProfileUpdateOneWithoutUserNestedInput = {
+            // }
+
             const updated = await prisma.user.update({
                 where: {
                     username: data.userName
@@ -48,12 +68,14 @@ router
                         update: {
                             ...profileData,
                             tags: {
-                                connectOrCreate: tags
+                                connectOrCreate: tags,
+                                disconnect: removeTags
                             },
                         },
                     }
                 }
             })
+
             return NextResponse.json({
                 updated: updated,
                 success: true

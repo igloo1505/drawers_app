@@ -19,7 +19,6 @@ interface MultipleImageInputProps {
 }
 
 const itemTemplate = (file: object | any, props: ItemTemplateOptions) => {
-    console.log("props: ", props)
     return (
         <div className={'grid gap-4 break-all'} style={{
             gridTemplateColumns: "auto 1fr 48px"

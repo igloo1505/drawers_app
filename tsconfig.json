@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "target": "es5",
+        "target": "es6",
         "lib": [
             "dom",
             "dom.iterable",
@@ -19,6 +18,15 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "components/*"
+            ],
+            "#/*": [
+                "./*"
+            ]
+        },
         "plugins": [
             {
                 "name": "next"

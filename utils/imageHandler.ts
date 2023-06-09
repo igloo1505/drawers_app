@@ -51,3 +51,20 @@ export const getImagesFromRequest = (req: RequestWithFiles): { url: string, path
     })
     return images
 }
+
+
+export const getImageSignedUrl = async (fileName: string) => {
+    const bucket = firebase?.bucket()
+    return await bucket?.file(fileName)?.getSignedUrl({
+        action: "read",
+        expires: Date.now() + 60 * 60
+    })
+}
+
+
+export const getImageStream = async (fileName: string) => {
+    const bucket = firebase?.bucket()
+    const file = bucket?.file(fileName)
+    console.log("file: ", file)
+    return file?.createReadStream()
+}

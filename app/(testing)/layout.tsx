@@ -1,19 +1,19 @@
 "use client"
 import 'react'
-import '../globals.css'
+import 'styles/globals.css'
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css';
 import './testing.scss'
-import ThemeSourcing from '../../components/testing/ThemeSourcing';
+import ThemeSourcing from 'components/testing/ThemeSourcing';
 /* import WrappedNavbar from '../../components/wrappedComponents/wrappedNavbar'; */
 /* import WrappedToast from '../../components/wrappedComponents/wrappedToast'; */
 /* import WrappedTitleTextManipulation from '../../components/wrappedComponents/developmentOnly/wrappedTitleTextManipulation'; */
 /* import WrappedClientThemeSetter from '../../components/wrappedComponents/developmentOnly/wrappedClientThemeSetter'; */
-import ReduxProvider from '../../components/strucutre/redux-provider'
-import Toast from '../../components/ui/Toast';
-import ThemeClientSetter from '../../components/testing/ThemeClientSetter';
-import TitleTextManipulation from '../../components/testing/contentManipulation/TitleTextManipulation';
-import Navbar from '../../components/navigation/Navbar';
+import ReduxProvider from 'components/strucutre/redux-provider'
+import Toast from 'components/ui/Toast';
+import ThemeClientSetter from 'components/testing/ThemeClientSetter';
+import TitleTextManipulation from 'components/testing/contentManipulation/TitleTextManipulation';
+import Navbar from 'components/navigation/Navbar';
 
 
 

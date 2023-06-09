@@ -11,5 +11,5 @@ export const submitProfileData = async (data: Partial<Profile>) => {
 
 export const submitImages = async (data: FormData) => {
     const res = await axios.post("/api/media/images/addImage", data)
-    console.log("Res: ", res)
+    return res.data
 }

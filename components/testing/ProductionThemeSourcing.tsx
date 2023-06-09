@@ -1,4 +1,3 @@
-import React from 'react'
 import store from '../../state/store'
 
 const themeRootPath = "/assets/development/styles/themes/"

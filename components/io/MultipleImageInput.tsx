@@ -1,13 +1,13 @@
 "use client"
 import ImageSlider from 'components/ui/media/ImageSlider'
-import React, { useState } from 'react'
-import { FileUpload, FileUploadHandlerEvent, FileUploadUploadEvent } from 'primereact/fileupload';
+import React, { useRef, useState } from 'react'
+import { FileUpload, FileUploadHandlerEvent } from 'primereact/fileupload';
 import { Image } from '@prisma/client';
 import NextImage from 'next/image';
 import { ItemTemplateOptions } from 'primereact/fileupload';
 import Button from './Button';
 import { submitImages } from 'state/actions/asyncActions';
-import useAxios, { methodEnum } from 'state/hooks/useAxios';
+import Link from 'next/link';
 
 export type ImageTargetType = "profile" | "post" | "item"
 
@@ -35,8 +35,8 @@ const itemTemplate = (file: object | any, props: ItemTemplateOptions) => {
 }
 
 const MultipleImageInput = ({ retrievedImages, title, imageTargetType, targetId }: MultipleImageInputProps) => {
-    const axios = useAxios()
     const [images, setImages] = useState(retrievedImages)
+    const ref = useRef<FileUpload>(null!)
     const uploader = async (e: FileUploadHandlerEvent) => {
         if (targetId) {
             const files: Blob[] = e.files
@@ -46,13 +46,17 @@ const MultipleImageInput = ({ retrievedImages, title, imageTargetType, targetId 
             })
             formData.set('imageTargetType', imageTargetType)
             formData.set('targetId', targetId)
-            const res = await axios.send({
-                method: methodEnum.post,
-                url: `/api/media/images/addImage`,
-                data: formData,
-                headers: { "content-type": "multipart/form-data" },
-            })
-            submitImages(formData)
+            /* const res = await axios.send({ */
+            /*     method: methodEnum.post, */
+            /*     url: `/api/media/images/addImage`, */
+            /*     data: formData, */
+            /*     headers: { "content-type": "multipart/form-data" }, */
+            /* }) */
+            const returnData = await submitImages(formData)
+            if (returnData.success && returnData?.updatedProfile?.images) {
+                setImages(returnData.updatedProfile.images)
+                ref.current.clear()
+            }
         }
     }
     return (
@@ -60,8 +64,13 @@ const MultipleImageInput = ({ retrievedImages, title, imageTargetType, targetId 
             width: "min(calc(100vw - 4rem), 768px)"
         }}>
             <div className={'text-3xl w-full text-center mb-6'}>{title}</div>
-            <FileUpload name="demo[]" url={'/api/upload'} multiple accept="image/*" maxFileSize={1000000} emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} itemTemplate={itemTemplate} customUpload uploadHandler={uploader} />
+            <FileUpload ref={ref} name="demo[]" url={'/api/upload'} multiple accept="image/*" maxFileSize={1000000} emptyTemplate={<p className="m-0">Drag and drop files to here to upload.</p>} itemTemplate={itemTemplate} customUpload uploadHandler={uploader} />
             <ImageSlider images={images} />
+            <div className={'w-full h-fit mt-6 flex flex-row justify-end items-end'}>
+                <Link href="/feed">
+                    <Button label="Back to Feed" />
+                </Link>
+            </div>
         </div>
     )
 }

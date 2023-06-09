@@ -45,8 +45,6 @@ router
             if (existingTags?.profile?.tags) {
                 removeTags = existingTags.profile.tags.filter((t: Tag) => justValues.indexOf(t.value) === -1).map((j) => ({ value: j.value }))
             }
-            // const query: Prisma.ProfileUpdateOneWithoutUserNestedInput = {
-            // }
 
             const updated = await prisma.user.update({
                 where: {

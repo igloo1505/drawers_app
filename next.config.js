@@ -1,10 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    serverActions: true,
-  },
+    reactStrictMode: true,
+    swcMinify: true,
+    images: {
+        domains: ["storage.googleapis.com"],
+        minimumCacheTTL: 1500000,
+    },
+    compiler: {
+        // removeConsole: process.env.NODE_ENV === "production",
+        removeConsole: false,
+    },
+    experimental: {
+        serverActions: true,
+    },
 }
 
 module.exports = nextConfig

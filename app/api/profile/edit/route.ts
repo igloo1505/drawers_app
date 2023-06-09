@@ -68,23 +68,3 @@ router
 export async function POST(request: NextRequest, ctx: RequestContext) {
     return router.run(request, ctx);
 }
-
-
-
-
-                        // upsert: {
-                        //     create: {
-                        //         ...profileData,
-                        //         tags: {
-                        //             create: profileData.tags,
-                        //             update: profileData.tags
-                        //         }
-                        //     },
-                        //     update: {
-                        //         ...profileData,
-                        //         tags: {
-                        //             create: profileData.tags,
-                        //             update: profileData.tags
-                        //         }
-                        //     }
-                        // }

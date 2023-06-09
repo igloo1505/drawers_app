@@ -1,7 +1,8 @@
 import { initFirebase } from "db/initFirebase";
-import Multer from "multer";
+import multer from "multer";
 import FirebaseStorage from 'multer-firebase-storage'
-import type { NextRequest } from "next/server";
+import { NextHandler } from "next-connect";
+import { NextRequest, NextResponse } from "next/server";
 
 const firebase = initFirebase()
 
@@ -13,21 +14,18 @@ export const acceptMimeTypes = [
 ];
 
 
-export const imageMiddleware = Multer({
+export const imageMiddleware = multer({
     storage: FirebaseStorage({
         bucketName: process.env.FIREBASE_STORAGE_BUCKET,
-        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         credentials: {
             clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
             privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         },
         public: true,
-    }, firebase),
+    }),
     fileFilter(req, file, callback) {
-        if (acceptMimeTypes.indexOf(file.mimetype) >= 0) {
-            return callback(null, true);
-        }
-        return callback(null, false);
+        return callback(null, acceptMimeTypes.indexOf(file.mimetype) >= 0);
     },
 });
 
@@ -47,13 +45,9 @@ interface RequestWithFiles extends NextRequest {
     files: multerFileType[]
 }
 
-export const getImagesFromRequest = (req: RequestWithFiles) => {
-    console.log("Get image from request here: ", req.json())
+export const getImagesFromRequest = (req: RequestWithFiles): { url: string, path: string }[] => {
     let images = req?.files?.map((f: multerFileType) => {
         return { url: `${f.publicUrl}`, path: `${f.path}` };
     })
     return images
 }
-
-
-

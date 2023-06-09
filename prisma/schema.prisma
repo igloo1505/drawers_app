@@ -30,7 +30,7 @@ model Purchase {
 
 model Image {
     id        Int      @id @default(autoincrement())
-    url       String
+    url       String   @unique
     path      String
     profile   Profile? @relation(fields: [profileId], references: [id])
     profileId Int?

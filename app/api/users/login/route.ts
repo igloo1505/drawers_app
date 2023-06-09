@@ -9,8 +9,8 @@ import { setToken } from "../../../../utils/auth";
 interface RequestContext {
     // params: {
     //     id: string
+    // }
 }
-// }
 
 const router = createEdgeRouter<NextRequest, RequestContext>();
 

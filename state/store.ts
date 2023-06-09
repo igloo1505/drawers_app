@@ -28,7 +28,6 @@ const makeConfiguredStore = () => configureStore({
 
 export const makeStore = () => {
     const isServer = typeof window === "undefined";
-    console.log("Is Server", isServer)
     if (isServer) {
         return makeConfiguredStore();
     } else {

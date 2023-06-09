@@ -119,7 +119,6 @@ const EditProfile = ({ profile, userId }: EditProfileProps) => {
             userName: userId,
             firstName: formData.firstName,
             lastName: formData.lastName,
-            images: [],
             introduction: formData.introduction,
             interests: formData.interests,
             tags: formData.tags

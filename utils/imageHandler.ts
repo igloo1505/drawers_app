@@ -1,7 +1,6 @@
 import { initFirebase } from "db/initFirebase";
 import multer from "multer";
 import FirebaseStorage from 'multer-firebase-storage'
-import { NextHandler } from "next-connect";
 import { NextRequest, NextResponse } from "next/server";
 
 const firebase = initFirebase()
@@ -45,6 +44,17 @@ interface RequestWithFiles extends NextRequest {
     files: multerFileType[]
 }
 
+
+export const deleteImage = async (fileName: string) => {
+    const bucket = firebase?.bucket()
+    const file = bucket?.file(fileName)
+    const deleted = await file?.delete({
+        ignoreNotFound: true
+    })
+    return deleted
+}
+
+
 export const getImagesFromRequest = (req: RequestWithFiles): { url: string, path: string }[] => {
     let images = req?.files?.map((f: multerFileType) => {
         return { url: `${f.publicUrl}`, path: `${f.path}` };
@@ -65,6 +75,5 @@ export const getImageSignedUrl = async (fileName: string) => {
 export const getImageStream = async (fileName: string) => {
     const bucket = firebase?.bucket()
     const file = bucket?.file(fileName)
-    console.log("file: ", file)
     return file?.createReadStream()
 }

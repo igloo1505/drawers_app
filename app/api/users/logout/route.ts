@@ -18,7 +18,9 @@ router
 
     .post(async (req, ctx) => {
         try {
-            let res = clearTokens()
+            let res = new NextResponse()
+            res = await clearTokens(res)
+            console.log("res: ", res)
             return res
         } catch {
             return NextResponse.json({ success: false });

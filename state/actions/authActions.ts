@@ -27,6 +27,7 @@ export const loginUser = async (data: LoginUserData) => {
 }
 
 export const logoutUser = async () => {
+    console.log("logging out...")
     await axios.post("/api/users/logout", {}, defaultAxiosConfig)
     store.dispatch(
         logout()

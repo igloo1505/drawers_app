@@ -25,10 +25,11 @@ export const shouldDisplay = (button: NavbarButtonType, authenticated: boolean, 
 
 
 const NavbarButton = connector(({ button, auth: { authenticated, user } }: { button: NavbarButtonType, auth: InitialAuthStateType }) => {
+    console.log("authenticated: ", authenticated)
     const [display, setDisplay] = useState(false)
-    useEffect(() => setDisplay(shouldDisplay(button, authenticated, user)), [])
+    useEffect(() => setDisplay(shouldDisplay(button, authenticated, user)), [authenticated, user])
     if (!display) {
-        return <div className={'hidden'}></div>
+        return null
     }
     return (
         <Link href={typeof button.href === "string" ? button.href : button.href(user?.username || "")}>{button.text}</Link>
@@ -39,7 +40,7 @@ const NavbarButton = connector(({ button, auth: { authenticated, user } }: { but
 
 export const LogoutButton = connector(({ auth: { authenticated } }: { auth: InitialAuthStateType }) => {
     const [display, setDisplay] = useState(false)
-    useEffect(() => setDisplay(authenticated), [])
+    useEffect(() => setDisplay(authenticated), [authenticated])
     if (!display) {
         return null
     }

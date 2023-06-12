@@ -1,9 +1,9 @@
 import React, { ChangeEventHandler } from 'react'
-import { ModelOffersData } from '../../../app/(base)/signup/model/page';
+import { ModelOffersData } from 'app/signup/model/page';
 import { Card } from 'primereact/card';
 import { Checkbox } from 'primereact/checkbox';
 import { InputTextarea } from 'primereact/inputtextarea';
-import Button from '../../io/Button';
+import Button from '@/io/Button';
 
 
 interface ModelSignupOffersCardProps {
@@ -23,7 +23,7 @@ interface OfferItemProps {
 const OffersItem = ({ value, toggleItem, name, label }: OfferItemProps) => {
     return (
         <div className={'flex flex-row gap-2 flex-nowrap'}>
-            <Checkbox checked={value} onChange={() => toggleItem(name)} name={name} />
+            <Checkbox checked={value} onChange={() => toggleItem(name)} />
             <div>{label}</div>
         </div>
     )

@@ -1,8 +1,8 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
-import { ModelOffersData } from '../../(base)/signup/model/page'
-import ModelSignupOffersCard from '../../../components/authentication/signup/ModelSignupProvidesCard'
+import { ModelOffersData } from 'app/signup/model/page'
+import ModelSignupOffersCard from '@/authentication/signup/ModelSignupProvidesCard'
 
 
 

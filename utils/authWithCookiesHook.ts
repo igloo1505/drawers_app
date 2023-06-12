@@ -31,3 +31,4 @@ export const checkAuthenticated = async (): Promise<boolean> => {
     const isValid = await validateFromCookieValues(userId, auth)
     return isValid
 }
+

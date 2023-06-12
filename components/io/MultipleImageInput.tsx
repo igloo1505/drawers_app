@@ -46,12 +46,6 @@ const MultipleImageInput = ({ retrievedImages, title, imageTargetType, targetId 
             })
             formData.set('imageTargetType', imageTargetType)
             formData.set('targetId', targetId)
-            /* const res = await axios.send({ */
-            /*     method: methodEnum.post, */
-            /*     url: `/api/media/images/addImage`, */
-            /*     data: formData, */
-            /*     headers: { "content-type": "multipart/form-data" }, */
-            /* }) */
             const returnData = await submitImages(formData)
             if (returnData.success && returnData?.updatedProfile?.images) {
                 setImages(returnData.updatedProfile.images)

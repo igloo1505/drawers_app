@@ -3,6 +3,7 @@ import { useCallback, useRef, useEffect, MouseEventHandler } from "react";
 import { useRouter } from "next/navigation";
 
 const MediaModalWrapper = ({ children }: { children: React.ReactNode }) => {
+    console.log("In MediaModalWrapper")
     const overlay = useRef<HTMLDivElement>(null!);
     const wrapper = useRef<HTMLDivElement>(null!);
     const router = useRouter();
@@ -40,7 +41,7 @@ const MediaModalWrapper = ({ children }: { children: React.ReactNode }) => {
         >
             <div
                 ref={wrapper}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6 min-w-screen min-h-screen"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6 min-w-screen min-h-screen flex flex-col justify-center items-center"
             >
                 {children}
             </div>

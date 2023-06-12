@@ -13,7 +13,7 @@ interface ImageSliderProps {
 const ImageTemplate = (imageData: Image) => {
     return (
         <div className={'w-full h-full flex justify-center items-center'}>
-            <Link href={`/images/${imageData.id}`}>
+            <Link href={`/image/${imageData.id}`}>
                 <NextImage src={imageData.url} width={200} height={200} alt="Profile Image" />
             </Link>
         </div>

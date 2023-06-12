@@ -76,18 +76,19 @@ export const setToken = async (req: NextRequest, res: NextResponse, userId?: str
     return res
 }
 
-export const clearTokens = (response?: NextResponse | null) => {
-    let res = response ? response : NextResponse.next()
-    res.cookies.set({
-        name: 'userId',
-        value: '',
-        expires: Date.now()
-    });
-    res.cookies.set({
-        name: 'auth',
-        value: '',
-        expires: Date.now()
-    })
+export const clearTokens = async (res: NextResponse) => {
+    res.cookies.delete('userId')
+    res.cookies.delete('auth')
+    // res.cookies.set({
+    //     name: 'userId',
+    //     value: '',
+    //     expires: Date.now()
+    // });
+    // res.cookies.set({
+    //     name: 'auth',
+    //     value: '',
+    //     expires: Date.now()
+    // })
     return res
 }
 

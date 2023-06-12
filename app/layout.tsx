@@ -7,17 +7,20 @@ import WrappedToast from 'components/wrappedComponents/wrappedToast';
 import WrappedNavbar from 'components/wrappedComponents/wrappedNavbar';
 import WrappedFooter from 'components/wrappedComponents/wrappedFooter';
 import WrappedModals from 'components/wrappedComponents/wrappedModals';
+import { checkAuthenticated } from '#/utils/authWithCookiesHook';
+import WrappedAuthObserver from '@/wrappedComponents/wrappedAuthObserver';
 
 
-const Layout = ({
-    children,
-}: {
-    children: React.ReactNode
+const Layout = async ({ children, media }: {
+    children: React.ReactNode,
+    media: any
 }) => {
+    const isAuthed = await checkAuthenticated()
     return (
         <html lang="en">
             <ProductionThemeSourcing />
             <body>
+                <WrappedAuthObserver authenticated={isAuthed} />
                 <WrappedModals />
                 <WrappedToast />
                 <WrappedNavbar />
@@ -25,6 +28,7 @@ const Layout = ({
                     minHeight: "calc(100vh - 260px)"
                 }}>
                     {children}
+                    {media}
                 </div>
                 <WrappedFooter />
             </body>
